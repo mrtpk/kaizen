@@ -94,7 +94,7 @@ print("Output array:")
 print(out_arr)
 {% endhighlight %}
 
-All of these snippets are available [here](https://github.com/mrtpk/kaizen/tree/master/snippets/interfacing_cpp_and_python).
+All of these snippets are available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/interfacing_cpp_and_python).
 
 **Acknowledgement**
 + [Sambhu Surya Mohan](https://www.linkedin.com/in/sambhu-surya-mohan-0147a02a/)
