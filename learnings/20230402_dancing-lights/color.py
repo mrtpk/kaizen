@@ -109,8 +109,9 @@ def convert_hex2rgb(hexcode):
 #800000
 #FF8000
 
-# static_colors = ["#FFB300", "#803E75", "#FF6800", "#A6BDD7", "#C10020", "#CEA262", "#817066", "#007D34", "#F6768E", "#00538A", "#FF7A5C", "#53377A", "#FF8E00", "#B32851", "#F4C800", "#7F180D", "#93AA00", "#593315", "#F13A13", "#232C16", "#0000FF", "#FF0000", "#00FF00", "#FFFF00", "#FF00FF", "#FF8080", "#808080", "#800000", "#FF8000"]
-static_colors = ["#232C16", "#0000FF", "#FF0000", "#00FF00", "#FFFF00", "#FF00FF", "#FF8080", "#808080", "#800000", "#FF8000"]
+static_colors = ["#FFB300", "#803E75", "#FF6800", "#A6BDD7", "#C10020", "#CEA262", "#817066", "#007D34", "#F6768E", "#00538A", "#FF7A5C", "#53377A", "#FF8E00", "#B32851", "#F4C800", "#7F180D", "#93AA00", "#593315", "#F13A13", "#232C16", "#0000FF", "#FF0000", "#00FF00", "#FFFF00", "#FF00FF", "#FF8080", "#808080", "#800000", "#FF8000"]
+# static_colors = ["#232C16", "#0000FF", "#FF0000", "#00FF00", "#FFFF00", "#FF00FF", "#FF8080", "#808080", "#800000", "#FF8000"]
+# static_colors = ["#00FF00", "#FFFF00", "#FF00FF", "#FF8080", "#808080", "#800000"]
 static_colors = list(map(convert_hex2rgb, static_colors))
 
 def get_static_color_samples(num_color_samples):
@@ -121,5 +122,5 @@ if __name__ == "__main__":
     # sample 100 colors in css format
     # sample_colors = list(itertools.islice(css_colors(), 100))
     # sample_colors = get_color_samples(num_color_samples=10)
-    smaple_colors = get_static_color_samples(num_color_samples=10)
+    sample_colors = get_static_color_samples(num_color_samples=10)
     pprint(sample_colors)
