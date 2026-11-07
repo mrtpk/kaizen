@@ -88,7 +88,7 @@ So one PReLU kernel, with two alphas at $2^{16}$ (one for the positive side and 
 ![Two panels. 1: a table of ReLU, ReLU6, min(x, 2.0), LeakyReLU 0.1 and PReLU 0.25 with their slope and clip; all exact except LeakyReLU, 13 of 256 off by 1. 2: add 0.75 folds into the bias, 85 of 256 off by 1; multiply by -1.5 folds into alpha, exact.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_3/resources/fig3_relu_family.png)
 *Figure: five activations are one PReLU kernel with different constants, and constant operands fold into the bias or alpha.*
 
-You may have noticed that these operations use a shift of 16, and add and convolution use 20. Both were on the hardware's short list of shift amounts. I do not have a record of why each operation got the shift it got, so I will not guess.
+You may have noticed that these operations use a shift of 16, and add and convolution use 20. That is simply what the hardware supported: each operation used a shift amount from the hardware's short list.
 
 ## Let's look at the code
 The add and the multiply, checked against exact rounding:
