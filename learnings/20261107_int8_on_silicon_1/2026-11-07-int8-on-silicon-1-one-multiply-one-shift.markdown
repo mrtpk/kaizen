@@ -90,7 +90,7 @@ A fixed shift has two costs: precision and range.
 ![Two panels. 1: a table of M, alpha, bits in alpha and alpha error for M from 0.5 to 0.0001. 2: a 32-bit word split into 1 sign bit, 4 spare bits, 7 int8 magnitude bits and 20 fraction bits.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_1/resources/fig3_fixed_shift_cost.png)
 *Figure: a fixed shift of 20 loses precision for very small M, but the product always fits in int32 while the output is near the int8 range.*
 
-So, why 20? It is the largest shift that leaves room for an int8 output and a few spare bits in a 32-bit product. The other operations used other shifts from the same short list (16 and 10). We will see why in part 3.
+So, why 20? It is the largest shift that leaves room for an int8 output and a few spare bits in a 32-bit product. The other operations used other shifts from the same short list (16 and 10), which we will meet in part 3.
 
 ## Did it matter?
 Not for accuracy. We ran the same models through TFLite and through the reference model on full datasets, and the accuracy was on par. Layer by layer, the intermediate outputs of some layers matched TFLite with zero deviation, and the others differed by small amounts. In the simulation above, the difference is 1 in 3% of the values, and the next layer sees that as noise.
