@@ -93,7 +93,7 @@ A fixed shift has two costs: precision and range.
 So, why 20? It is the largest shift that leaves room for an int8 output and a few spare bits in a 32-bit product. The other operations used other shifts from the same short list (16 and 10), which we will meet in part 3.
 
 ## Did it matter?
-Not for accuracy. We ran the same models through TFLite and through the reference model on full datasets, and the accuracy was on par. Layer by layer, the intermediate outputs of some layers matched TFLite with zero deviation, and the others differed by small amounts. In the simulation above, the difference is 1 in 3% of the values, and the next layer sees that as noise.
+Not for accuracy. In our tests on full datasets, the accuracy was on par with TFLite. I no longer have the final numbers, so I will not quote one. What I can show is the layer level: the intermediate outputs of some layers matched TFLite with zero deviation, and the others differed by small amounts. In the simulation above, the difference is 1 in 3% of the values, and the next layer sees that as noise.
 
 ## Let's look at the code
 Both methods side by side, checked against each other:

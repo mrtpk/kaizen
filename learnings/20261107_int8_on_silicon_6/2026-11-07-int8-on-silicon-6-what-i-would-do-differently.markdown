@@ -8,7 +8,7 @@ mathjax: true
 
 Lately, I have been writing down the integer math of an int8 accelerator that I worked on at Roviero, and this last note looks back: what held up, and what I would refine if I built the reference model again.
 
-Before this series, I would have said that the reference model was correct, because the hardware matched it bit for bit and the final accuracy was on par with TFLite. Both are true. But for every part of this series, I rewrote the math in NumPy and compared it with exact rounding and with TFLite's integer kernels, and the scripts found small gaps that on-par accuracy did not show.
+Before this series, I would have said that the reference model was correct, because the hardware matched it bit for bit and the final accuracy was on par with TFLite in our tests on full datasets. Both are true, though I no longer have the final accuracy numbers. But for every part of this series, I rewrote the math in NumPy and compared it with exact rounding and with TFLite's integer kernels, and the scripts found small gaps that on-par accuracy did not show.
 
 ## What held up
 Let's start with what I would keep.
