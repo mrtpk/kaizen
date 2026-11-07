@@ -17,7 +17,7 @@ $$
 \alpha = \frac{1}{9} \cdot \frac{s_{in}}{s_{out}} \cdot 2^{20} = 116508 \quad (\text{for } s_{in} = s_{out})
 $$
 
-And the sum? That is a depthwise convolution with all weights equal to 1. The reference model rewrote every average pool as exactly that, and a mean over channels as a 1X1 convolution with all-ones weights and $\frac{1}{C}$ in `alpha`. No new hardware: the MAC array sums, the unit divides.
+And the sum? That is a depthwise convolution with all weights equal to 1. The reference model implemented every average pool as exactly that, and a mean over channels as a 1X1 convolution with all-ones weights and $\frac{1}{C}$ in `alpha`. No new hardware: the MAC array sums, the unit divides.
 
 ![Two panels. 1: C values at one pixel go through a 1x1 convolution with all-ones weights, then times alpha = s_in / (s_out C) * 2^20 and a shift by 20. 2: a table: average pool runs as a depthwise convolution, mean over channels as a 1x1 convolution, both with one rounding; global average pool has its own kernel with two roundings.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig4_reductions.png)
 *Figure: three kinds of average, and how each runs without a divider.*
@@ -37,25 +37,25 @@ Global average pooling (the mean over the whole 7X7 map at the end of a classifi
 
 That is two roundings, in a design whose whole point was one. The first rounding error is up to half an input step. The second step multiplies it by $s_{in} / s_{out}$. For $s_{in} = 0.05$ and $s_{out} = 0.02$, that is 2.5, so the first rounding becomes up to 1.25 output steps. Over 100,000 random inputs, 60% of the outputs differ from exact rounding, by up to 2. Folding $\frac{1}{49}$ and $\frac{s_{in}}{s_{out}}$ into one `alpha` with one rounding is exact for every input.
 
+![Two panels. 1: round the mean of 49 values in input units, then rescale by 2.5 with a second rounding: 60.5 % of outputs differ from exact, by up to 2. 2: fold 1/49 and the rescale into one alpha and round once: 0 % differ.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig3_global_pool.png)
+*Figure: global average pooling with two roundings, and the one-rounding version.*
+
 ## Non-linear functions are tables
 What about sigmoid, tanh or hard-swish? There is no exp in the hardware. But an int8 input has only 256 possible values. It means that any function of one int8 input is a table of 256 int8 entries. The compiler computes the table once, in float, and the hardware does one table read per value. That is how the reference model ran sigmoid, tanh, hard-swish and rsqrt.
 
-![Three panels. 1: int8 input, table lookup computed at compile time, int8 output. 2: truncated tables differ from rounded tables in 113 of 256 sigmoid entries and 75 of 256 hard-swish entries. 3: softmax runs in float on the host; truncation changes 82 % of values; argmax is unchanged.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig2_lut_softmax.png)
+![Three panels. 1: int8 input, table lookup computed at compile time, int8 output. 2: truncated tables differ from rounded tables in 113 of 256 sigmoid entries and 75 of 256 hard-swish entries. 3: softmax runs in float on the host; truncation changes 82 % of values; argmax stays the same in more than 99 % of rows.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig2_lut_softmax.png)
 *Figure: one-input functions become 256-entry tables. Softmax needs a whole row, so it ran on the host.*
 
-The difference here is one character. The tables were filled with `int(value)`, which truncates, instead of rounding. Only tanh used `round()`. For a sigmoid with input scale 0.08 and TFLite's sigmoid output scale of 1/256, 113 of the 256 entries are one below the rounded value. A table costs the same whether it is rounded or not, so this one is free to fix.
+The difference here is one character. The tables were filled with `int(value)`, which truncates, instead of rounding. Only tanh used `round()`. For a sigmoid with input scale 0.08 and TFLite's sigmoid output scale of 1/256, 113 of the 256 entries are one step off the rounded value, always toward zero. A table costs the same whether it is rounded or not, so this one is free to fix.
 
 ## Softmax goes to the host
-Softmax is different: each output depends on the whole row (the sum of exponentials), so it is not a table. The hardware did not support it, and it ran in float on the host. The result was cast back to int8 with the same `int()` truncation. Since the softmax output zero point is -128, most values are negative, and truncation moves them toward zero. 82% of the values come out one step off from rounding. The argmax did not change in more than 99% of the rows, which is what a classifier cares about.
+Softmax is different: each output depends on the whole row (the sum of exponentials), so it is not a table. The hardware did not support it, and it ran in float on the host. The result was cast back to int8 with the same `int()` truncation. Since the softmax output zero point is -128, most values are negative, and truncation moves them toward zero. 82% of the values come out one step off from rounding. In the script's random rows, the argmax stayed the same in more than 99% of them, and the argmax is what a classifier uses.
 
 ## Resize: weights that do not add up
-Bilinear resize computes each output as a weighted sum of 4 neighbours. The 4 weights should add up to 1. In the reference model, the weights were computed in float, multiplied by $2^{10}$, and each was truncated on its own. For a 2X upscale, the weights are quarters, which are exact in 10 bits, and the result is identical to TFLite's integer resize. For 8X8 to 13X13, the truncated weights add up to 1021-1024 instead of 1024, and 26 of the 169 outputs differ from TFLite by 1. TFLite builds the four weights from integer coordinates, as $(1024 - f)$ and $f$, so they always add up to exactly $2^{20}$.
+Bilinear resize computes each output as a weighted sum of 4 neighbours. The 4 weights should add up to 1. In the reference model, the weights were computed in float, multiplied by $2^{10}$, and each was truncated on its own. For a 2X upscale, the weights are quarters, which are exact in 10 bits, and the result is identical to TFLite's integer resize. For 8X8 to 13X13, the truncated weights add up to 1021-1024 instead of 1024, and 26 of the 169 outputs differ from TFLite by 1. TFLite builds the four weights from integer coordinates, as $(1024 - f)$ and $f$, so the four products of the x and y weights always add up to exactly $1024 \times 1024 = 2^{20}$.
 
 ![Two panels. 1: an output point between four input pixels at dx = dy = 0.4231, with exact weights 340.83, 249.94, 249.94 and 183.29 in units of 1/1024, summing to 1024. 2: a table: truncated one by one, the weights are 340, 249, 249 and 183, summing to 1021.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig5_resize_weights.png)
 *Figure: one output point of the 8X8 to 13X13 resize. Truncating each weight on its own loses 3 of 1024.*
-
-![Two panels. 1: global average pool with two roundings differs from exact in 60.5 % of outputs; one rounding is exact. 2: resize x2 has exact weights and matches TFLite; resize 8 to 13 has weights summing to 1021-1024 and 26 of 169 outputs differ by 1.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig3_pool_and_resize.png)
-*Figure: two small gaps. A second rounding in global average pooling, and resize weights that are truncated one by one.*
 
 ## Let's look at the code
 The average pool border and the global pool, side by side:
@@ -89,7 +89,8 @@ sums = x.sum(axis=1)
 mean_q = round_shift(sums * (2**20 // 49), 20)                                   # rounding 1
 two = round_shift((mean_q + 10) * int(0.05 / 0.02 * 2**20), 20) + 5              # rounding 2
 one = round_shift((sums + 490) * round(0.05 / (0.02 * 49) * 2**20), 20) + 5      # one rounding
-exact = np.sign(v := 0.05 * (sums / 49 + 10) / 0.02) * np.floor(np.abs(v) + 0.5) + 5
+v = 0.05 * (sums / 49 + 10) / 0.02
+exact = np.sign(v) * np.floor(np.abs(v) + 0.5) + 5
 print(f"Two roundings: {(two != exact).mean() * 100:.1f} % differ")             # 60.5 %
 print(f"One rounding: {(one != exact).mean() * 100:.1f} % differ")              # 0.0 %
 {% endhighlight %}

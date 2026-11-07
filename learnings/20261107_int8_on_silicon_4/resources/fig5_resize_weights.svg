@@ -3,7 +3,7 @@
 <rect width="1100" height="736" fill="#ffffff"/>
 <text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Four weights that should add up to 1</text>
 <text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Int8 on Silicon  ·  part 4  ·  bilinear resize 8x8 -&gt; 13x13, output point (1, 1)</text>
-<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">out = (w_ll * q_ll + w_lu * q_lu + w_rl * q_rl + w_ru * q_ru) &gt;&gt; 10,   weights in units of 1/1024</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">out = (w_tl * q_tl + w_bl * q_bl + w_tr * q_tr + w_br * q_br) &gt;&gt; 10,   weights in units of 1/1024</text>
 <rect x="20.0" y="116.0" width="1060.0" height="260.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
 <circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
 <text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
@@ -11,28 +11,28 @@
 <text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Between four input pixels, 0.4231 of a pixel to the right and down. Each weight is the area opposite to its corner.</text>
 <rect x="120.0" y="196.0" width="150.0" height="150.0" rx="2" fill="#ffffff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.3"/>
 <circle cx="120.0" cy="196.0" r="6" fill="#2563eb"/>
-<text x="106.0" y="186.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">q_ll</text>
+<text x="106.0" y="186.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">q_tl</text>
 <circle cx="120.0" cy="346.0" r="6" fill="#2563eb"/>
-<text x="106.0" y="368.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">q_lu</text>
+<text x="106.0" y="368.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">q_bl</text>
 <circle cx="270.0" cy="196.0" r="6" fill="#2563eb"/>
-<text x="284.0" y="186.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">q_rl</text>
+<text x="284.0" y="186.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">q_tr</text>
 <circle cx="270.0" cy="346.0" r="6" fill="#2563eb"/>
-<text x="284.0" y="368.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">q_ru</text>
+<text x="284.0" y="368.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">q_br</text>
 <line x1="183.5" y1="196.0" x2="183.5" y2="346.0" stroke="#d97706" stroke-width="1" stroke-dasharray="3 3"/>
 <line x1="120.0" y1="259.5" x2="270.0" y2="259.5" stroke="#d97706" stroke-width="1" stroke-dasharray="3 3"/>
 <circle cx="183.5" cy="259.5" r="6" fill="#d97706"/>
 <text x="193.5" y="251.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#d97706" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">out</text>
 <text x="195.0" y="186.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">dx = dy = 0.4231</text>
-<text x="380.0" y="226.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_ll = (1 - dy)(1 - dx)</text>
+<text x="380.0" y="226.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_tl = (1 - dy)(1 - dx)</text>
 <text x="640.0" y="226.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">= 0.3328</text>
 <text x="760.0" y="226.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">-&gt; 340.83 / 1024</text>
-<text x="380.0" y="252.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_lu = dy (1 - dx)</text>
+<text x="380.0" y="252.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_bl = dy (1 - dx)</text>
 <text x="640.0" y="252.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">= 0.2441</text>
 <text x="760.0" y="252.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">-&gt; 249.94 / 1024</text>
-<text x="380.0" y="278.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_rl = (1 - dy) dx</text>
+<text x="380.0" y="278.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_tr = (1 - dy) dx</text>
 <text x="640.0" y="278.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">= 0.2441</text>
 <text x="760.0" y="278.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">-&gt; 249.94 / 1024</text>
-<text x="380.0" y="304.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_ru = dy dx</text>
+<text x="380.0" y="304.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_br = dy dx</text>
 <text x="640.0" y="304.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">= 0.1790</text>
 <text x="760.0" y="304.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">-&gt; 183.29 / 1024</text>
 <text x="380.0" y="336.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">exact sum: 1024.00</text>
@@ -46,19 +46,19 @@
 <text x="600.0" y="488.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">ours: int(), one by one</text>
 <text x="900.0" y="488.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">lost</text>
 <line x1="70.0" y1="496.0" x2="1040.0" y2="496.0" stroke="#9ca3af" stroke-width="1"/>
-<text x="80.0" y="514.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_ll</text>
+<text x="80.0" y="514.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_tl</text>
 <text x="330.0" y="514.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">340.83</text>
 <text x="600.0" y="514.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">340</text>
 <text x="900.0" y="514.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.83</text>
-<text x="80.0" y="540.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_lu</text>
+<text x="80.0" y="540.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_bl</text>
 <text x="330.0" y="540.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">249.94</text>
 <text x="600.0" y="540.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">249</text>
 <text x="900.0" y="540.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.94</text>
-<text x="80.0" y="566.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_rl</text>
+<text x="80.0" y="566.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_tr</text>
 <text x="330.0" y="566.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">249.94</text>
 <text x="600.0" y="566.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">249</text>
 <text x="900.0" y="566.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.94</text>
-<text x="80.0" y="592.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_ru</text>
+<text x="80.0" y="592.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">w_br</text>
 <text x="330.0" y="592.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">183.29</text>
 <text x="600.0" y="592.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">183</text>
 <text x="900.0" y="592.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.29</text>
@@ -75,5 +75,5 @@
 <text x="348.4" y="679.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">exact</text>
 <rect x="406.2" y="668.0" width="14.0" height="14.0" rx="3" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.4"/>
 <text x="427.2" y="679.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">truncated</text>
-<text x="30.0" y="708.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">TFLite computes the weights from integer coordinates as (1024 - f) and f, so they always sum to exactly 2^20.</text>
+<text x="30.0" y="708.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">TFLite builds the weights from integer coordinates as (1024 - f) and f, so the four products sum to exactly 1024 * 1024 = 2^20.</text>
 </svg>

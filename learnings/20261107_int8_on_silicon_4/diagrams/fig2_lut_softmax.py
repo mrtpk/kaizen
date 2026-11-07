@@ -25,7 +25,7 @@ d.box(XS[2], y + 74, BW, BH, "int8 output", ["sigmoid, tanh,", "hard-swish, rsqr
 
 y += 190
 d.panel(y, 170, 2, "Does the table round or truncate?",
-        "Our tables truncated with int(), except tanh. Each truncated entry is 1 below the rounded one.")
+        "Our tables truncated with int(), except tanh. Truncation can move an entry one step toward zero.")
 d.box(XS[0], y + 74, BW, BH, "sigmoid table", ["113 of 256 entries", "differ by 1"], col=PINK, mono_size=12)
 d.box(XS[1], y + 74, BW, BH, "hard-swish table", ["75 of 256 entries", "differ by 1"], col=PINK, mono_size=12)
 d.box(XS[2], y + 74, BW, BH, "example", ["q = 20: 84 (trunc.)", "vs 85 (rounded)"], col=NEUTRAL, mono_size=12)

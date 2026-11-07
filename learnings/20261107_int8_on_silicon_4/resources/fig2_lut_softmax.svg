@@ -27,7 +27,7 @@
 <circle cx="46.0" cy="332.0" r="13" fill="#111827"/>
 <text x="46.0" y="336.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
 <text x="68.0" y="337.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Does the table round or truncate?</text>
-<text x="68.0" y="356.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Our tables truncated with int(), except tanh. Each truncated entry is 1 below the rounded one.</text>
+<text x="68.0" y="356.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Our tables truncated with int(), except tanh. Truncation can move an entry one step toward zero.</text>
 <rect x="60.0" y="380.0" width="290.0" height="72.0" rx="8" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.5"/>
 <text x="205.0" y="400.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#db2777" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">sigmoid table</text>
 <text x="205.0" y="418.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">113 of 256 entries</text>

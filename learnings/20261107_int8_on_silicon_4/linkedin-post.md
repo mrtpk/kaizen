@@ -1,6 +1,6 @@
 # LinkedIn post: Int8 on Silicon - Part 4: Operations without a divider
 
-**Attach:** `fig1_avgpool_as_conv.png`, `fig2_lut_softmax.png`, `fig3_pool_and_resize.png` as a carousel (in order).
+**Attach:** `fig1_avgpool_as_conv.png`, `fig2_lut_softmax.png`, `fig3_global_pool.png` as a carousel (in order).
 
 ---
 
@@ -15,8 +15,8 @@ Softmax needs the whole row, so it ran in float on the host.
 The ideas held up. But re-running everything in NumPy this week found four small gaps:
 → SAME average pooling divides by 9 at the border, where TFLite divides by the valid count: border outputs off by up to 37.
 → Global average pooling rounded twice: 60% of outputs one or two steps off. One rounding is exact.
-→ The tables used int() instead of round(): 113 of 256 sigmoid entries one below.
-→ Resize weights were truncated one by one, so they summed to 1021 instead of 1024.
+→ The tables used int() instead of round(): 113 of 256 sigmoid entries one step off, toward zero.
+→ Resize weights were truncated one by one, so they summed to as low as 1021 instead of 1024.
 
 All cheap to fix. Final model accuracy was still on par with TFLite.
 
