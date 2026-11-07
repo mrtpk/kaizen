@@ -90,6 +90,11 @@ So one PReLU kernel, with two alphas at $2^{16}$ (one for the positive side and 
 
 You may have noticed that these operations use a shift of 16, and add and convolution use 20. That is simply what the hardware supported: each operation used a shift amount from the hardware's short list.
 
+Let's put all of it in one table. Every operation in this note, and the pooling from the next one, is the same unit with different constants:
+
+![A table of nine operations with their number of passes, bias, alpha and shift: convolution, add, multiply, add a constant, multiply by a constant, ReLU family, average pool, mean, requantize. Shifts are 20 or 16.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_3/resources/fig4_ops_as_constants.png)
+*Figure: every operation is a set of constants for the same post-processing unit. Only the constants and the number of passes change.*
+
 ## Let's look at the code
 The add and the multiply, checked against exact rounding:
 
