@@ -4,7 +4,7 @@
 
 ---
 
-From 2020 to 2023, I wrote the reference model for an int8 neural network accelerator at Roviero. The hardware team gave me the constraints, I did the math in software, and then they built the same math in silicon. I'm writing it down before I forget it: "Int8 on Silicon", part 1. Thanks to my manager, Sambhu Surya Mohan, who guided me through much of it.
+From 2020 to 2023, I wrote the reference model for an int8 neural network accelerator at Roviero. The hardware team gave us the constraints, we did the math in software, and then they built the same math in silicon. I'm writing it down before I forget it: "Int8 on Silicon", part 1. Thanks to my manager, Sambhu Surya Mohan, who guided me through much of it.
 
 Every int8 layer ends with the same problem: an int32 accumulator has to be multiplied by a small real number M (say 0.0023050) and turned back into int8, with no floating point.
 
