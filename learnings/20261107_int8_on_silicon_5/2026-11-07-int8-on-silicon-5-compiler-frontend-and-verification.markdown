@@ -103,7 +103,7 @@ The full script, with every rewrite checked in NumPy, is available [here](https:
 
 So, in short: the frontend read an int8 TFLite model, rewrote the graph for the hardware (with a check for every rewrite), split it between accelerator and host, and wrote a config, the constants and golden files for every layer. The hardware had to match the golden files bit for bit. TFLite had to match in accuracy.
 
-In part 6, the last one, I will collect what I would do differently, including the leaks that the scripts of this series found.
+In part 6, the last one, I will collect what I would do differently, including the small gaps that the scripts of this series found.
 
 **Reference:**
 + [Int8 on Silicon - Part 1: One multiply, one shift][part1]

@@ -12,9 +12,9 @@ Constants: "add 0.75" goes into the bias, "multiply by -1.5" goes into alpha. On
 
 ReLU, ReLU6, LeakyReLU, PReLU and min(x, c) are one kernel: a slope for negative inputs and a clip. Only the constants change.
 
-Multiply was the weak spot, and I only measured it while writing this. We split M = s1·s2/s_out into two square roots, one per input, at 2^10 each. For an SE block (x · sigmoid), one alpha comes out as 17, a 5-bit multiplier: 75% of the outputs differ from exact rounding, by up to 7. Putting all of M on one input would give 0.05%.
+Multiply had to fit a 32-bit accumulator. We split M = s1·s2/s_out into two square roots, one per input, at 2^10 each, which was more accurate than the uneven split before it (46% vs 62% of outputs off exact rounding). Measuring it again this week, there is room to go further: for an SE block (x · sigmoid), one alpha is only 17, and putting all of M on one input would bring the error to 0.05%.
 
-The models still matched TFLite accuracy, but this is the first thing I'd change.
+The models matched TFLite accuracy either way.
 
 Code and figure scripts are in my kaizen repo (link in comments). Part 4: operations without a divider.
 

@@ -15,7 +15,7 @@ BW, BH = 290, 92
 XS = [60, 410, 760]
 y = 116
 d.panel(y, 200, 1, "How does the split work?",
-        "Each input gets half of the scale, at 2^10. Their product lands at 2^20, a supported shift.")
+        "Each input gets half of the scale, at 2^10, so the product fits the 32-bit accumulator and lands at 2^20.")
 d.box(XS[0], y + 80, BW, BH, "input 1", ["(q1 - z1) * a1", "a1 = 0.05 / sqrt(0.12) * 2^10", "= 147"], col=AMBER, mono_size=12)
 d.box(XS[1], y + 80, BW, BH, "input 2", ["(q2 - z2) * a2", "a2 = 0.03 / sqrt(0.12) * 2^10", "= 88"], col=AMBER, mono_size=12)
 d.box(XS[2], y + 80, BW, BH, "product", ["x1 * x2 (int32)", ">> 20, + z_out, clip"], col=VIOLET, mono_size=12)
@@ -32,7 +32,7 @@ rows = [
 ]
 H = 96 + 26 * len(rows)
 d.panel(y, H, 2, "What does it cost?",
-        "Precision. a = 17 is a 5-bit multiplier. Outputs that differ from exact rounding, 200,000 random pairs:")
+        "Room to go further: a = 17 is a 5-bit multiplier. Outputs that differ from exact rounding, 200,000 pairs:")
 cols = [80, 440, 720]
 for i, r in enumerate(rows):
     ry = y + 92 + i * 26
@@ -46,7 +46,7 @@ for i, r in enumerate(rows):
         d.line(70, ry + 8, 1040, ry + 8, NEUTRAL[0])
 
 y += H + 20
-d.legend(30, y, [(AMBER, "per-input constants"), (VIOLET, "the one rounding"), (PINK, "our error"),
+d.legend(30, y, [(AMBER, "per-input constants"), (VIOLET, "the one rounding"), (PINK, "split, truncated alphas"),
                  (EMERALD, "best variant")])
 y = d.footnotes(30, y + 40, [
     "SE block: s1 = 0.05, z1 = -10; sigmoid output s2 = 1/256, z2 = -128; s_out = 0.05.",

@@ -6,9 +6,9 @@ categories: deep-learning quantization hardware
 mathjax: true
 ---
 
-Lately, I have been writing down the integer math of an int8 accelerator that I worked on at Roviero, and this last note is the honest one: what held up, what leaked, and what I would change if I built the reference model again.
+Lately, I have been writing down the integer math of an int8 accelerator that I worked on at Roviero, and this last note looks back: what held up, and what I would refine if I built the reference model again.
 
-Before this series, I would have said that the reference model was correct, because the hardware matched it bit for bit and the final accuracy was on par with TFLite. Both are true. But for every part of this series, I rewrote the math in NumPy and compared it with exact rounding and with TFLite's integer kernels, and the scripts found leaks that on-par accuracy had hidden.
+Before this series, I would have said that the reference model was correct, because the hardware matched it bit for bit and the final accuracy was on par with TFLite. Both are true. But for every part of this series, I rewrote the math in NumPy and compared it with exact rounding and with TFLite's integer kernels, and the scripts found small gaps that on-par accuracy did not show.
 
 ## What held up
 Let's start with what I would keep.
@@ -24,7 +24,7 @@ Let's start with what I would keep.
 *Figure: alpha and the product share the same 32 bits. A shift of 20 was the best a 32-bit product allows; more precision needs a wider product.*
 
 ## What I would change
-**1. Round every constant.** This is the biggest lesson, and it is the cheapest one. In many places, a float constant became an integer with `int()`, which truncates: `alpha` in convolution ([part 1][part1]), the two alphas of the multiply ([part 3][part3]), a constant folded into a bias ([part 3][part3]), the lookup tables and the softmax cast ([part 4][part4]), and the resize weights ([part 4][part4]). For the convolution in part 1, rounding `alpha` instead of truncating it takes the mismatch with exact rounding from 2.83% of the outputs to 0.02%, which is better than TFLite's 0.18%. The single rounding was right all along. The `int()` was not.
+**1. Round every constant.** This is the biggest lesson, and it is the cheapest one. In many places, a float constant became an integer with `int()`, which truncates: `alpha` in convolution ([part 1][part1]), the two alphas of the multiply ([part 3][part3]), a constant folded into a bias ([part 3][part3]), the lookup tables and the softmax cast ([part 4][part4]), and the resize weights ([part 4][part4]). For the convolution in part 1, rounding `alpha` instead of truncating it takes the mismatch with exact rounding from 2.83% of the outputs to 0.02%, which is better than TFLite's 0.18%. The single rounding was right all along; rounding the constants is the missing piece.
 
 **2. One rounding, everywhere.** Global average pooling rounded twice: once for the mean and once for the rescale. For a scale ratio of 2.5, 60% of the outputs differ from exact rounding. With one rounding, none do ([part 4][part4]).
 
@@ -37,13 +37,13 @@ Let's start with what I would keep.
 
 The same goes for concat. It copied the bytes of its inputs, which is right only when all inputs have the same scale and zero point as the output, and nothing in our code checked that. With input scales of 0.05 and 0.10 and an output scale of 0.10, copying gives a real error of up to 6.4. TFLite requantizes the first input instead.
 
-**5. Put all of M on one side of a multiply.** The square-root split of [part 3][part3] gave each input an `alpha` at $2^{10}$, and for a squeeze-and-excitation block one `alpha` came out as 17. 75% of the outputs differed from exact rounding, by up to 7. With all of $M$ on one input, it is 0.05%. I still do not remember why we split it. It is the one open question I have left.
+**5. Take the multiply one step further.** The square-root split of [part 3][part3] balanced the bits between the two inputs so that the product fits the 32-bit accumulator, and it was more accurate than the uneven split before it. With rounded alphas, or with all of $M$ on one input, it gets closer still: for a squeeze-and-excitation block, from 75% of the outputs off exact rounding to 0.05%.
 
 **6. Ask for a wider product.** Truncation was a software problem. The precision of `alpha` for very small $M$ is a hardware one. With a 32-bit product and a shift of 20, $M = 0.0001$ leaves only 7 bits in `alpha`. A 40-bit product would allow a shift of 28 and 15 bits of `alpha`, for every $M$. If I could ask the hardware team for one thing, it would be 8 more bits in the post-processing multiplier.
 
-**7. Test the edges, not only the models.** Every leak above survived full-dataset accuracy tests. They were found by tests that a dataset never produces: a huge accumulator, all-negative inputs before a pool, mismatched scales, a non-integer resize ratio, every one of the 256 inputs of a table. A trained network rarely goes to these edges. That is exactly why they need their own tests.
+**7. Test the edges, not only the models.** None of the gaps above showed up in full-dataset accuracy tests. They were found by tests that a dataset never produces: a huge accumulator, all-negative inputs before a pool, mismatched scales, a non-integer resize ratio, every one of the 256 inputs of a table. A trained network rarely goes to these edges. That is exactly why they need their own tests.
 
-![A table of eleven leaks with the part, the measured effect and the fix: alpha truncated, multiply split, constant truncated, average pool border, global pool two roundings, tables, softmax cast, resize weights, max pool padding, concat, overflow guard.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_6/resources/fig3_scorecard.png)
+![A table of eleven gaps with the part, the measured effect and the fix: alpha truncated, multiply split, constant truncated, average pool border, global pool two roundings, tables, softmax cast, resize weights, max pool padding, concat, overflow guard.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_6/resources/fig3_scorecard.png)
 *Figure: what the scripts of this series found. Most fixes are one line.*
 
 ## Let's look at the code
@@ -83,7 +83,7 @@ The full script, with the bit budget table, is available [here](https://github.c
 ## Looking back
 Roviero did not make it. We were ahead of the game, but the hardware was built for CNNs, and the world moved to LLMs. Since then, I have worked on NPU compilers and on LLM inference, and the same questions keep coming back in new forms: a scale per channel or per group, an integer multiplier and a shift, how many bits the product has, what happens at the edges. The answers in this series are not the only ones, but they are written down now, with the numbers. That was the point.
 
-So, in short: one unit, one shift of 20 and one rounding were the right design for a 32-bit product. The leaks were in the details: truncated constants, one extra rounding, unwritten border rules, and checks in the wrong integer type. Round every constant, check in a wider type, write the border rules down, and test the edges.
+So, in short: one unit, one shift of 20 and one rounding were the right design for a 32-bit product. The gaps were in the details: truncated constants, one extra rounding, unwritten border rules, and checks in the wrong integer type. Round every constant, check in a wider type, write the border rules down, and test the edges.
 
 **The series:**
 + [Quantization Basics - The quantization formula, from number lines][quant-basics]

@@ -1,4 +1,4 @@
-"""Figure 3: the scorecard of leaks found by the scripts of this series.
+"""Figure 3: the scorecard of gaps found by the scripts of this series.
 
 Values: parts 1-6 scripts (one_multiply_one_shift.py, one_unit_many_ops.py, no_divider.py, lessons.py).
 """
@@ -8,10 +8,10 @@ from svglib import EMERALD, INK, NEUTRAL, PINK, Diagram
 d = Diagram(width=1100)
 d.header("What the scripts of this series found",
          "Int8 on Silicon  ·  part 6  ·  measured in NumPy against exact rounding or TFLite",
-         params="most leaks are a truncation or a missing check; the fixes are one line each")
+         params="most gaps are a truncation or a missing check; the fixes are one line each")
 
 rows = [
-    ("part", "leak", "measured effect", "fix"),
+    ("part", "gap", "measured effect", "fix"),
     ("1", "alpha truncated", "2.83 % vs exact", "round(): 0.02 %"),
     ("3", "multiply split, 2^10 alphas", "75 %, max 7 (SE block)", "all of M on one input"),
     ("3", "constant truncated in bias", "85 of 256, by 1", "round()"),
@@ -26,7 +26,7 @@ rows = [
 ]
 y = 116
 H = 96 + 26 * len(rows)
-d.panel(y, H, 1, "Where did the reference model leak?",
+d.panel(y, H, 1, "Where could the reference model be tighter?",
         "Eleven places, each small enough that final model accuracy stayed on par with TFLite.")
 cols = [80, 150, 480, 760]
 for i, r in enumerate(rows):

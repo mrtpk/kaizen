@@ -14,7 +14,7 @@ So we fixed the shift at 20 and put all the precision into one integer per chann
 
 Result: never more than 1 away from TFLite, and different in 3% of the values. Accuracy on full datasets was on par.
 
-The part I only found while writing this: the 3% was not from the single rounding. We truncated alpha (2416.99 → 2416). With alpha rounded to 2417, our result matches exact rounding better than TFLite does (0.02% vs 0.18%). One rounding was right; one int() was wrong.
+The part I only found while writing this: the 3% was not from the single rounding. We truncated alpha (2416.99 → 2416). With alpha rounded to 2417, our result matches exact rounding better than TFLite does (0.02% vs 0.18%). One rounding was right; rounding alpha too closes the gap.
 
 And why 20? alpha × acc ≈ output × 2^20. An int8 output plus 20 fraction bits is 28 bits, so the product fits in int32 with 4 bits to spare.
 

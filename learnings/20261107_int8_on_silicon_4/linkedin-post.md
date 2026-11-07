@@ -12,7 +12,7 @@ Sigmoid, tanh, hard-swish: an int8 input has only 256 values, so any one-input f
 
 Softmax needs the whole row, so it ran in float on the host.
 
-The ideas held up. But re-running everything in NumPy this week found four small leaks:
+The ideas held up. But re-running everything in NumPy this week found four small gaps:
 → SAME average pooling divides by 9 at the border, where TFLite divides by the valid count: border outputs off by up to 37.
 → Global average pooling rounded twice: 60% of outputs one or two steps off. One rounding is exact.
 → The tables used int() instead of round(): 113 of 256 sigmoid entries one below.

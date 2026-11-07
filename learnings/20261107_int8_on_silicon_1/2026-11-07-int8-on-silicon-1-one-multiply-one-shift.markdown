@@ -78,7 +78,7 @@ Let's say `acc` is 12345. The exact value is $12345 \times 0.0023050 = 28.4555$.
 
 Over 200,000 random accumulators, our result differs from TFLite in 3.02% of the cases, and never by more than 1. It means that our outputs are not bit-exact with TFLite, but they are always a neighbour.
 
-Here is the part that I only found while writing this note. When I compare both against exact rounding of `acc * M`, TFLite is off in 0.18% of the cases and we are off in 2.83%. But the gap is not from the single rounding. We computed `alpha` with `int()`, which truncates 2416.99 down to 2416. If we round `alpha` to 2417 instead, we are off from exact in only 0.02% of the cases, which is better than TFLite. One rounding was the right call. Truncating `alpha` was a one-line mistake.
+Here is the part that I only found while writing this note. When I compare both against exact rounding of `acc * M`, TFLite is off in 0.18% of the cases and we are off in 2.83%. But the gap is not from the single rounding. We computed `alpha` with `int()`, which truncates 2416.99 down to 2416. If we round `alpha` to 2417 instead, we are off from exact in only 0.02% of the cases, which is better than TFLite. One rounding was the right call. Rounding `alpha` as well is the one-line refinement.
 
 ## What does a fixed shift cost?
 A fixed shift has two costs: precision and range.

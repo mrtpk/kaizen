@@ -8,7 +8,7 @@ mathjax: true
 
 Lately, I have been writing down the integer math of an int8 accelerator that I worked on, and this note is about the operations that seem to need a divider or an exponential: average pooling, mean, sigmoid, softmax and resize. The hardware had neither a divider nor a floating-point unit.
 
-[Part 3][part3] showed how one post-processing unit (bias, multiply, shift, zero point, clip) runs add, multiply and the ReLU family. This part pushes the same unit further, and it is also the part where I found the most small leaks while writing the scripts.
+[Part 3][part3] showed how one post-processing unit (bias, multiply, shift, zero point, clip) runs add, multiply and the ReLU family. This part pushes the same unit further, and it is also the part where I found the most small gaps while writing the scripts.
 
 ## Average pooling is a convolution
 An average is a sum divided by a count. Let's say a 3X3 average pool: the output is the sum of 9 values times $\frac{1}{9}$. We cannot divide, but we can multiply, and the unit already multiplies by `alpha`. So, the $\frac{1}{9}$ goes into `alpha`:
@@ -40,7 +40,7 @@ What about sigmoid, tanh or hard-swish? There is no exp in the hardware. But an 
 ![Three panels. 1: int8 input, table lookup computed at compile time, int8 output. 2: truncated tables differ from rounded tables in 113 of 256 sigmoid entries and 75 of 256 hard-swish entries. 3: softmax runs in float on the host; truncation changes 82 % of values; argmax is unchanged.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig2_lut_softmax.png)
 *Figure: one-input functions become 256-entry tables. Softmax needs a whole row, so it ran on the host.*
 
-The leak here is one character. The tables were filled with `int(value)`, which truncates, instead of rounding. Only tanh used `round()`. For a sigmoid with input scale 0.08 and TFLite's sigmoid output scale of 1/256, 113 of the 256 entries are one below the rounded value. A table costs the same whether it is rounded or not, so this one is free to fix.
+The difference here is one character. The tables were filled with `int(value)`, which truncates, instead of rounding. Only tanh used `round()`. For a sigmoid with input scale 0.08 and TFLite's sigmoid output scale of 1/256, 113 of the 256 entries are one below the rounded value. A table costs the same whether it is rounded or not, so this one is free to fix.
 
 ## Softmax goes to the host
 Softmax is different: each output depends on the whole row (the sum of exponentials), so it is not a table. The hardware did not support it, and it ran in float on the host. The result was cast back to int8 with the same `int()` truncation. Since the softmax output zero point is -128, most values are negative, and truncation moves them toward zero. 82% of the values come out one step off from rounding. The argmax did not change in more than 99% of the rows, which is what a classifier cares about.
@@ -49,7 +49,7 @@ Softmax is different: each output depends on the whole row (the sum of exponenti
 Bilinear resize computes each output as a weighted sum of 4 neighbours. The 4 weights should add up to 1. In the reference model, the weights were computed in float, multiplied by $2^{10}$, and each was truncated on its own. For a 2X upscale, the weights are quarters, which are exact in 10 bits, and the result is identical to TFLite's integer resize. For 8X8 to 13X13, the truncated weights add up to 1021-1024 instead of 1024, and 26 of the 169 outputs differ from TFLite by 1. TFLite builds the four weights from integer coordinates, as $(1024 - f)$ and $f$, so they always add up to exactly $2^{20}$.
 
 ![Two panels. 1: global average pool with two roundings differs from exact in 60.5 % of outputs; one rounding is exact. 2: resize x2 has exact weights and matches TFLite; resize 8 to 13 has weights summing to 1021-1024 and 26 of 169 outputs differ by 1.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig3_pool_and_resize.png)
-*Figure: two small leaks. A second rounding in global average pooling, and resize weights that are truncated one by one.*
+*Figure: two small gaps. A second rounding in global average pooling, and resize weights that are truncated one by one.*
 
 ## Let's look at the code
 The average pool border and the global pool, side by side:
@@ -90,7 +90,7 @@ print(f"One rounding: {(one != exact).mean() * 100:.1f} % differ")              
 
 The full script, with the tables, softmax and resize, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_4).
 
-So, in short: with no divider, a division becomes a multiply by a constant in `alpha`, an average becomes a convolution with all-ones weights, and a non-linear function becomes a 256-entry table. Softmax stayed on the host. The ideas held up, but the scripts found four small leaks: the pool border, a second rounding in global pooling, truncated tables, and resize weights that do not add up.
+So, in short: with no divider, a division becomes a multiply by a constant in `alpha`, an average becomes a convolution with all-ones weights, and a non-linear function becomes a 256-entry table. Softmax stayed on the host. The ideas held up, but the scripts found four small gaps: the pool border, a second rounding in global pooling, truncated tables, and resize weights that do not add up.
 
 In part 5, we will look at the compiler frontend that turned a TFLite model into these layers, and at how we checked every layer against the hardware and against TFLite.
 

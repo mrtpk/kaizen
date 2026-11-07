@@ -125,10 +125,26 @@ def mul_variants(s1, z1, s2, z2, so, zo, label):
         print(f"    {name:38s} != exact {(out != ref).mean() * 100:6.2f} %, max {np.abs(out - ref).max()}")
 
 
+# the version the split replaced: uneven, s1 / s_out * 2^10 on input 1 and s2 * 2^10 on input 2
+def mul_uneven(s1, z1, s2, z2, so, zo, label):
+    q1 = rng.integers(-128, 128, N)
+    q2 = rng.integers(-128, 128, N)
+    ref = exact(s1 * (q1 - z1) * s2 * (q2 - z2), so, zo)
+    u1, u2 = int(s1 / so * 1024), int(s2 * 1024)
+    t1, t2 = int(s1 / math.sqrt(so) * 1024), int(s2 / math.sqrt(so) * 1024)
+    uneven = clip8(round_shift(((q1 - z1) * u1) * ((q2 - z2) * u2), 20) + zo)
+    split = clip8(round_shift(((q1 - z1) * t1) * ((q2 - z2) * t2), 20) + zo)
+    print(f"  {label}: uneven alphas {u1}, {u2}: != exact {(uneven != ref).mean() * 100:.2f} %, max {np.abs(uneven - ref).max()}"
+          f"  |  square-root split {t1}, {t2}: {(split != ref).mean() * 100:.2f} %, max {np.abs(split - ref).max()}")
+
+
 print("  where the multiply error comes from:")
 mul_variants(0.05, -10, 0.03, 5, 0.12, -20, "example above")
 # squeeze-and-excitation: activation times a sigmoid output (scale 1/256, zero point -128)
 mul_variants(0.05, -10, 1 / 256, -128, 0.05, -10, "SE block, x * sigmoid")
+print("  the split vs the uneven version it replaced:")
+mul_uneven(0.05, -10, 0.03, 5, 0.12, -20, "example")
+mul_uneven(0.05, -10, 1 / 256, -128, 0.05, -10, "SE block")
 
 
 # ---- an operand that is a constant ---------------------------------------------

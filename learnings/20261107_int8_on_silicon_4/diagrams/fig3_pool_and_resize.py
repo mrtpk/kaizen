@@ -9,7 +9,7 @@ resize 8x8 -> 16x16: weights sum to 1024, 0 of 256 differ from TFLite;
 from svglib import AMBER, EMERALD, PINK, VIOLET, Diagram
 
 d = Diagram(width=1100)
-d.header("Two small leaks: double rounding and truncated weights",
+d.header("Two small gaps: double rounding and truncated weights",
          "Int8 on Silicon  ·  part 4  ·  global average pool and bilinear resize",
          params="mean over 7x7 = 49 values  ·  resize weights at 2^10")
 
@@ -32,7 +32,7 @@ d.box(XS[1], y + 74, BW, BH, "8x8 -> 13x13", ["weights truncated", "sum = 1021 .
 d.box(XS[2], y + 74, BW, BH, "vs TFLite integer", ["x2: 0 of 256 differ", "x13/8: 26 of 169, by 1"], col=VIOLET, mono_size=12)
 
 y += 190
-d.legend(30, y, [(AMBER, "a rounding step"), (PINK, "the leak"), (EMERALD, "exact"), (VIOLET, "TFLite")])
+d.legend(30, y, [(AMBER, "a rounding step"), (PINK, "the gap"), (EMERALD, "exact"), (VIOLET, "TFLite")])
 y = d.footnotes(30, y + 40, [
     "Global pool: s_in = 0.05, z_in = -10, s_out = 0.02, z_out = 5, 100,000 random 7x7 inputs.",
     "TFLite builds the four resize weights from integer coordinates, so they always sum to 2^20.",
