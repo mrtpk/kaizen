@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="564" viewBox="0 0 1100 564">
+<defs><marker id="m0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/></marker></defs>
+<rect width="1100" height="564" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Where does M come from?</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Int8 on Silicon  ·  part 1  ·  one output of a convolution</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">r = s (q - z)   -&gt;   r_out = sum r_in * r_w = s_in s_w sum (q_in - z_in)(q_w - z_w)</text>
+<rect x="20.0" y="116.0" width="1060.0" height="170.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
+<text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="147.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">What is integer, and what is not?</text>
+<text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">The sum over the window is all integers. Only the scales are real numbers.</text>
+<rect x="60.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="205.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">int8 inputs, int8 weights</text>
+<text x="205.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">q_in, q_w</text>
+<text x="205.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">with zero points z_in, z_w</text>
+<line x1="350.0" y1="226.0" x2="408.0" y2="226.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="410.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="555.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">int32 accumulator</text>
+<text x="555.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">acc = sum (q_in - z_in)</text>
+<text x="555.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">      * (q_w - z_w)</text>
+<line x1="700.0" y1="226.0" x2="758.0" y2="226.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="760.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.5"/>
+<text x="905.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#d97706" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">real scales</text>
+<text x="905.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">s_in = 0.0235, s_w = 0.0041</text>
+<text x="905.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">s_out = 0.0418</text>
+<rect x="20.0" y="306.0" width="1060.0" height="170.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="332.0" r="13" fill="#111827"/>
+<text x="46.0" y="336.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="337.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">How do they meet in the output?</text>
+<text x="68.0" y="356.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Divide by s_out and add z_out. All the real numbers collapse into one multiplier M.</text>
+<rect x="60.0" y="380.0" width="290.0" height="72.0" rx="8" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.5"/>
+<text x="205.0" y="400.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#d97706" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">M</text>
+<text x="205.0" y="418.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">s_in * s_w / s_out</text>
+<text x="205.0" y="433.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">= 0.0023050</text>
+<line x1="350.0" y1="416.0" x2="408.0" y2="416.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="410.0" y="380.0" width="290.0" height="72.0" rx="8" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.5"/>
+<text x="555.0" y="400.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#059669" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">int8 output</text>
+<text x="555.0" y="418.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">q_out = z_out + M * acc</text>
+<text x="555.0" y="433.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre"></text>
+<line x1="700.0" y1="416.0" x2="758.0" y2="416.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="760.0" y="380.0" width="290.0" height="72.0" rx="8" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.5"/>
+<text x="905.0" y="400.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#db2777" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">the problem</text>
+<text x="905.0" y="418.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">M is a real number;</text>
+<text x="905.0" y="433.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">the hardware has no float</text>
+<text x="30.0" y="507.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="496.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="507.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">integers</text>
+<rect x="192.5" y="496.0" width="14.0" height="14.0" rx="3" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.4"/>
+<text x="213.5" y="507.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">real numbers</text>
+<rect x="314.1" y="496.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="335.1" y="507.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">output</text>
+<rect x="399.3" y="496.0" width="14.0" height="14.0" rx="3" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.4"/>
+<text x="420.3" y="507.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">what parts 1-3 solve</text>
+<text x="30.0" y="536.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">A per-channel weight scale gives one M per output channel.</text>
+</svg>

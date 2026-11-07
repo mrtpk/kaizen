@@ -124,3 +124,10 @@ for m in [0.5, 0.1, 0.01, M, 0.001, 0.0001]:
     bits = a.bit_length()
     err = (a / 2**SHIFT - m) / m * 100
     print(f"{m:<10.6g} {a:<9d} {bits:<5d} {err:+8.3f} %")
+
+
+# ---- rounding at the bit level (figure 5) --------------------------------
+for x in (28_617_520, alpha * 12_420, -28_617_520):
+    a = abs(x)
+    print(f"x = {x:,}: integer part {a >> SHIFT}, first dropped bit {(a >> (SHIFT - 1)) & 1} -> round_shift = {round_shift(x, SHIFT)}"
+          f"  (plain >> gives {x >> SHIFT}, exact {x / 2**SHIFT:.3f})")

@@ -18,6 +18,9 @@ The series:
 5. The compiler frontend and how we verified it
 6. What I would do differently
 
+![Two panels. 1: parts 1 to 3, the core integer math: one multiply and one shift, zero points, one unit for many operations. 2: parts 4 to 6: operations without a divider, the compiler frontend, and what I would do differently.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_1/resources/fig0_series_map.png)
+*Figure: the map of the series. Parts 1 to 3 are the core math, parts 4 to 6 build on it.*
+
 ## Before diving in, where does the multiply come from?
 In [Quantization Basics][quant-basics], we saw that a real value is $r = s(q - z)$, with a scale $s$ and a zero point $z$. Let's look at one output of a convolution. It is a sum of products of inputs and weights:
 
@@ -32,6 +35,9 @@ q_{out} = z_{out} + \frac{s_{in} s_{w}}{s_{out}} \cdot acc = z_{out} + M \cdot a
 $$
 
 Everything here is an integer except $M$. For a typical layer, $M$ is a small real number, for example $M = 0.0235 \times 0.0041 / 0.0418 = 0.0023050$. The hardware has no floating point, so the whole question is: how do we multiply an integer by 0.0023050 with integers only?
+
+![Two panels. 1: int8 inputs and weights, an int32 accumulator, and real scales. 2: M = s_in * s_w / s_out = 0.0023050, the output q_out = z_out + M * acc, and the problem: M is a real number and the hardware has no float.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_1/resources/fig4_where_m_comes_from.png)
+*Figure: everything in a convolution is an integer except the scales, and the scales collapse into one real multiplier M.*
 
 ## The hardware rules
 The accelerator had an array of int8 multipliers with int32 accumulators. After the array, each output went through a small post-processing unit:
@@ -70,6 +76,9 @@ def round_shift(x, shift):
     r = (a >> shift) + ((a >> (shift - 1)) & 1)   # add 1 when the first dropped bit is 1
     return -r if x < 0 else r
 {% endhighlight %}
+
+![Three panels. 1: 28,617,520 as 32 bits; the 12 high bits are 27 and the first dropped bit is 0, so the result is 27. 2: 30,006,720; the integer part is 28 and the first dropped bit is 1, so the result is 29. 3: a plain shift of -28,617,520 gives -28; round_shift gives -27.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_1/resources/fig5_round_shift_bits.png)
+*Figure: the first dropped bit decides the rounding, and the sign is handled separately, because a plain shift rounds negative numbers toward minus infinity.*
 
 Let's say `acc` is 12345. The exact value is $12345 \times 0.0023050 = 28.4555$. TFLite gives 28, and we give 28.
 

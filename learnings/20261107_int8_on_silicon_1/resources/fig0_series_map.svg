@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="564" viewBox="0 0 1100 564">
+<defs><marker id="m0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/></marker></defs>
+<rect width="1100" height="564" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Int8 on Silicon: the series</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Int8 on Silicon  ·  six notes on the integer math of an int8 accelerator (Roviero, 2020-2023)</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">prequel: Quantization Basics - the quantization formula, from number lines</text>
+<rect x="20.0" y="116.0" width="1060.0" height="170.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
+<text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="147.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">How does one int8 layer compute its output?</text>
+<text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">The core math: one multiply and one shift, the zero points, and every operation on one unit.</text>
+<rect x="60.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="205.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">part 1</text>
+<text x="205.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">one multiply, one shift</text>
+<text x="205.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">alpha, shift 20, rounding</text>
+<line x1="350.0" y1="226.0" x2="408.0" y2="226.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="410.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="555.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">part 2</text>
+<text x="555.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">zero points disappear</text>
+<text x="555.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">folded bias, padding</text>
+<line x1="700.0" y1="226.0" x2="758.0" y2="226.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="760.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="905.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">part 3</text>
+<text x="905.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">one unit, many ops</text>
+<text x="905.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">add, multiply, ReLU family</text>
+<rect x="20.0" y="306.0" width="1060.0" height="170.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="332.0" r="13" fill="#111827"/>
+<text x="46.0" y="336.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="337.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">What about everything else?</text>
+<text x="68.0" y="356.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Operations without a divider, the software around the math, and a look back.</text>
+<rect x="60.0" y="380.0" width="290.0" height="72.0" rx="8" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.5"/>
+<text x="205.0" y="400.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#d97706" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">part 4</text>
+<text x="205.0" y="418.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">no divider</text>
+<text x="205.0" y="433.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">pooling, tables, softmax</text>
+<line x1="350.0" y1="416.0" x2="408.0" y2="416.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="410.0" y="380.0" width="290.0" height="72.0" rx="8" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="555.0" y="400.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#7c3aed" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">part 5</text>
+<text x="555.0" y="418.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">compiler frontend</text>
+<text x="555.0" y="433.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">rewrites, partition, golden files</text>
+<line x1="700.0" y1="416.0" x2="758.0" y2="416.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="760.0" y="380.0" width="290.0" height="72.0" rx="8" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.5"/>
+<text x="905.0" y="400.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#059669" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">part 6</text>
+<text x="905.0" y="418.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">what I would do differently</text>
+<text x="905.0" y="433.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">the gaps, and what held up</text>
+<text x="30.0" y="507.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="496.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="507.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">integer math</text>
+<rect x="219.0" y="496.0" width="14.0" height="14.0" rx="3" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.4"/>
+<text x="240.0" y="507.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">operations without a divider</text>
+<rect x="428.6" y="496.0" width="14.0" height="14.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="449.6" y="507.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">software</text>
+<rect x="530.3" y="496.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="551.3" y="507.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">looking back</text>
+<text x="30.0" y="536.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Every number in the series comes from a NumPy script next to each note.</text>
+</svg>
