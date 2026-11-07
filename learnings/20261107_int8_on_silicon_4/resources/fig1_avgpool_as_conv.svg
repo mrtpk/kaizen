@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="624" viewBox="0 0 1100 624">
+<defs><marker id="m0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker><marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker></defs>
+<rect width="1100" height="624" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Average pooling without a divider</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Int8 on Silicon  ·  part 4  ·  3x3 average pool, SAME padding, on an 8x8 input</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">average = sum * (1 / 9)  -&gt;  depthwise conv with all-ones weights, alpha = 2^20 / 9 = 116508</text>
+<rect x="20.0" y="116.0" width="1060.0" height="170.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
+<text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="147.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">How do we divide by 9 with no divider?</text>
+<text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">We do not. The 1/9 goes into alpha, and the pool becomes a convolution with weights of 1.</text>
+<rect x="60.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="205.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">all-ones 3x3 weights</text>
+<text x="205.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">sum of the window</text>
+<text x="205.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">(minus z_in, folded)</text>
+<line x1="350.0" y1="226.0" x2="408.0" y2="226.0" stroke="#2563eb" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="410.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.5"/>
+<text x="555.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#d97706" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">x alpha, &gt;&gt; 20</text>
+<text x="555.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">alpha = int(2^20 / 9)</text>
+<text x="555.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">= 116508</text>
+<line x1="700.0" y1="226.0" x2="758.0" y2="226.0" stroke="#d97706" stroke-width="1.6" marker-end="url(#m1)"/>
+<rect x="760.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.5"/>
+<text x="905.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#059669" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">inner outputs</text>
+<text x="905.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">0 of 36 differ</text>
+<text x="905.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">from TFLite</text>
+<rect x="20.0" y="306.0" width="1060.0" height="230.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="332.0" r="13" fill="#111827"/>
+<text x="46.0" y="336.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="337.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">What happens at the border?</text>
+<text x="68.0" y="356.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">TFLite averages only the valid points. A convolution always divides by 9, with the padding counted as 0.0.</text>
+<rect x="80.0" y="382.0" width="36.0" height="36.0" rx="4" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.2"/>
+<text x="98.0" y="405.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#db2777" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">pad</text>
+<rect x="120.0" y="382.0" width="36.0" height="36.0" rx="4" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.2"/>
+<text x="138.0" y="405.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#db2777" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">pad</text>
+<rect x="160.0" y="382.0" width="36.0" height="36.0" rx="4" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.2"/>
+<text x="178.0" y="405.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#db2777" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">pad</text>
+<rect x="80.0" y="422.0" width="36.0" height="36.0" rx="4" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.2"/>
+<text x="98.0" y="445.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#db2777" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">pad</text>
+<rect x="120.0" y="422.0" width="36.0" height="36.0" rx="4" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.2"/>
+<text x="138.0" y="445.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">q</text>
+<rect x="160.0" y="422.0" width="36.0" height="36.0" rx="4" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.2"/>
+<text x="178.0" y="445.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">q</text>
+<rect x="80.0" y="462.0" width="36.0" height="36.0" rx="4" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.2"/>
+<text x="98.0" y="485.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#db2777" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">pad</text>
+<rect x="120.0" y="462.0" width="36.0" height="36.0" rx="4" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.2"/>
+<text x="138.0" y="485.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">q</text>
+<rect x="160.0" y="462.0" width="36.0" height="36.0" rx="4" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.2"/>
+<text x="178.0" y="485.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">q</text>
+<text x="260.0" y="400.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">corner window: 4 valid points, 5 padded points</text>
+<text x="260.0" y="428.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#7c3aed" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">TFLite:  sum of 4 / 4  = 30</text>
+<text x="260.0" y="452.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#db2777" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">ours:    sum of 9 / 9  = 8   (5 points are 0.0)</text>
+<text x="260.0" y="488.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">All 28 border outputs differ, by up to 37. VALID padding has no border, so it matches.</text>
+<text x="30.0" y="567.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="556.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="567.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">valid input</text>
+<rect x="203.3" y="556.0" width="14.0" height="14.0" rx="3" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.4"/>
+<text x="224.3" y="567.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">padding / differs</text>
+<rect x="347.3" y="556.0" width="14.0" height="14.0" rx="3" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.4"/>
+<text x="368.3" y="567.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">alpha</text>
+<rect x="423.4" y="556.0" width="14.0" height="14.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="444.4" y="567.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">TFLite</text>
+<rect x="509.7" y="556.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="530.7" y="567.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">matches</text>
+<text x="30.0" y="596.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Input and output share s = 0.05 and z = -10 here, so the pool needs no rescale.</text>
+</svg>
