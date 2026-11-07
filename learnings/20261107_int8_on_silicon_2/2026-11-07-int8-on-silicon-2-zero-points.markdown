@@ -46,6 +46,9 @@ It means that the hardware does not need to know that a zero point exists. The M
 
 When the weights do have a zero point (for example, in older uint8 models), we subtracted it from the weights offline and stored $q_{w} - z_{w}$. Then the second and fourth terms disappear too. There is a cost: $q_{w} - z_{w}$ can be anywhere in -255..255, which needs 9 bits instead of 8.
 
+![Three panels. 1: the input offset added inside the loop costs 576 additions per output for a 3x3 convolution over 64 channels; folded into the bias it costs 1. 2: weights with zero point 3 are stored as q_w - z_w in [-131, 124]; in general they need 9 bits. 3: when a layer differs on the hardware, the before-correction dump points to the MAC array or data movement, and an after-only difference points to the constants.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_2/resources/fig3_offsets_and_debug.png)
+*Figure: both offsets move from the hardware to the compiler, and the two accumulator dumps split a mismatch into a MAC problem or a constants problem.*
+
 ## The padding trap
 Here is the catch. The folded bias subtracts $z_{in} \times$ the sum of **all 9 weights**. It assumes that every point of the window holds $z_{in}$'s contribution. Inside the image, that is true. At the border, some points of the window are padding.
 
