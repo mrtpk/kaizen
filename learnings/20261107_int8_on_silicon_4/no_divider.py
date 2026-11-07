@@ -170,3 +170,20 @@ o_tfl = resize_tflite(img, 13, 13)
 print(f"RESIZE BILINEAR 8x8 -> 13x13: our 4 weights sum to {min(wsum)}..{max(wsum)} "
       f"({(wsum < 1024).mean() * 100:.0f} % of outputs below 1024)")
 print(f"  ours != TFLite: {(o_ours != o_tfl).sum()} of {o_ours.size}, max {np.abs(o_ours - o_tfl).max()}")
+
+# one output point of the 8x8 -> 13x13 resize, in detail (figure 5)
+best = None
+for y in range(13):
+    iy, y0, y1 = coords_float(y, 8 / 13, 8)
+    for x in range(13):
+        ix, x0, x1 = coords_float(x, 8 / 13, 8)
+        dy = 0.0 if y0 == y1 else iy - y0
+        dx = 0.0 if x0 == x1 else ix - x0
+        wf = [(1 - dy) * (1 - dx), dy * (1 - dx), (1 - dy) * dx, dy * dx]
+        wt = [int(v * 1024) for v in wf]
+        if best is None or sum(wt) < best[0]:
+            best = (sum(wt), y, x, dy, dx, wf, wt)
+s_, y, x, dy, dx, wf, wt = best
+print(f"point ({y}, {x}): dy = {dy:.4f}, dx = {dx:.4f}")
+print("  exact weights x 1024:", ", ".join(f"{v * 1024:.2f}" for v in wf), f"(sum {sum(wf) * 1024:.2f})")
+print("  ours, each truncated:", ", ".join(str(v) for v in wt), f"(sum {sum(wt)})")

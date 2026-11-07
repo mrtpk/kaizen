@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="594" viewBox="0 0 1100 594">
+<defs><marker id="m0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/></marker></defs>
+<rect width="1100" height="594" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Three averages, no divider</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Int8 on Silicon  ·  part 4  ·  average pool, mean over channels, global average pool</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">divide by N  -&gt;  multiply by 1/N, and fold 1/N into alpha</text>
+<rect x="20.0" y="116.0" width="1060.0" height="170.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
+<text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="147.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">How is a mean over C channels a convolution?</text>
+<text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">A 1x1 convolution with C input channels, one output channel, and every weight equal to 1.</text>
+<rect x="60.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="205.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">C values at one pixel</text>
+<text x="205.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">q[0], q[1], ... q[C-1]</text>
+<text x="205.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">one int8 value per channel</text>
+<line x1="350.0" y1="226.0" x2="408.0" y2="226.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="410.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="555.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1x1 conv, weights = 1</text>
+<text x="555.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">sum of the C values</text>
+<text x="555.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">minus C * z_in (bias)</text>
+<line x1="700.0" y1="226.0" x2="758.0" y2="226.0" stroke="#9ca3af" stroke-width="1.6" marker-end="url(#m0)"/>
+<rect x="760.0" y="190.0" width="290.0" height="72.0" rx="8" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.5"/>
+<text x="905.0" y="210.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#d97706" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">x alpha, &gt;&gt; 20</text>
+<text x="905.0" y="228.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">alpha = s_in / (s_out C)</text>
+<text x="905.0" y="243.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">      * 2^20</text>
+<rect x="20.0" y="306.0" width="1060.0" height="200.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="332.0" r="13" fill="#111827"/>
+<text x="46.0" y="336.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="337.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Which average used which kernel?</text>
+<text x="68.0" y="356.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Two of them are plain convolutions. Global pooling had its own kernel and one rounding too many.</text>
+<text x="80.0" y="398.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">average</text>
+<text x="330.0" y="398.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">runs as</text>
+<text x="700.0" y="398.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">the 1/N goes into</text>
+<text x="960.0" y="398.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">roundings</text>
+<line x1="70.0" y1="406.0" x2="1040.0" y2="406.0" stroke="#9ca3af" stroke-width="1"/>
+<text x="80.0" y="424.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">average pool k x k</text>
+<text x="330.0" y="424.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">depthwise conv, all-ones k x k weights</text>
+<text x="700.0" y="424.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">alpha, N = k * k</text>
+<text x="960.0" y="424.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1</text>
+<text x="80.0" y="450.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">mean over C channels</text>
+<text x="330.0" y="450.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1x1 conv, all-ones weights</text>
+<text x="700.0" y="450.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">alpha, N = C</text>
+<text x="960.0" y="450.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1</text>
+<text x="80.0" y="476.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">global average pool</text>
+<text x="330.0" y="476.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">its own kernel: sum, x floor(2^20 / N)</text>
+<text x="700.0" y="476.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">a mean multiplier, 21399 for 7x7</text>
+<text x="960.0" y="476.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#db2777" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">2</text>
+<text x="30.0" y="537.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="526.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="537.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">MAC array</text>
+<rect x="205.3" y="526.0" width="14.0" height="14.0" rx="3" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.4"/>
+<text x="226.3" y="537.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">alpha</text>
+<rect x="281.3" y="526.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="302.3" y="537.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">one rounding</text>
+<rect x="399.1" y="526.0" width="14.0" height="14.0" rx="3" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.4"/>
+<text x="420.1" y="537.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">two roundings</text>
+<text x="30.0" y="566.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">The MAC array sums, the post-processing unit divides. No new hardware for any of the three.</text>
+</svg>

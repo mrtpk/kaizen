@@ -19,6 +19,9 @@ $$
 
 And the sum? That is a depthwise convolution with all weights equal to 1. The reference model rewrote every average pool as exactly that, and a mean over channels as a 1X1 convolution with all-ones weights and $\frac{1}{C}$ in `alpha`. No new hardware: the MAC array sums, the unit divides.
 
+![Two panels. 1: C values at one pixel go through a 1x1 convolution with all-ones weights, then times alpha = s_in / (s_out C) * 2^20 and a shift by 20. 2: a table: average pool runs as a depthwise convolution, mean over channels as a 1x1 convolution, both with one rounding; global average pool has its own kernel with two roundings.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig4_reductions.png)
+*Figure: three kinds of average, and how each runs without a divider.*
+
 For a 3X3 pool on an 8X8 input, the 36 inner outputs match TFLite exactly. The border is another story.
 
 ![Two panels. 1: all-ones 3x3 weights, then alpha = 116508 and a shift by 20; the 36 inner outputs match TFLite. 2: the corner window has 4 valid points and 5 padded points; TFLite averages the 4 points to 30, the convolution averages 9 points to 8.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig1_avgpool_as_conv.png)
@@ -47,6 +50,9 @@ Softmax is different: each output depends on the whole row (the sum of exponenti
 
 ## Resize: weights that do not add up
 Bilinear resize computes each output as a weighted sum of 4 neighbours. The 4 weights should add up to 1. In the reference model, the weights were computed in float, multiplied by $2^{10}$, and each was truncated on its own. For a 2X upscale, the weights are quarters, which are exact in 10 bits, and the result is identical to TFLite's integer resize. For 8X8 to 13X13, the truncated weights add up to 1021-1024 instead of 1024, and 26 of the 169 outputs differ from TFLite by 1. TFLite builds the four weights from integer coordinates, as $(1024 - f)$ and $f$, so they always add up to exactly $2^{20}$.
+
+![Two panels. 1: an output point between four input pixels at dx = dy = 0.4231, with exact weights 340.83, 249.94, 249.94 and 183.29 in units of 1/1024, summing to 1024. 2: a table: truncated one by one, the weights are 340, 249, 249 and 183, summing to 1021.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig5_resize_weights.png)
+*Figure: one output point of the 8X8 to 13X13 resize. Truncating each weight on its own loses 3 of 1024.*
 
 ![Two panels. 1: global average pool with two roundings differs from exact in 60.5 % of outputs; one rounding is exact. 2: resize x2 has exact weights and matches TFLite; resize 8 to 13 has weights summing to 1021-1024 and 26 of 169 outputs differ by 1.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_4/resources/fig3_pool_and_resize.png)
 *Figure: two small gaps. A second rounding in global average pooling, and resize weights that are truncated one by one.*
