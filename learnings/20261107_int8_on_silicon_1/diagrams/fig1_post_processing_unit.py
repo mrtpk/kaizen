@@ -40,13 +40,6 @@ row(y2 + 74, [
     ("clip", ["to [-128, 127]", "-> 15 (int8)"], EMERALD),
 ])
 
-# connect the end of panel 1 to the start of panel 2, around the boxes
-xa = XS[2] + BW / 2
-yb1 = y1 + 74 + BH
-ygap = y1 + 190
-ymid2 = y2 + 74 + BH / 2
-d.path_arrow(f"M {xa:.1f},{yb1:.1f} L {xa:.1f},{ygap:.1f} L 30,{ygap:.1f} L 30,{ymid2:.1f} L {XS[0] - 2},{ymid2:.1f}", MUTE)
-
 y = y2 + 190
 d.legend(30, y, [(BLUE, "int32 data"), (AMBER, "per-channel constant (compile time)"),
                  (VIOLET, "the one rounding"), (EMERALD, "int8 output")])

@@ -4,7 +4,7 @@ Values: one_multiply_one_shift.py, section "what a fixed shift costs";
 overflow only when |acc * M| > 2^31 / 2^20 = 2048.
 """
 
-from svglib import EMERALD, INK, MUTE, NEUTRAL, PINK, VIOLET, Diagram, _c, _t
+from svglib import AMBER, EMERALD, INK, MUTE, NEUTRAL, PINK, VIOLET, Diagram, _c, _t
 
 d = Diagram(width=1100)
 d.header("What does a fixed shift of 20 cost?",
@@ -39,7 +39,7 @@ y += H + 20
 d.panel(y, 190, 2, "Why does alpha * acc fit in int32?",
         "alpha * acc is about (acc * M) * 2^20: the output with 20 fraction bits. It overflows only past 2048.")
 X0, BW = 60, 980
-bits = [(1, "sign", NEUTRAL), (4, "spare", PINK), (7, "int8 magnitude", EMERALD), (20, "fraction (shifted out)", VIOLET)]
+bits = [(1, "sign", NEUTRAL), (4, "spare", AMBER), (7, "int8 magnitude", EMERALD), (20, "fraction (shifted out)", VIOLET)]
 px = BW / 32
 x = X0
 for n, label, col in bits:
@@ -50,7 +50,7 @@ for n, label, col in bits:
     x += w
 
 y += 210
-d.legend(30, y, [(EMERALD, "output bits"), (VIOLET, "fraction bits"), (PINK, "headroom / large error")])
+d.legend(30, y, [(EMERALD, "output bits"), (VIOLET, "fraction bits"), (AMBER, "spare bits"), (PINK, "large alpha error")])
 y = d.footnotes(30, y + 40, [
     "Overflow happens only when |acc * M| > 2^31 / 2^20 = 2048, 16x beyond the int8 range (128) before clipping.",
     "Elementwise ops have M near 1 but tiny inputs (|q - zp| <= 255), so they fit too.",

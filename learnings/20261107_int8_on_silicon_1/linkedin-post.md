@@ -1,6 +1,6 @@
 # LinkedIn post: Int8 on Silicon - Part 1: One multiply, one shift
 
-**Attach:** `fig1_post_processing_unit.png`, `fig2_two_ways.png`, `fig3_fixed_shift_cost.png` as a carousel (in order).
+**Attach:** `fig0_series_map.png`, `fig4_where_m_comes_from.png`, `fig1_post_processing_unit.png`, `fig5_round_shift_bits.png`, `fig2_two_ways.png`, `fig3_fixed_shift_cost.png` as a carousel (in this order, as in the post).
 
 ---
 

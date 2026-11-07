@@ -42,7 +42,6 @@
 <text x="905.0" y="420.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#059669" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">clip</text>
 <text x="905.0" y="438.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">to [-128, 127]</text>
 <text x="905.0" y="453.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">-&gt; 15 (int8)</text>
-<path d="M 905.0,262.0 L 905.0,306.0 L 30,306.0 L 30,436.0 L 58,436.0" fill="none" stroke="#6b7280" stroke-width="1.6" marker-end="url(#m0)"/>
 <text x="30.0" y="527.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
 <rect x="97.3" y="516.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
 <text x="118.3" y="527.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">int32 data</text>

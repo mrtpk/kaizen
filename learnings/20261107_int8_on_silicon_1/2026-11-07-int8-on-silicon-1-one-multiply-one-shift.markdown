@@ -8,7 +8,9 @@ mathjax: true
 
 Lately, I have been going through my notes from an int8 accelerator project, and this series is about the integer math behind it. This first part is about the most important line of that math: how a layer goes from a 32-bit accumulator back to an 8-bit output with one multiply and one shift.
 
-From 2020 to 2023, I worked at Roviero, a startup that built an int8 neural network accelerator for edge devices. I wrote its reference model: an inference engine, a compiler frontend and a bit-accurate simulator in Python and C++. The order of work is the interesting part. The hardware team gave me the constraints, I did the math in the reference model and tested it on real models, and then the hardware team implemented the same math in silicon. The reference model was bit-exact with the hardware. It was not bit-exact with TFLite, though some layers matched TFLite exactly, and the final accuracy was on par with TFLite. We were ahead of the game, but Roviero did not survive: the hardware was built for CNNs, just before LLMs changed what everyone needed. The math is still worth writing down.
+From 2020 to 2023, I worked at Roviero, a startup that built an int8 neural network accelerator for edge devices. I wrote its reference model: an inference engine, a compiler frontend and a bit-accurate simulator in Python and C++. The order of work is the interesting part. The hardware team gave me the constraints, I did the math in the reference model and tested it on real models, and then the hardware team implemented the same math in silicon.
+
+The reference model was bit-exact with the hardware. It was not bit-exact with TFLite, though some layers matched TFLite exactly, and the final accuracy was on par with TFLite. We were ahead of the game, but Roviero did not survive: the hardware was built for CNNs, just before LLMs changed what everyone needed. The math is still worth writing down.
 
 The series:
 1. One multiply, one shift (this note)
@@ -28,7 +30,7 @@ $$
 r_{out} = \sum r_{in} \cdot r_{w} = s_{in} s_{w} \sum (q_{in} - z_{in})(q_{w} - z_{w})
 $$
 
-The sum is all integers, so the hardware computes it with int8 multiply-accumulates into an int32 accumulator. Let's call it `acc`. To get the int8 output, we divide by $s_{out}$ and add $z_{out}$:
+The sum is all integers, so the hardware computes it with int8 multiply-accumulates (MACs) into an int32 accumulator. Let's call it `acc`. To get the int8 output, we divide by $s_{out}$ and add $z_{out}$:
 
 $$
 q_{out} = z_{out} + \frac{s_{in} s_{w}}{s_{out}} \cdot acc = z_{out} + M \cdot acc
@@ -51,7 +53,7 @@ The accelerator had an array of int8 multipliers with int32 accumulators. After 
 There was one more rule, and it shaped everything: **the shifter supported only a few shift amounts.** Each extra shift amount costs area and wiring. So, a different shift for every channel, which is what TFLite does, was not an option.
 
 ![Two panels. 1: acc 12345, plus bias -500 is 11845, times alpha 2416 is 28,617,520. 2: shift right by 20 with rounding gives 27, plus zero point -12 gives 15, clip gives 15.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_1/resources/fig1_post_processing_unit.png)
-*Figure: one output through the post-processing unit. Every layer ends in this unit.*
+*Figure: one output through the post-processing unit, here with an example bias of -500. Every layer ends in this unit.*
 
 ## How does TFLite do it?
 TFLite splits $M$ into a 31-bit mantissa and a power of two, $M = q_{31} \cdot 2^{-31} \cdot 2^{shift}$. For our $M$, that is `q31 = 1267200256` and `shift = -8`. At runtime it does two steps:
@@ -99,7 +101,7 @@ A fixed shift has two costs: precision and range.
 ![Two panels. 1: a table of M, alpha, bits in alpha and alpha error for M from 0.5 to 0.0001. 2: a 32-bit word split into 1 sign bit, 4 spare bits, 7 int8 magnitude bits and 20 fraction bits.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_1/resources/fig3_fixed_shift_cost.png)
 *Figure: a fixed shift of 20 loses precision for very small M, but the product always fits in int32 while the output is near the int8 range.*
 
-So, why 20? It is the largest shift that leaves room for an int8 output and a few spare bits in a 32-bit product. The other operations used other shifts from the same short list (16 and 10), which we will meet in part 3.
+So, why 20? It was on the hardware's list, and with 4 bits of headroom it is the largest shift that leaves room for an int8 output in a 32-bit product. The other operations used other shifts from the same short list: 16, which we will meet in part 3, and 10 for resize, in part 4.
 
 ## Did it matter?
 Not for accuracy. In our tests on full datasets, the accuracy was on par with TFLite. I no longer have the final numbers, so I will not quote one. What I can show is the layer level: the intermediate outputs of some layers matched TFLite with zero deviation, and the others differed by small amounts. In the simulation above, the difference is 1 in 3% of the values, and the next layer sees that as noise.

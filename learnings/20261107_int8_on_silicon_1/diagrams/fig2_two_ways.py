@@ -55,7 +55,7 @@ for i, (title, value, col) in enumerate(chips):
 
 y += 180
 d.legend(30, y, [(NEUTRAL, "compile time"), (AMBER, "a rounding step"), (BLUE, "our runtime path"),
-                 (VIOLET, "TFLite"), (PINK, "mismatch")])
+                 (VIOLET, "TFLite"), (PINK, "mismatch"), (EMERALD, "rounded alpha")])
 y = d.footnotes(30, y + 40, [
     "200,000 random accumulators in [-60000, 60000]. Exact = round half away from zero of acc * M.",
     "TFLite: default build. A TFLITE_SINGLE_ROUNDING build flag switches to one rounding.",
