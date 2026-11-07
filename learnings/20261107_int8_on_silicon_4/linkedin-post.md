@@ -20,7 +20,7 @@ The ideas held up. But re-running everything in NumPy this week found four small
 
 All cheap to fix. Final model accuracy was still on par with TFLite.
 
-Code and figure scripts are in my kaizen repo (link in comments). Part 5: the compiler frontend and verification.
+Code and figure scripts are in my kaizen repo (link in comments). Part 5: the compiler frontend, and how we verified it.
 
 ---
 

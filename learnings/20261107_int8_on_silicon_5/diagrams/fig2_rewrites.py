@@ -9,7 +9,7 @@ from svglib import AMBER, EMERALD, NEUTRAL, Diagram
 d = Diagram(width=1100)
 d.header("Three rewrites, each checked in NumPy",
          "Int8 on Silicon  ·  part 5  ·  the graph changes, the output does not",
-         params="every rewrite is checked: the new graph gives the same int8 output as the old one")
+         params="each rewrite is checked in this note's script: the new graph gives the same int8 output as the old one")
 
 BW, BH = 290, 72
 XS = [60, 410, 760]

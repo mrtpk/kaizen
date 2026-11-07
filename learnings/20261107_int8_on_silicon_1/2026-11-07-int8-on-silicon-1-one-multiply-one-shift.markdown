@@ -17,7 +17,7 @@ The series:
 2. Making zero points disappear
 3. One unit, many operations
 4. Operations without a divider
-5. The compiler frontend and how we verified it
+5. The compiler frontend, and how we verified it
 6. What I would do differently
 
 ![Two panels. 1: parts 1 to 3, the core integer math: one multiply and one shift, zero points, one unit for many operations. 2: parts 4 to 6: operations without a divider, the compiler frontend, and what I would do differently.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_1/resources/fig0_series_map.png)
