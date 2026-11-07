@@ -38,11 +38,18 @@ def table_height(n_rows, pitch=26):
     return 96 + pitch * n_rows
 
 
-def code(d, x, y, w, lines, size=12.5, pitch=19, color_fn=None):
-    """A white card with mono lines. Returns the height."""
+def code(d, x, y, w, lines, size=12.5, pitch=19, color_fn=None, tabs=(0, 160, 260)):
+    """A white card with mono lines. Returns the height.
+
+    Runs of spaces collapse in the PNG renderer, so use "\t" to start a new column;
+    `tabs` gives the x offset of each column. Leading spaces are kept as an indent.
+    """
     h = 24 + pitch * len(lines)
     d.rect(x, y, w, h, fill=WHITE, stroke=NEUTRAL[0], rx=8, sw=1)
+    cw = size * 0.602
     for i, s in enumerate(lines):
         col = color_fn(i, s) if color_fn else INK
-        d.text(x + 16, y + 28 + i * pitch, s, size, col, mono=True)
+        indent = (len(s) - len(s.lstrip(" "))) * cw
+        for k, part in enumerate(s.lstrip(" ").split("\t")):
+            d.text(x + 16 + indent + tabs[k], y + 28 + i * pitch, part, size, col, mono=True)
     return h

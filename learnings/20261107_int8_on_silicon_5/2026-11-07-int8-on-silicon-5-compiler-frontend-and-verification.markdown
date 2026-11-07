@@ -38,7 +38,13 @@ For the hardware, each layer wrote three things:
 2. **The constants**: the weights, and the post-processing constants from part 1: per-channel bias and `alpha`, the shift, the output zero point, the clip range, and the pad value.
 3. **Golden files**: the input and the output of every layer, for verification.
 
+![One panel with two cards. Left: a simplified JSON layer config for a 3x3 convolution: op, layer id 7, inputs [6], input rows and columns 56, 64 input and 128 output channels, kernel 3, stride 1, VALID padding, groups 1. Right: a constants file: pad value -64, output zero point -12, shift 20, clip -128 127, and per channel alpha 2416 and bias -24868.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_5/resources/fig5_layer_config.png)
+*Figure: one convolution layer as the hardware sees it, simplified. The config says what to run; the constants say how to finish it.*
+
 The golden files were plain text, one value per line, as `channel index : value`, and the weights also in hex. Not compact, but a hardware engineer can open it, search for a channel, and compare by eye. The amount of output was a setting: none, the constants only, constants plus all inputs and outputs, or everything for one specific layer when we were chasing a bug. For convolutions, the reference model also wrote the accumulator before and after the zero-point correction, which split the "is the MAC wrong or is the correction wrong" question in two ([part 2][part2]).
+
+![Two panels. 1: a table of five output levels: none, default (constants and weights), all (plus every input and output), one layer (everything for chosen layers), default plus model outputs. 2: example lines: a layer output as channel, index and value, and weights as output channel, input channel, value and hex.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_5/resources/fig4_golden_files.png)
+*Figure: golden files are plain text, one value per line, and the amount of output is a setting.*
 
 ## What runs on the host
 Not every operation ran on the accelerator. Softmax ran on the host ([part 4][part4]), and so did post-processing like box decoding and non-maximum suppression in detectors. So, the frontend also split a model into subgraphs: each subgraph runs entirely on the accelerator or entirely on the host.
