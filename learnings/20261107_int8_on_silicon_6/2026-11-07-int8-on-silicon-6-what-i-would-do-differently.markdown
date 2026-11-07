@@ -84,9 +84,12 @@ print(f"copy: {np.abs(copy - real).max():.2f}, requantize: {np.abs(requant - rea
 The full script, with the bit budget table, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_6).
 
 ## Looking back
-Roviero did not make it, for the reasons in part 1. Since then, I have worked on NPU compilers and on LLM inference, and the same questions keep coming back in new forms: a scale per channel or per group, an integer multiplier and a shift, how many bits the product has, what happens at the edges. The answers in this series are not the only ones, but they are written down now, with the numbers. That was the point.
+Roviero did not make it, for the reasons in part 1. Much of what worked in this series I learned with the guidance of my manager there, Sambhu Surya Mohan. Since then, I have worked on NPU compilers and on LLM inference, and the same questions keep coming back in new forms: a scale per channel or per group, an integer multiplier and a shift, how many bits the product has, what happens at the edges. The answers in this series are not the only ones, but they are written down now, with the numbers. That was the point.
 
 So, in short: one unit, one shift of 20 and one rounding were the right design for a 32-bit product. The gaps were in the details: truncated constants, one extra rounding, unwritten border rules, and checks in a narrower integer type than they needed. Round every constant, check in a wider type, write the border rules down, and test the edges.
+
+**Acknowledgement**
++ [Sambhu Surya Mohan](https://www.linkedin.com/in/sambhu-surya-mohan-0147a02a/)
 
 **Reference:**
 + [TFLite reference int8 pooling (v2.16.1)][tflite-pool]

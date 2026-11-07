@@ -8,7 +8,7 @@ mathjax: true
 
 Lately, I have been going through my notes from an int8 accelerator project, and this series is about the integer math behind it. This first part is about the most important line of that math: how a layer goes from a 32-bit accumulator back to an 8-bit output with one multiply and one shift.
 
-From 2020 to 2023, I worked at Roviero, a startup that built an int8 neural network accelerator for edge devices. I wrote its reference model: an inference engine, a compiler frontend and a bit-accurate simulator in Python and C++. The order of work is the interesting part. The hardware team gave me the constraints, I did the math in the reference model and tested it on real models, and then the hardware team implemented the same math in silicon.
+From 2020 to 2023, I worked at Roviero, a startup that built an int8 neural network accelerator for edge devices. I wrote its reference model: an inference engine, a compiler frontend and a bit-accurate simulator in Python and C++. The order of work is the interesting part. The hardware team gave me the constraints, I did the math in the reference model and tested it on real models, and then the hardware team implemented the same math in silicon. I did not do it alone: my manager, [Sambhu Surya Mohan](https://www.linkedin.com/in/sambhu-surya-mohan-0147a02a/), guided me through much of it.
 
 The reference model was bit-exact with the hardware. It was not bit-exact with TFLite, though some layers matched TFLite exactly, and the final accuracy was on par with TFLite. We were ahead of the game, but Roviero did not survive: the hardware was built for CNNs, just before LLMs changed what everyone needed. The math is still worth writing down.
 
@@ -151,6 +151,9 @@ The full script, with the precision table and the comparison against exact round
 So, in short: the hardware could shift by only a few amounts, so we fixed the shift at 20 and put all the precision into one integer multiplier per channel. One multiply and one rounding gave results that were never more than 1 away from TFLite, and with a rounded `alpha` they would have been closer to exact than TFLite.
 
 In part 2, we will see where the bias in the post-processing unit comes from, and how the zero points disappear before the hardware ever sees them.
+
+**Acknowledgement**
++ [Sambhu Surya Mohan](https://www.linkedin.com/in/sambhu-surya-mohan-0147a02a/)
 
 **Reference:**
 + [Quantization Basics - The quantization formula, from number lines][quant-basics]
