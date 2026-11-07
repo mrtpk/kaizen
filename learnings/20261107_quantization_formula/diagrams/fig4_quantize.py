@@ -50,14 +50,15 @@ d.text(xc + 8, y + 190, "clipped", 12.5, PINK, "bold", mono=True)
 
 y += 320
 d.panel(y, 170, 2, "Which formulas give these numbers?", "Two parameters from the range, then one formula each way.")
-lines = [
-    "scale      = (r_max - r_min) / (127 - (-128))   = 4 / 255             = 0.015686",
-    "zero_point = round(-128 - r_min / scale)         = round(-64.25)       = -64",
-    "quantize   q = clip(round(r / scale) + zero_point, -128, 127)",
-    "dequantize r = scale * (q - zero_point)",
+rows = [
+    ("scale", "= (r_max - r_min) / (127 - (-128))", "= 4 / 255", "= 0.015686"),
+    ("zero_point", "= round(-128 - r_min / scale)", "= round(-64.25)", "= -64"),
+    ("quantize", "q = clip(round(r / scale) + zero_point, -128, 127)", "", ""),
+    ("dequantize", "r = scale * (q - zero_point)", "", ""),
 ]
-for i, s in enumerate(lines):
-    d.text(68, y + 82 + i * 22, s, 13, INK, mono=True)
+for i, r in enumerate(rows):
+    for x, v in zip((68, 200, 560, 740), r):
+        d.text(x, y + 82 + i * 22, v, 13, INK, mono=True)
 
 y += 190
 d.legend(30, y, [(BLUE, "float value"), (EMERALD, "int8 value"), (AMBER, "zero point (float 0.0)"), (PINK, "clipped")])

@@ -20,6 +20,9 @@ Let's start with what I would keep.
 + **Golden files that a human can read** ([part 5][part5]). Plain text, one value per line, and the accumulator before and after the zero-point correction.
 + **Two targets, never mixed up**: bit-exact with the hardware, accurate like TFLite.
 
+![A table of eleven design decisions that held up, with the part that shows each one and why: one post-processing unit, a fixed shift of 20 with one rounding, zero points folded into the bias, padding with the input zero point, the ReLU family as one kernel, averages as convolutions, 256-entry tables, graph rewrites that keep the output equal, the span rule for partitioning, plain-text golden files, and two separate targets.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_6/resources/fig4_what_held_up.png)
+*Figure: the decisions I would make again, each with the part of the series that backs it.*
+
 ![Two panels. 1: a table of shift amounts 16, 20, 23, 24, 28 with the output limit and the bits of alpha; 20 is ours, 24 has no spare bits, 28 overflows the int8 range. 2: a table of product widths 32, 40, 48 bits with the largest shift and the bits of alpha for M = 0.0001: 7, 15, 23.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_6/resources/fig2_bit_budget.png)
 *Figure: alpha and the product share the same 32 bits. A shift of 20 was the best a 32-bit product allows; more precision needs a wider product.*
 
