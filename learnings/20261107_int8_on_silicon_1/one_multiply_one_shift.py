@@ -59,7 +59,7 @@ SHIFT = 20
 
 
 def make_alpha(m, shift=SHIFT):
-    """Computed once per channel, at compile time (float32, truncated, as in our code)."""
+    """Computed once per channel, at compile time (float32, truncated, as in the reference model)."""
     return int(np.float32(m) * np.float32(1 << shift))
 
 

@@ -72,7 +72,7 @@ s_in, z_in = 0.08, 0
 s_out, z_out = 1 / 256, -128                    # TFLite's fixed output quantization for int8 sigmoid
 qi = np.arange(-128, 128)
 sig = 1 / (1 + np.exp(-s_in * (qi - z_in)))
-lut_trunc = np.clip((sig / s_out + z_out).astype(int), -128, 127)            # int(): truncation, as in our code
+lut_trunc = np.clip((sig / s_out + z_out).astype(int), -128, 127)            # int(): truncation, as in the reference model
 lut_round = np.clip(round_half_away(sig / s_out) + z_out, -128, 127)
 print(f"\nSIGMOID LUT (256 entries), s_in {s_in}: truncated table != rounded table in {(lut_trunc != lut_round).sum()} of 256 entries")
 print(f"  examples q_in -> (truncated, rounded): "

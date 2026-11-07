@@ -1,8 +1,8 @@
 """Figure 4: two accumulator dumps split a hardware mismatch in two.
 
 The reference model has two named accumulator dumps for convolutions, before and after the
-zero-point correction. In the version of the code available now, both hold the same values,
-because the correction moved into the post-processing step. The figure shows the idea.
+zero-point correction. In the end both held the same values, because the correction moved
+into the post-processing step. The figure shows the idea.
 """
 
 from figkit import row

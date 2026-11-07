@@ -35,7 +35,7 @@ Let's start with what I would keep.
 ![Three panels. 1: 2416 times 1,000,000 wraps in int32 to -1,878,967,296, shifts to -1792 and clips to -128 instead of 127. 2: the range check and the reference check both see the wrapped value and pass. 3: an int64 product, saturation, or one test with a huge accumulator would have caught it.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_6/resources/fig1_overflow.png)
 *Figure: an overflow that flips the sign, and two checks that could not see it.*
 
-The same goes for concat. It copied the bytes of its inputs, which is right only when all inputs have the same scale and zero point as the output, and nothing in our code checked that. With input scales of 0.05 and 0.10 and an output scale of 0.10, copying gives a real error of up to 6.4. TFLite's int8 reference kernel copies too, so it relies on the same matching scales. The gap is only the missing check.
+The same goes for concat. It copied the bytes of its inputs, which is right only when all inputs have the same scale and zero point as the output, and nothing in the reference model checked that. With input scales of 0.05 and 0.10 and an output scale of 0.10, copying gives a real error of up to 6.4. TFLite's int8 reference kernel copies too, so it relies on the same matching scales. The gap is only the missing check.
 
 **5. Take the multiply one step further.** The square-root split of [part 3][part3] balanced the bits between the two inputs so that the product fits the 32-bit accumulator, and it was more accurate than the uneven split before it. With rounded alphas, or with all of $M$ on one input, it gets closer still: for a squeeze-and-excitation block, from 75% of the outputs off exact rounding to 0.05%.
 
