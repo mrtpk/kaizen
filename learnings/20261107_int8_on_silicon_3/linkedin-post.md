@@ -1,6 +1,6 @@
 # LinkedIn post: Int8 on Silicon - Part 3: One unit, many operations
 
-**Attach:** `fig1_add_three_passes.png`, `fig2_multiply_split.png`, `fig3_relu_family.png` as a carousel (in order).
+**Attach:** `fig1_add_three_passes.png`, `fig2_multiply_split.png`, `fig3_relu_family.png`, `fig4_ops_as_constants.png` as a carousel (in this order, as in the post).
 
 ---
 
@@ -14,7 +14,7 @@ ReLU, ReLU6, LeakyReLU, PReLU and min(x, c) are one kernel: a slope for negative
 
 Multiply had to fit a 32-bit accumulator. We split M = s1·s2/s_out into two square roots, one per input, at 2^10 each, which was more accurate than the uneven split before it (46% vs 62% of outputs off exact rounding). Measuring it again this week, there is room to go further: for an SE block (x · sigmoid), one alpha is only 17, and putting all of M on one input would bring the error to 0.05%.
 
-The models matched TFLite accuracy either way.
+Model accuracy was on par with TFLite either way.
 
 Code and figure scripts are in my kaizen repo (link in comments). Part 4: operations without a divider.
 

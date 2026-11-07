@@ -14,15 +14,16 @@ d.header("Multiply: splitting M into two square roots",
 BW, BH = 290, 92
 XS = [60, 410, 760]
 y = 116
-d.panel(y, 200, 1, "How does the split work?",
+d.panel(y, 210, 1, "How does the split work?",
         "Each input gets half of the scale, at 2^10, so the product fits the 32-bit accumulator and lands at 2^20.")
 d.box(XS[0], y + 80, BW, BH, "input 1", ["(q1 - z1) * a1", "a1 = 0.05 / sqrt(0.12) * 2^10", "= 147"], col=AMBER, mono_size=12)
 d.box(XS[1], y + 80, BW, BH, "input 2", ["(q2 - z2) * a2", "a2 = 0.03 / sqrt(0.12) * 2^10", "= 88"], col=AMBER, mono_size=12)
 d.box(XS[2], y + 80, BW, BH, "product", ["x1 * x2 (int32)", ">> 20, + z_out, clip"], col=VIOLET, mono_size=12)
-d.arrow(XS[0] + BW, y + 126, XS[1] - 2, y + 126, NEUTRAL[0], dash="4 3")
-d.arrow(XS[1] + BW, y + 126, XS[2] - 2, y + 126, NEUTRAL[0], dash="4 3")
+d.arrow(XS[1] + BW, y + 126, XS[2] - 2, y + 126, NEUTRAL[0])
+x1c, x3c, yb = XS[0] + BW / 2, XS[2] + BW / 2, y + 80 + BH
+d.path_arrow(f"M {x1c:.1f},{yb:.1f} L {x1c:.1f},{yb + 14:.1f} L {x3c:.1f},{yb + 14:.1f} L {x3c:.1f},{yb + 2:.1f}", NEUTRAL[0])
 
-y += 220
+y += 230
 rows = [
     ("variant", "example (a = 147, 88)", "SE block x * sigmoid (a = 228, 17)"),
     ("split, truncated a (ours)", "45.9 %, max 2", "75.2 %, max 7"),
