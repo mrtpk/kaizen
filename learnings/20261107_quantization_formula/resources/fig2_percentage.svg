@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="624" viewBox="0 0 1100 624">
-<defs><marker id="m0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/></marker><marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#059669"/></marker></defs>
+<defs><marker id="m0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#059669"/></marker></defs>
 <rect width="1100" height="624" fill="#ffffff"/>
 <text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Percentage is two stretches</text>
 <text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Quantization Basics  ·  25 out of 500 is 5 %</text>
@@ -39,8 +39,8 @@
 <line x1="1000.0" y1="360.0" x2="1000.0" y2="372.0" stroke="#9ca3af" stroke-width="1.4"/>
 <text x="1000.0" y="390.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
 <text x="246.0" y="371.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">normalized</text>
-<circle cx="297.0" cy="366.0" r="6" fill="#0d9488"/>
-<text x="297.0" y="350.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#0d9488" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">0.05</text>
+<circle cx="297.0" cy="366.0" r="6" fill="#7c3aed"/>
+<text x="297.0" y="350.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#7c3aed" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">0.05</text>
 <line x1="260.0" y1="486.0" x2="1000.0" y2="486.0" stroke="#9ca3af" stroke-width="2"/>
 <line x1="260.0" y1="480.0" x2="260.0" y2="492.0" stroke="#9ca3af" stroke-width="1.4"/>
 <text x="260.0" y="510.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">0</text>
@@ -57,14 +57,14 @@
 <text x="246.0" y="491.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">percent line</text>
 <circle cx="297.0" cy="486.0" r="6" fill="#059669"/>
 <text x="297.0" y="470.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">5</text>
-<line x1="297.0" y1="280.0" x2="297.0" y2="332.0" stroke="#0d9488" stroke-width="1.6" marker-end="url(#m0)"/>
-<text x="319.0" y="310.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#0d9488" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">scale by 1 / 500</text>
+<line x1="297.0" y1="280.0" x2="297.0" y2="332.0" stroke="#7c3aed" stroke-width="1.6" marker-end="url(#m0)"/>
+<text x="319.0" y="310.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#7c3aed" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">scale by 1 / 500</text>
 <line x1="297.0" y1="400.0" x2="297.0" y2="452.0" stroke="#059669" stroke-width="1.6" marker-end="url(#m1)"/>
 <text x="319.0" y="430.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">scale by 100</text>
 <text x="30.0" y="567.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
 <rect x="97.3" y="556.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
 <text x="118.3" y="567.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">value (source line)</text>
-<rect x="245.9" y="556.0" width="14.0" height="14.0" rx="3" fill="#f0fdfa" fill-opacity="1.0" stroke="#0d9488" stroke-width="1.4"/>
+<rect x="245.9" y="556.0" width="14.0" height="14.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
 <text x="266.9" y="567.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">normalized (0..1)</text>
 <rect x="388.1" y="556.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
 <text x="409.1" y="567.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">percent (destination line)</text>

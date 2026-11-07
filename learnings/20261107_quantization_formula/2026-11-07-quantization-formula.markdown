@@ -6,7 +6,7 @@ categories: deep-learning quantization
 mathjax: true
 ---
 
-Lately, I have been going back to an old note of mine on [Stack Overflow][so-original] about the quantization formula, and this note is a cleaned-up version of it. The old one had a few mistakes in the code and in the formula. This one fixes them, and every number here comes from a script that you can run.
+Lately, I have been going back to an old note of mine on [Stack Overflow][so-original] about the quantization formula, and this note is a cleaned-up version of it. The old one had a few gaps in the code and in the formula. This one refines them, and every number here comes from a script that you can run.
 
 Quantization means mapping values from a large set (all the floats) to a small set (the 256 integers of int8). If we think of each set as a number line, quantization is just moving a point from one number line to another. So, before diving into the formula, let's look at how we move and stretch a point on a number line.
 
@@ -97,12 +97,12 @@ $$
 
 This is not a second formula. It is the inverse of the first one, and this is the form that the TensorFlow documentation and the [integer-arithmetic-only paper][jacob-2018] use to define a quantized value.
 
-The trip to int8 and back is not free. Inside the range, rounding moves a value to the nearest integer point, so the error is at most half a step, `scale / 2` = 0.007843. For example, 1.0 comes back as 1.0039. Outside the range, clipping can make the error as large as it wants: 3.5 comes back as 2.9961, an error of -0.5039. That is why choosing the float range (calibration) matters so much.
+The trip to int8 and back is not free. Inside the range, rounding moves a value to the nearest integer point, so the error is at most half a step, `scale / 2` = 0.007843. For example, 1.0 comes back as 1.0039. Outside the range, clipping has no bound on the error: 3.5 comes back as 2.9961, an error of -0.5039. That is why choosing the float range (calibration) matters so much.
 
 ![Three panels. 1: a zoomed float line around 1.0 with the integer points q = -1, 0, 1; 1.0 rounds to q = 0, which is 1.0039. 2: 3.5 is outside the representable range and comes back as 2.9961. 3: the asymmetric range covers [-1, 3]; the symmetric range covers [-3, 3] and leaves [-3, -1] unused.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_quantization_formula/resources/fig5_round_trip.png)
-*Figure: the round trip loses at most half a step inside the range, but anything outside it. Symmetric quantization wastes levels when the range is lopsided.*
+*Figure: the round trip loses at most half a step inside the range; outside the range the error has no bound. Symmetric quantization wastes levels when the range is lopsided.*
 
-What we derived is asymmetric quantization, because `zero_point` can be any integer. When `zero_point` is fixed at 0, it is called symmetric quantization. The range becomes [-|r|max, |r|max] on the integer line -127..127, so that r and -r map to q and -q. For |r| <= 3, `scale` is 3 / 127 = 0.023622, and 1.0 maps to 42 and -1.0 to -42. Symmetric is simpler to compute with (no `zero_point` to subtract), and it is common for weights. But for our lopsided range [-1, 3], one third of the levels are spent on [-3, -1], where there are no values.
+What we derived is asymmetric quantization, because `zero_point` can be any integer. When `zero_point` is fixed at 0, it is called symmetric quantization. The range becomes $[-\max|r|, \max|r|]$ on the integer line -127..127, so that r and -r map to q and -q. For |r| <= 3, `scale` is 3 / 127 = 0.023622, and 1.0 maps to 42 and -1.0 to -42. Symmetric is simpler to compute with (no `zero_point` to subtract), and it is common for weights. But for our lopsided range [-1, 3], one third of the levels are spent on [-3, -1], where there are no values.
 
 ## Let's look at the code
 Each function is checked against the numbers above.
