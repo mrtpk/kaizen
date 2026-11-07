@@ -61,5 +61,5 @@
 <text x="344.8" y="619.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">int8 range overflows</text>
 <rect x="492.1" y="608.0" width="14.0" height="14.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
 <text x="513.1" y="619.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">wider product</text>
-<text x="30.0" y="648.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Shift 20 was the best a 32-bit product allows. The precision for small M was limited by the product width.</text>
+<text x="30.0" y="648.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">With 4 bits of headroom, 20 is the largest shift a 32-bit product allows. Precision for small M is limited by the product width.</text>
 </svg>

@@ -27,8 +27,8 @@ d.panel(y, 170, 1, "What does the hardware compute?",
         "The int32 product wraps to a negative number, and the clip turns the largest output into the smallest.")
 row(y + 74, [
     ("int32 product", ["2416 * 1,000,000", "-> -1,878,967,296"], PINK),
-    (">> 20", ["-1792", "(true value: 2304)"], PINK),
-    ("clip", ["-128", "(true value: 127)"], PINK),
+    (">> 20", ["-1792", "(int64 value: 2304)"], PINK),
+    ("clip", ["-128", "(int64 path: 127)"], PINK),
 ], PINK)
 
 y += 190
@@ -50,6 +50,6 @@ row(y + 74, [
 ], EMERALD)
 
 y += 190
-d.legend(30, y, [(PINK, "wrong result"), (AMBER, "the checks we had"), (EMERALD, "the fix"), (BLUE, "the test we needed")])
-y = d.footnotes(30, y + 40, ["It needs |acc * M| > 2048, which is rare in a trained network, so the bug can stay hidden for a long time."])
+d.legend(30, y, [(PINK, "flipped result"), (AMBER, "the checks we had"), (EMERALD, "the fix"), (BLUE, "the test we needed")])
+y = d.footnotes(30, y + 40, ["It needs |acc * M| > 2048, which is rare in a trained network, so the gap can stay hidden for a long time."])
 d.save(height=y + 10)

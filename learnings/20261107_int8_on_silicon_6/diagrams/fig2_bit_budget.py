@@ -52,5 +52,5 @@ table(y + 92, rows, [80, 400, 820], lambda i, r: EMERALD if "ours" in r[0] else 
 
 y += H + 20
 d.legend(30, y, [(EMERALD, "our choice"), (AMBER, "no spare bits"), (PINK, "int8 range overflows"), (VIOLET, "wider product")])
-y = d.footnotes(30, y + 40, ["Shift 20 was the best a 32-bit product allows. The precision for small M was limited by the product width."])
+y = d.footnotes(30, y + 40, ["With 4 bits of headroom, 20 is the largest shift a 32-bit product allows. Precision for small M is limited by the product width."])
 d.save(height=y + 10)

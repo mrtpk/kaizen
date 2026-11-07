@@ -21,7 +21,7 @@ rows = [
     ("4", "softmax cast truncated", "82 % of values", "round()"),
     ("4", "resize weights truncated", "26 of 169, by 1", "integer complements"),
     ("6", "max pool pads with z", "28 of 64, max 47", "skip padded points"),
-    ("6", "concat copies bytes", "real error up to 6.4", "requantize or check"),
+    ("6", "concat copies bytes", "real error up to 6.4", "check the scales"),
     ("6", "overflow guard in int32", "127 becomes -128", "check in int64"),
 ]
 y = 116
