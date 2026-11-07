@@ -55,7 +55,7 @@ s_out, z_out = 0.10, 0
 a = rng.integers(-128, 128, 1000)
 b = rng.integers(-128, 128, 1000)
 raw = np.concatenate([a, b])                                      # ours: copy the bytes
-requant = np.concatenate([np.clip(np.round(a * s1 / s_out), -128, 127), b])   # TFLite: requantize input 1
+requant = np.concatenate([np.clip(np.round(a * s1 / s_out), -128, 127), b])   # what a scale check would force: requantize input 1
 real = np.concatenate([a * s1, b * s2])
 print(f"\nCONCAT s1 = {s1}, s2 = {s2}, s_out = {s_out}:")
 print(f"  copy:        max real error {np.abs(raw * s_out - real).max():.2f}")

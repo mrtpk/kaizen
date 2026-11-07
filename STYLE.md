@@ -42,7 +42,8 @@ References: a `**Reference:**` list with link references at the bottom.
 
 ## 3. Code
 
-- The post shows a short check that prints `"<what>. Is pass?"`, and it must print `True`.
+- The post shows a short check that prints `"<what>. Is pass?"`. It usually prints `True`; a deliberate
+  counter-example may print `False`, with a comment that says so (as in the Megatron note).
 - The full script sits next to the post and is linked as "available [here](...)".
 - Run scripts with uv: `uv run --with numpy python <script>.py`.
 - Every number in the text comes from running the script. Do not type numbers by hand.
