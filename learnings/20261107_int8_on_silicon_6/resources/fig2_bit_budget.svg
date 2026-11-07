@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="676" viewBox="0 0 1100 676">
+<defs></defs>
+<rect width="1100" height="676" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">The real limit: the width of the product</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Int8 on Silicon  ·  part 6  ·  alpha * acc ~ output * 2^shift must fit in the product</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">bits of alpha ~ shift + log2(M)        bits of the product ~ shift + output bits</text>
+<rect x="20.0" y="116.0" width="1060.0" height="252.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
+<text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="147.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">With a 32-bit product, can a bigger shift buy precision?</text>
+<text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Only by giving up range. Past 24 the int8 range itself overflows. 20 keeps 4 spare bits.</text>
+<text x="80.0" y="208.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">shift</text>
+<text x="300.0" y="208.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">overflow when |output| &gt;</text>
+<text x="560.0" y="208.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">alpha bits, M = 0.0023</text>
+<text x="820.0" y="208.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">alpha bits, M = 0.0001</text>
+<line x1="70.0" y1="216.0" x2="1040.0" y2="216.0" stroke="#9ca3af" stroke-width="1"/>
+<text x="80.0" y="234.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">16</text>
+<text x="300.0" y="234.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">32,768</text>
+<text x="560.0" y="234.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">8</text>
+<text x="820.0" y="234.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">3</text>
+<text x="80.0" y="260.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">20  (ours)</text>
+<text x="300.0" y="260.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">2,048</text>
+<text x="560.0" y="260.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">12</text>
+<text x="820.0" y="260.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">7</text>
+<text x="80.0" y="286.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">23</text>
+<text x="300.0" y="286.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">256</text>
+<text x="560.0" y="286.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">15</text>
+<text x="820.0" y="286.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">10</text>
+<text x="80.0" y="312.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#d97706" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">24</text>
+<text x="300.0" y="312.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#d97706" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">128</text>
+<text x="560.0" y="312.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#d97706" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">16</text>
+<text x="820.0" y="312.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#d97706" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">11</text>
+<text x="80.0" y="338.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#db2777" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">28</text>
+<text x="300.0" y="338.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#db2777" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">8</text>
+<text x="560.0" y="338.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#db2777" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">20</text>
+<text x="820.0" y="338.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#db2777" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">15</text>
+<rect x="20.0" y="388.0" width="1060.0" height="200.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="414.0" r="13" fill="#111827"/>
+<text x="46.0" y="418.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="419.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">What would a wider product buy?</text>
+<text x="68.0" y="438.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">8 more bits of product give 8 more bits of alpha, for every M. TFLite uses a 64-bit product.</text>
+<text x="80.0" y="480.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">product width</text>
+<text x="400.0" y="480.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">largest shift (int8 + 4 spare bits)</text>
+<text x="820.0" y="480.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">alpha bits, M = 0.0001</text>
+<line x1="70.0" y1="488.0" x2="1040.0" y2="488.0" stroke="#9ca3af" stroke-width="1"/>
+<text x="80.0" y="506.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">32 bits (ours)</text>
+<text x="400.0" y="506.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">20</text>
+<text x="820.0" y="506.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">7</text>
+<text x="80.0" y="532.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#7c3aed" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">40 bits</text>
+<text x="400.0" y="532.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#7c3aed" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">28</text>
+<text x="820.0" y="532.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#7c3aed" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">15</text>
+<text x="80.0" y="558.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#7c3aed" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">48 bits</text>
+<text x="400.0" y="558.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#7c3aed" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">36</text>
+<text x="820.0" y="558.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#7c3aed" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">23</text>
+<text x="30.0" y="619.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="608.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="118.3" y="619.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">our choice</text>
+<rect x="202.4" y="608.0" width="14.0" height="14.0" rx="3" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.4"/>
+<text x="223.4" y="619.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">no spare bits</text>
+<rect x="323.8" y="608.0" width="14.0" height="14.0" rx="3" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.4"/>
+<text x="344.8" y="619.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">int8 range overflows</text>
+<rect x="492.1" y="608.0" width="14.0" height="14.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="513.1" y="619.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">wider product</text>
+<text x="30.0" y="648.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Shift 20 was the best a 32-bit product allows. The precision for small M was limited by the product width.</text>
+</svg>
