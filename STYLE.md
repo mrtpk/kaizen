@@ -75,6 +75,8 @@ Rules (from style-and-diagrams.md; full guide: `tools/diagrams/instructions-svg.
 - In the post: alt text describes the figure panel by panel, and the next line is the caption in
   italics, starting with "Figure: ".
 - Look at every PNG before publishing: nothing overlaps, nothing is clipped.
+- Runs of spaces collapse in the PNG. Draw aligned columns as separate text: use `tools/diagrams/figkit.py`
+  (`row()` for up to 3 boxes, `table()` for tables, `code()` with `\t` columns for code and config cards).
 
 ## 5. Series
 
