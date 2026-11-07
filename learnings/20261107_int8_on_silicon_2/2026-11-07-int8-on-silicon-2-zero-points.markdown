@@ -44,13 +44,13 @@ For our window, the bias is 1500 and the folded bias is $1500 - (-64)(-412) = -2
 
 It means that the hardware does not need to know that a zero point exists. The MAC array multiplies raw int8 values, and the post-processing unit adds one bias. TFLite's reference convolution does it the other way: it adds the input offset to every input inside the inner loop. That is one extra addition per multiply. In hardware, that is an adder in front of every multiplier, so we moved the work to the compiler.
 
-When the weights do have a zero point (for example, in older uint8 models), we subtracted it from the weights offline and stored $q_{w} - z_{w}$. Then the second and fourth terms disappear too. There is a cost: $q_{w} - z_{w}$ can be anywhere in -255..255, which needs 9 bits instead of 8.
+When the weights do have a zero point (for example, in older uint8 models), the reference model subtracted it at runtime, inside the MAC loop. For the hardware files, the weights were written with the zero point already subtracted, as $q_{w} - z_{w}$, so the MAC never sees it. Then the second and fourth terms disappear too. There is a cost: $q_{w} - z_{w}$ can be anywhere in -255..255, which needs 9 bits instead of 8.
 
-![Three panels. 1: the input offset added inside the loop costs 576 additions per output for a 3x3 convolution over 64 channels; folded into the bias it costs 1. 2: weights with zero point 3 are stored as q_w - z_w in [-131, 124]; in general they need 9 bits. 3: when a layer differs on the hardware, the before-correction dump points to the MAC array or data movement, and an after-only difference points to the constants.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_2/resources/fig3_offsets_and_debug.png)
-*Figure: both offsets move from the hardware to the compiler, and the two accumulator dumps split a mismatch into a MAC problem or a constants problem.*
+![Two panels. 1: the input offset added inside the loop costs 576 additions per output for a 3x3 convolution over 64 channels; folded into the bias it costs 1. 2: weights with zero point 3 are written for the hardware as q_w - z_w in [-131, 124]; in general they need 9 bits.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_2/resources/fig3_offsets_and_debug.png)
+*Figure: both offsets move from the hardware to the compiler.*
 
 ## The padding trap
-Here is the catch. The folded bias subtracts $z_{in} \times$ the sum of **all 9 weights**. It assumes that every point of the window holds $z_{in}$'s contribution. Inside the image, that is true. At the border, some points of the window are padding.
+Here is the catch. The folded bias subtracts $z_{in} \times$ the sum of **all 9 weights**. It assumes that all 9 points of the window are real inputs, so the $z_{in}$ correction applies to every weight. Inside the image, that is true. At the border, some points of the window are padding.
 
 What value should a padded point have? A SAME convolution pads with zeros, and zero means the real value 0.0. In int8, the real value 0.0 is $z_{in}$ = -64, not 0. TFLite's reference convolution simply skips the padded points, which is the same as real 0.0.
 
@@ -62,12 +62,15 @@ Let's take the top-left corner of a 5X5 image. Its window has 5 padded points, a
 ![Three panels. 1: a 3x3 corner window padded with -64; the MAC adds 2560 and the bias removes 2560, so the output is exact. 2: the same window padded with 0; the MAC adds 0 but the bias still removes 2560, so the output is off by 3.94 int8 steps. 3: a 5x5 output grid with the 16 border outputs wrong and the 9 inner outputs exact.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_2/resources/fig2_padding.png)
 *Figure: with a folded bias, the padding must hold the input zero point. Padding with 0 breaks every output that touches the border.*
 
-With padding 0, all 16 border outputs of the 5X5 image are wrong, and only the 9 inner outputs are exact. For small feature maps and stride-2 layers, the border is a large share of the image. So, in our reference model, the padding value is always the input zero point, and the hardware got the same rule: the pad value was one of the constants that the compiler wrote for every layer.
+With padding 0, all 16 border outputs of the 5X5 image are wrong, and only the 9 inner outputs are exact. For small feature maps and stride-2 layers, the border is a large share of the image. So, in our reference model, the padding value is always the input zero point, and the hardware got the same rule: the pad value was one of the constants that the compiler wrote for every convolution.
 
 For the hardware export, one of the compiler passes (part 5) also split a SAME convolution into an explicit pad layer and a VALID convolution. With an explicit pad layer, the pad value is a visible constant in the layer list, and the convolution itself has no border case. I wrote about how TensorFlow splits SAME padding into top, bottom, left and right in [an older note][tf-padding].
 
 ## A debugging aid
-When a convolution on the hardware does not match the reference model, the first question is: is the MAC wrong, or is the correction wrong? So the reference model dumped the accumulator twice for every layer: before and after the correction. If "before" matches, the MAC array is fine and the problem is in the constants. If "before" does not match, the problem is in the MAC or in the data movement. A padding bug of the kind above shows up as a mismatch only at the border outputs.
+When a convolution on the hardware does not match the reference model, the first question is: is the MAC wrong, or is the correction wrong? The reference model has two named accumulator dumps for convolutions for this question: before and after the zero-point correction. In the version of the code I have now, both dumps hold the same values, because the correction moved into the post-processing step, after the dump. The idea is still worth keeping. If "before" matches, the MAC array is fine and the difference is in the constants. If "before" does not match, it is in the MAC or in the data movement. A padding mismatch of the kind above shows up only at the border outputs.
+
+![One panel: compare the raw MAC sums first; if 'before' differs, look at the MAC array or data movement; if only 'after' differs, look at the constants: bias, alpha, pad value, zero points.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_2/resources/fig4_debug_dumps.png)
+*Figure: two accumulator dumps, before and after the correction, split a mismatch into a MAC question or a constants question.*
 
 ## Let's look at the code
 A 3X3 SAME convolution on a 5X5 image, done three ways:
