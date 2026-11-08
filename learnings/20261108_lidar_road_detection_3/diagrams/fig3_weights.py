@@ -30,5 +30,6 @@ d.panel(y1, 270, 1, "Which layers hold the weights?",
 hbars(d, 60, y1 + 74, rows, vmax=900000, width=520, label_w=220)
 y = y1 + 290
 d.legend(30, y, [(BLUE, "encoder"), (VIOLET, "context module"), (EMERALD, "decoder")])
-end = d.footnotes(30, y + 40, ["A 3x3 convolution from a to b maps has 9ab weights and b biases. The paper does not give a total."])
+end = d.footnotes(30, y + 40, ["A 3x3 convolution from a to b maps has 9ab weights and b biases. The paper does not "
+                               "give a total."])
 d.save(height=end + 10)

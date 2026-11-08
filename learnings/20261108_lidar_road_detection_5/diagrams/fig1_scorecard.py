@@ -56,5 +56,6 @@ for i, (n, name, value, check, ok, col) in enumerate(rows):
     d.pill(920, yy + 11, 100, f"{ok}", EMERALD if ok else MUTE)
 y = y1 + 350
 d.legend(30, y, [(BLUE, "input"), (AMBER, "labels"), (VIOLET, "network"), (EMERALD, "sensor")])
-end = d.footnotes(30, y + 40, ["The results on the cart (94 % F1, 95 % average accuracy, 83 FPS) are not in this table: no script here can reproduce them."])
+end = d.footnotes(30, y + 40, ["The results on the cart (94 % F1, 95 % average accuracy, 83 FPS) are not in this "
+                               "table: no script here can reproduce them."])
 d.save(height=end + 10)

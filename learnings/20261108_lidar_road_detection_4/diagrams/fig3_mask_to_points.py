@@ -50,7 +50,8 @@ row3(y1 + 76, [
 ])
 y2 = y1 + 210
 d.panel(y2, 190, 2, "How well does a grid label the points?",
-        f"With the dense label of part 2 as the map, the lookup agrees with the camera label for {agree:.1f} % of the points.")
+        f"With the dense label of part 2 as the map, the lookup agrees with the camera label for {agree:.1f} % of the "
+        "points.")
 row3(y2 + 76, [
     ("16-ring points", [f"{int(g.sum())} in the grid", "and in the image"], BLUE),
     ("road by lookup", [f"{int(lookup.sum())} points", "from the grid cell"], AMBER),
@@ -58,5 +59,6 @@ row3(y2 + 76, [
 ])
 y = y2 + 210
 d.legend(30, y, [(VIOLET, "network output"), (BLUE, "points"), (AMBER, "road labels"), (EMERALD, "display")])
-end = d.footnotes(30, y + 40, ["Panel 2 uses the label of part 2 in place of a trained network, so it measures the grid step only."])
+end = d.footnotes(30, y + 40, ["Panel 2 uses the label of part 2 in place of a trained network, so it measures the "
+                               "grid step only."])
 d.save(height=end + 10)

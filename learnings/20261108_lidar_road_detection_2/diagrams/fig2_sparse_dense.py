@@ -23,11 +23,16 @@ d.header("The top-view road label: sparse points, then pseudo points",
 XS = [110, 440, 770]
 y1 = 116
 d.panel(y1, 520, 1, "Which cells get a road label?",
-        f"From points alone {int(sparse.sum())} cells; with pseudo points {int(dense.sum())} cells, {dense.sum() / sparse.sum():.1f} times more.")
-heatmap(d, XS[0], y1 + 96, seen, "cells with a labelled point", BLUE[0], px=1.0, lo=0, hi=1, note=f"{int(seen.sum())} cells")
-heatmap(d, XS[1], y1 + 96, sparse, "road cells, points alone", AMBER[0], px=1.0, lo=0, hi=1, note=f"{int(sparse.sum())} cells")
-heatmap(d, XS[2], y1 + 96, dense, "road cells, with pseudo points", AMBER[0], px=1.0, lo=0, hi=1, note=f"{int(dense.sum())} cells")
+        f"From points alone {int(sparse.sum())} cells; with pseudo points {int(dense.sum())} cells, "
+        f"{dense.sum() / sparse.sum():.1f} times more.")
+heatmap(d, XS[0], y1 + 96, seen, "cells with a labelled "
+                                 "point", BLUE[0], px=1.0, lo=0, hi=1, note=f"{int(seen.sum())} cells")
+heatmap(d, XS[1], y1 + 96, sparse, "road cells, points alone", AMBER[0], px=1.0, lo=0, hi=1,
+        note=f"{int(sparse.sum())} cells")
+heatmap(d, XS[2], y1 + 96, dense, "road cells, with pseudo "
+                                  "points", AMBER[0], px=1.0, lo=0, hi=1, note=f"{int(dense.sum())} cells")
 y = y1 + 540
 d.legend(30, y, [(BLUE, "cell with a point inside the camera view"), (AMBER, "road cell")])
-end = d.footnotes(30, y + 40, ["Drawn as blocks of 4 x 4 cells; a block is coloured when any of its cells is set. The far edge (46 m) is at the top."])
+end = d.footnotes(30, y + 40, ["Drawn as blocks of 4 x 4 cells; a block is coloured when any of its cells is set. The "
+                               "far edge (46 m) is at the top."])
 d.save(height=end + 10)

@@ -53,5 +53,6 @@ for m in range(6, 47, 10):
 
 y = y1 + 310
 d.legend(30, y, [(BLUE, "a ring of the 64-ring scan"), (EMERALD, "a ring of the 16-ring scan")])
-end = d.footnotes(30, y + 40, ["A crossing is the median distance of a ring's points with |y| < 1 m. One scan; a real 16-beam sensor also has another field of view."])
+end = d.footnotes(30, y + 40, ["A crossing is the median distance of a ring's points with |y| < 1 m. One scan; a real "
+                               "16-beam sensor also has another field of view."])
 d.save(height=end + 10)

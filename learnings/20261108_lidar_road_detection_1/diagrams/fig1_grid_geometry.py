@@ -16,10 +16,12 @@ ex, ey = float(pts[k, 0]), float(pts[k, 1])
 d = Diagram(width=1100)
 d.header("The top-view grid: 40 m ahead, 20 m wide, 0.1 m cells",
          "LiDAR Road Detection  ·  part 1  ·  the grid of the LoDNN paper",
-         params=f"x {g.X_MIN:g}..{g.X_MAX:g} m  ·  y {g.Y_MIN:g}..{g.Y_MAX:g} m  ·  cell {g.CELL} m  ·  {g.ROWS} rows x {g.COLS} cols = {g.ROWS * g.COLS} cells")
+         params=f"x {g.X_MIN:g}..{g.X_MAX:g} m  ·  y {g.Y_MIN:g}..{g.Y_MAX:g} m  ·  cell {g.CELL} m  ·  {g.ROWS} rows "
+                f"x {g.COLS} cols = {g.ROWS * g.COLS} cells")
 
 y1 = 116
-d.panel(y1, 520, 1, "Where is the grid?", "In front of the car: 6 m to 46 m ahead, 10 m to each side. Row 0 is the far edge.")
+d.panel(y1, 520, 1, "Where is the grid?", "In front of the car: 6 m to 46 m ahead, 10 m to each side. Row 0 is the far "
+                                          "edge.")
 S = 8.0                      # pixels per metre
 gx, gy = 120, y1 + 80        # top-left corner of the grid drawing (x = 46 m, y = +10 m)
 gw, gh = 20 * S, 40 * S
@@ -47,7 +49,8 @@ for i, s in enumerate(["x: forward, the distance ahead", "y: to the left", "z: u
     d.text(tx, y1 + 126 + i * 22, s, 13, INK, mono=i in (4, 5))
 
 y2 = y1 + 540
-d.panel(y2, 170, 2, "How does a point find its cell?", "Two floors, one per axis. Far rows and left columns come first.")
+d.panel(y2, 170, 2, "How does a point find its cell?", "Two floors, one per axis. Far rows and left columns come "
+                                                       "first.")
 BW, BH = 300, 78
 XS = [60, 400, 740]
 boxes = [
@@ -62,5 +65,6 @@ for i, (t, lines, col) in enumerate(boxes):
 
 y = y2 + 190
 d.legend(30, y, [(BLUE, "grid"), (EMERALD, "a point of the scan"), (AMBER, "the sensor")])
-end = d.footnotes(30, y + 40, ["Drawn to scale, 8 px per metre. The example is the first in-grid point of the sample scan."])
+end = d.footnotes(30, y + 40, ["Drawn to scale, 8 px per metre. The example is the first in-grid point of the sample "
+                               "scan."])
 d.save(height=end + 10)

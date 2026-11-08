@@ -56,7 +56,8 @@ def conv_params(k: int, c_in: int, c_out: int) -> int:
 def main() -> None:
     print("== 0. Plain and dilated 3x3 layers ==")
     for n in (1, 2, 3):
-        print(f"{n} plain 3x3 layer(s): receptive field {receptive_fields([(1, 1)] * n)[-1][0]} x {receptive_fields([(1, 1)] * n)[-1][1]}")
+        print(f"{n} plain 3x3 layer(s): receptive field {receptive_fields([(1, 1)] * n)[-1][0]} x "
+              f"{receptive_fields([(1, 1)] * n)[-1][1]}")
     print("one 3x3 layer with dilation 2: receptive field %d x %d" % receptive_fields([(2, 2)])[-1])
 
     print("\n== 1. Receptive field from the dilation table ==")

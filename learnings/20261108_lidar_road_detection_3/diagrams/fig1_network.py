@@ -13,7 +13,8 @@ rf = c.receptive_fields(c.DILATIONS)
 d = Diagram(width=1100)
 d.header("LoDNN: encoder, dilated context module, decoder",
          "LiDAR Road Detection  ·  part 3  ·  the network of Caltagirone et al., shapes as width x height x maps",
-         params=f"input {c.GRID_W} x {c.GRID_H} x 6  ·  one 2 x 2 max pooling  ·  context at {c.CTX_W} x {c.CTX_H}  ·  output {c.GRID_W} x {c.GRID_H} x 2")
+         params=f"input {c.GRID_W} x {c.GRID_H} x 6  ·  one 2 x 2 max pooling  ·  context at {c.CTX_W} x {c.CTX_H}  ·  "
+                f"output {c.GRID_W} x {c.GRID_H} x 2")
 
 BW, BH = 300, 108
 XS = [60, 400, 740]
@@ -23,7 +24,8 @@ d.panel(y1, 206, 1, "What are the three blocks?",
 boxes = [
     ("encoder", ["3x3 conv 6 -> 32, ELU", "3x3 conv 32 -> 32, ELU", f"max pool -> {c.CTX_W} x {c.CTX_H} x 32"], BLUE),
     ("context module", ["7 dilated 3x3 convs, 128 maps", "ELU + spatial dropout", "1x1 conv 128 -> 32"], VIOLET),
-    ("decoder", [f"max unpool -> {c.GRID_W} x {c.GRID_H}", "3x3 conv 32 -> 32, ELU", "3x3 conv 32 -> 2, softmax"], EMERALD),
+    ("decoder", [f"max unpool -> {c.GRID_W} x "
+                 f"{c.GRID_H}", "3x3 conv 32 -> 32, ELU", "3x3 conv 32 -> 2, softmax"], EMERALD),
 ]
 for i, (t, lines, col) in enumerate(boxes):
     d.box(XS[i], y1 + 76, BW, BH, t, lines, col=col, mono_size=12)

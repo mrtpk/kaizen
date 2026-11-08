@@ -145,7 +145,8 @@ def main() -> None:
     print("\n== 4. Pseudo points on circles ==")
     one = ring_points(points[k])
     n_dir, n_rad = len(np.arange(0.0, 360.0, 10.0)), len(np.arange(0.2, 1.0, 0.2))
-    print("pseudo points per road point:", len(one), f"= {n_rad} radii (0.2 to 0.8 m) x {n_dir} directions (every 10 degrees)")
+    print("pseudo points per road point:", len(one), f"= {n_rad} radii (0.2 to 0.8 m) x {n_dir} directions (every 10 "
+                                                     "degrees)")
     road_pts, kept = dense_road(points, calib, road)
     print("pseudo points made:", len(road_pts) * len(one))
     print("pseudo points that land on the road label:", len(kept),

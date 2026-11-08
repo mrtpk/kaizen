@@ -51,5 +51,6 @@ row3(y2 + 76, [
 
 y = y2 + 210
 d.legend(30, y, [(EMERALD, "LiDAR frame"), (BLUE, "camera frame"), (VIOLET, "image"), (AMBER, "road")])
-end = d.footnotes(30, y + 40, ["The example is the first point of the scan that lands on the road label. It is beyond the 46 m grid."])
+end = d.footnotes(30, y + 40, ["The example is the first point of the scan that lands on the road label. It is beyond "
+                               "the 46 m grid."])
 d.save(height=end + 10)

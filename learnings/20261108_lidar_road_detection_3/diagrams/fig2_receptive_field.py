@@ -38,6 +38,7 @@ y = y1 + 490
 d.legend(30, y, [(AMBER, "width (across the road)"), (VIOLET, "height (distance ahead)")])
 end = d.footnotes(30, y + 40, [
     "Dashed lines: the size of the context input, after one 2 x 2 pooling of the 200 x 400 grid.",
-    f"The field is centred on its output: an output at the far edge reaches {(rf[-1][1] - 1) // 2 + 1} of the {c.CTX_H} rows.",
+    f"The field is centred on its output: an output at the far edge reaches {(rf[-1][1] - 1) // 2 + 1} of the "
+    f"{c.CTX_H} rows.",
 ])
 d.save(height=end + 10)

@@ -40,5 +40,6 @@ row(y2 + 76, [
 
 y = y2 + 196
 d.legend(30, y, [(BLUE, "input"), (AMBER, "labels"), (VIOLET, "network"), (EMERALD, "sensor and output")])
-end = d.footnotes(30, y + 40, ["The method is LoDNN by Caltagirone et al. The series re-builds its steps with new scripts on one public KITTI scan."])
+end = d.footnotes(30, y + 40, ["The method is LoDNN by Caltagirone et al. The series re-builds its steps with new "
+                               "scripts on one public KITTI scan."])
 d.save(height=end + 10)

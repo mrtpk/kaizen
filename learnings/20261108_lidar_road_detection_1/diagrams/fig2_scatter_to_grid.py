@@ -53,5 +53,6 @@ row3(y2 + 76, [
 
 y = y2 + 210
 d.legend(30, y, [(EMERALD, "correct result"), (BLUE, "vectorised step"), (AMBER, "the cause"), (PINK, "the trap")])
-end = d.footnotes(30, y + 40, ["Counts from the sample scan. The vectorised images equal a plain Python loop over the cells."])
+end = d.footnotes(30, y + 40, ["Counts from the sample scan. The vectorised images equal a plain Python loop over the "
+                               "cells."])
 d.save(height=end + 10)
