@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="504" viewBox="0 0 1100 504">
+<defs></defs>
+<rect width="1100" height="504" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">A quarter of the rings: 2.6 % of the cells instead of 9.4 %</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">LiDAR Road Detection  ·  part 4  ·  occupied cells of the 400 x 200 grid</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">all cells: 64 rings 9.4 %  ·  16 rings 2.6 %</text>
+<rect x="20.0" y="116.0" width="1060.0" height="300.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
+<text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="147.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Which share of the cells holds a point?</text>
+<text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Near the car 7.1 % instead of 25.4 %; at the far edge 0.7 % instead of 1.8 %.</text>
+<text x="250.0" y="203.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">6-16 m, 64 rings</text>
+<rect x="260.0" y="190.0" width="508.4" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="776.4" y="203.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">25.4 %</text>
+<text x="250.0" y="229.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">6-16 m, 16 rings</text>
+<rect x="260.0" y="216.0" width="141.1" height="18.0" rx="3" fill="#059669" fill-opacity="1.0" stroke="none"/>
+<text x="409.1" y="229.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">7.1 %</text>
+<text x="250.0" y="255.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">16-26 m, 64 rings</text>
+<rect x="260.0" y="242.0" width="143.8" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="411.8" y="255.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">7.2 %</text>
+<text x="250.0" y="281.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">16-26 m, 16 rings</text>
+<rect x="260.0" y="268.0" width="36.5" height="18.0" rx="3" fill="#059669" fill-opacity="1.0" stroke="none"/>
+<text x="304.5" y="281.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.8 %</text>
+<text x="250.0" y="307.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">26-36 m, 64 rings</text>
+<rect x="260.0" y="294.0" width="65.4" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="333.4" y="307.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">3.3 %</text>
+<text x="250.0" y="333.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">26-36 m, 16 rings</text>
+<rect x="260.0" y="320.0" width="14.0" height="18.0" rx="3" fill="#059669" fill-opacity="1.0" stroke="none"/>
+<text x="282.0" y="333.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.7 %</text>
+<text x="250.0" y="359.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">36-46 m, 64 rings</text>
+<rect x="260.0" y="346.0" width="36.0" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="304.0" y="359.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.8 %</text>
+<text x="250.0" y="385.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">36-46 m, 16 rings</text>
+<rect x="260.0" y="372.0" width="13.5" height="18.0" rx="3" fill="#059669" fill-opacity="1.0" stroke="none"/>
+<text x="281.5" y="385.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.7 %</text>
+<text x="30.0" y="447.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="436.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="447.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">64 rings</text>
+<rect x="192.3" y="436.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="213.3" y="447.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">16 rings (every 4th)</text>
+<text x="30.0" y="476.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Every cell of the 16-ring grid is also occupied in the 64-ring grid. One KITTI scan.</text>
+</svg>

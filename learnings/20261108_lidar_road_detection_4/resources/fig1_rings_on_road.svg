@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="494" viewBox="0 0 1100 494">
+<defs></defs>
+<rect width="1100" height="494" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Fewer rings, wider gaps on the road ahead</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">LiDAR Road Detection  ·  part 4  ·  where each ring crosses the corridor |y| &lt; 1 m in front of the car</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">16 rings = every 4th ring of the 64-ring KITTI scan (same vertical field of view)</text>
+<rect x="20.0" y="116.0" width="1060.0" height="290.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
+<text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="147.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Where do the rings hit the road ahead?</text>
+<text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">With 64 rings, 37 rings cross 6-46 m; with 16 rings, 9. The gaps grow with distance.</text>
+<text x="126.0" y="231.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">64 rings</text>
+<line x1="140.0" y1="226.0" x2="1040.0" y2="226.0" stroke="#d1d5db" stroke-width="2"/>
+<line x1="141.4" y1="214.0" x2="141.4" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="144.9" y1="214.0" x2="144.9" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="146.3" y1="214.0" x2="146.3" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="151.8" y1="214.0" x2="151.8" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="156.4" y1="214.0" x2="156.4" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="162.6" y1="214.0" x2="162.6" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="170.5" y1="214.0" x2="170.5" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="175.6" y1="214.0" x2="175.6" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="182.0" y1="214.0" x2="182.0" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="191.4" y1="214.0" x2="191.4" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="197.8" y1="214.0" x2="197.8" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="206.5" y1="214.0" x2="206.5" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="215.7" y1="214.0" x2="215.7" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="228.4" y1="214.0" x2="228.4" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="233.9" y1="214.0" x2="233.9" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="246.2" y1="214.0" x2="246.2" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="268.3" y1="214.0" x2="268.3" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="282.1" y1="214.0" x2="282.1" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="287.5" y1="214.0" x2="287.5" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="298.6" y1="214.0" x2="298.6" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="310.7" y1="214.0" x2="310.7" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="323.5" y1="214.0" x2="323.5" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="336.1" y1="214.0" x2="336.1" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="353.3" y1="214.0" x2="353.3" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="370.5" y1="214.0" x2="370.5" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="390.3" y1="214.0" x2="390.3" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="414.4" y1="214.0" x2="414.4" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="437.5" y1="214.0" x2="437.5" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="465.8" y1="214.0" x2="465.8" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="513.9" y1="214.0" x2="513.9" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="527.9" y1="214.0" x2="527.9" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="575.6" y1="214.0" x2="575.6" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="621.2" y1="214.0" x2="621.2" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="750.9" y1="214.0" x2="750.9" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="751.1" y1="214.0" x2="751.1" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="828.7" y1="214.0" x2="828.7" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="938.4" y1="214.0" x2="938.4" y2="238.0" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="621.2" y1="250.0" x2="750.9" y2="250.0" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="686.0" y="268.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#2563eb" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">largest gap 5.8 m</text>
+<text x="1040.0" y="206.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">37 crossings, 6.1 to 41.5 m</text>
+<text x="126.0" y="321.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">16 rings</text>
+<line x1="140.0" y1="316.0" x2="1040.0" y2="316.0" stroke="#d1d5db" stroke-width="2"/>
+<line x1="151.8" y1="304.0" x2="151.8" y2="328.0" stroke="#059669" stroke-width="2.4"/>
+<line x1="175.6" y1="304.0" x2="175.6" y2="328.0" stroke="#059669" stroke-width="2.4"/>
+<line x1="206.5" y1="304.0" x2="206.5" y2="328.0" stroke="#059669" stroke-width="2.4"/>
+<line x1="246.2" y1="304.0" x2="246.2" y2="328.0" stroke="#059669" stroke-width="2.4"/>
+<line x1="298.6" y1="304.0" x2="298.6" y2="328.0" stroke="#059669" stroke-width="2.4"/>
+<line x1="353.3" y1="304.0" x2="353.3" y2="328.0" stroke="#059669" stroke-width="2.4"/>
+<line x1="437.5" y1="304.0" x2="437.5" y2="328.0" stroke="#059669" stroke-width="2.4"/>
+<line x1="575.6" y1="304.0" x2="575.6" y2="328.0" stroke="#059669" stroke-width="2.4"/>
+<line x1="828.7" y1="304.0" x2="828.7" y2="328.0" stroke="#059669" stroke-width="2.4"/>
+<line x1="575.6" y1="340.0" x2="828.7" y2="340.0" stroke="#059669" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="702.2" y="358.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#059669" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">largest gap 11.2 m</text>
+<text x="1040.0" y="296.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">9 crossings, 6.5 to 36.6 m</text>
+<text x="140.0" y="388.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">6 m</text>
+<text x="365.0" y="388.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">16 m</text>
+<text x="590.0" y="388.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">26 m</text>
+<text x="815.0" y="388.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">36 m</text>
+<text x="1040.0" y="388.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">46 m</text>
+<text x="30.0" y="437.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="426.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="437.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">a ring of the 64-ring scan</text>
+<rect x="293.0" y="426.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="314.0" y="437.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">a ring of the 16-ring scan</text>
+<text x="30.0" y="466.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">A crossing is the median distance of a ring&#x27;s points with |y| &lt; 1 m. One scan; a real 16-beam sensor also has another field of view.</text>
+</svg>
