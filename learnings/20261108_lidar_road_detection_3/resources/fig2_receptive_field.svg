@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="692" viewBox="0 0 1100 692">
+<defs></defs>
+<rect width="1100" height="692" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Seven layers grow a view larger than the input</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">LiDAR Road Detection  ·  part 3  ·  receptive field of the context module, in cells of its input</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">context input 100 x 200 (width x height)  ·  last layer 129 x 255</text>
+<rect x="20.0" y="116.0" width="1060.0" height="470.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
+<text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="147.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">How wide and how tall is the view after each layer?</text>
+<text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">After layer 7: 1.29 times the input width, 1.27 times its height.</text>
+<text x="180.0" y="213.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">layer 1  width</text>
+<rect x="200.0" y="200.0" width="7.8" height="16.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="215.8" y="213.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">3</text>
+<text x="180.0" y="233.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">height</text>
+<rect x="200.0" y="220.0" width="7.8" height="16.0" rx="3" fill="#7c3aed" fill-opacity="1.0" stroke="none"/>
+<text x="215.8" y="233.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">3</text>
+<text x="180.0" y="263.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">layer 2  width</text>
+<rect x="200.0" y="250.0" width="13.0" height="16.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="221.0" y="263.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">5</text>
+<text x="180.0" y="283.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">height</text>
+<rect x="200.0" y="270.0" width="18.2" height="16.0" rx="3" fill="#7c3aed" fill-opacity="1.0" stroke="none"/>
+<text x="226.2" y="283.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">7</text>
+<text x="180.0" y="313.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">layer 3  width</text>
+<rect x="200.0" y="300.0" width="23.4" height="16.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="231.4" y="313.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">9</text>
+<text x="180.0" y="333.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">height</text>
+<rect x="200.0" y="320.0" width="39.0" height="16.0" rx="3" fill="#7c3aed" fill-opacity="1.0" stroke="none"/>
+<text x="247.0" y="333.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">15</text>
+<text x="180.0" y="363.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">layer 4  width</text>
+<rect x="200.0" y="350.0" width="44.2" height="16.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="252.2" y="363.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">17</text>
+<text x="180.0" y="383.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">height</text>
+<rect x="200.0" y="370.0" width="80.6" height="16.0" rx="3" fill="#7c3aed" fill-opacity="1.0" stroke="none"/>
+<text x="288.6" y="383.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">31</text>
+<text x="180.0" y="413.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">layer 5  width</text>
+<rect x="200.0" y="400.0" width="85.8" height="16.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="293.8" y="413.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">33</text>
+<text x="180.0" y="433.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">height</text>
+<rect x="200.0" y="420.0" width="163.8" height="16.0" rx="3" fill="#7c3aed" fill-opacity="1.0" stroke="none"/>
+<text x="371.8" y="433.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">63</text>
+<text x="180.0" y="463.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">layer 6  width</text>
+<rect x="200.0" y="450.0" width="169.0" height="16.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="377.0" y="463.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">65</text>
+<text x="180.0" y="483.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">height</text>
+<rect x="200.0" y="470.0" width="330.2" height="16.0" rx="3" fill="#7c3aed" fill-opacity="1.0" stroke="none"/>
+<text x="538.2" y="483.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">127</text>
+<text x="180.0" y="513.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">layer 7  width</text>
+<rect x="200.0" y="500.0" width="335.4" height="16.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="543.4" y="513.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">129</text>
+<text x="180.0" y="533.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">height</text>
+<rect x="200.0" y="520.0" width="663.0" height="16.0" rx="3" fill="#7c3aed" fill-opacity="1.0" stroke="none"/>
+<text x="871.0" y="533.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">255</text>
+<line x1="460.0" y1="186.0" x2="460.0" y2="542.0" stroke="#d97706" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="460.0" y="180.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#d97706" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">input width 100</text>
+<line x1="720.0" y1="186.0" x2="720.0" y2="542.0" stroke="#7c3aed" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="720.0" y="180.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#7c3aed" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">input height 200</text>
+<text x="30.0" y="617.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="606.0" width="14.0" height="14.0" rx="3" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.4"/>
+<text x="118.3" y="617.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">width (across the road)</text>
+<rect x="277.9" y="606.0" width="14.0" height="14.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="298.9" y="617.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">height (distance ahead)</text>
+<text x="30.0" y="646.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Dashed lines: the size of the context input, after one 2 x 2 pooling of the 200 x 400 grid.</text>
+<text x="30.0" y="664.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">The field is centred on its output: an output at the far edge reaches 128 of the 200 rows.</text>
+</svg>
