@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="504" viewBox="0 0 1100 504">
+<defs></defs>
+<rect width="1100" height="504" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Pseudo points help most where the rings are far apart</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">LiDAR Road Detection  ·  part 2  ·  road cells per 10 m band</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">each band is 100 rows x 200 columns = 20000 cells</text>
+<rect x="20.0" y="116.0" width="1060.0" height="300.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="142.0" r="13" fill="#111827"/>
+<text x="46.0" y="146.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="147.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">How many road cells does each band get?</text>
+<text x="68.0" y="166.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Near the car, 4.3 times more road cells; at 36-46 m, 25.7 times more.</text>
+<text x="290.0" y="203.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">6-16 m, points alone</text>
+<rect x="300.0" y="190.0" width="117.0" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="425.0" y="203.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">2089</text>
+<text x="290.0" y="229.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">6-16 m, with pseudo</text>
+<rect x="300.0" y="216.0" width="506.4" height="18.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="814.4" y="229.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">9043</text>
+<text x="290.0" y="255.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">16-26 m, points alone</text>
+<rect x="300.0" y="242.0" width="41.6" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="349.6" y="255.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">743</text>
+<text x="290.0" y="281.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">16-26 m, with pseudo</text>
+<rect x="300.0" y="268.0" width="493.9" height="18.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="801.9" y="281.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">8819</text>
+<text x="290.0" y="307.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">26-36 m, points alone</text>
+<rect x="300.0" y="294.0" width="19.3" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="327.3" y="307.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">344</text>
+<text x="290.0" y="333.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">26-36 m, with pseudo</text>
+<rect x="300.0" y="320.0" width="384.6" height="18.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="692.6" y="333.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">6868</text>
+<text x="290.0" y="359.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">36-46 m, points alone</text>
+<rect x="300.0" y="346.0" width="8.0" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="316.0" y="359.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">143</text>
+<text x="290.0" y="385.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">36-46 m, with pseudo</text>
+<rect x="300.0" y="372.0" width="205.6" height="18.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="513.6" y="385.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">3671</text>
+<text x="30.0" y="447.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="436.0" width="14.0" height="14.0" rx="3" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="118.3" y="447.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">road cells from points alone</text>
+<rect x="304.2" y="436.0" width="14.0" height="14.0" rx="3" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.4"/>
+<text x="325.2" y="447.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">road cells with pseudo points</text>
+<text x="30.0" y="476.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">One KITTI scan. Pseudo points are kept only when they also land on the road label.</text>
+</svg>
