@@ -51,7 +51,7 @@ for k, s in enumerate(
     d.text(tx + 230, gy - 6 + 22 * k, k1.strip(), 12.5, INK, mono=True)
 y2 = y1 + 235
 rows = [["Measure", "YOLO mask", "refined", "change"]]
-for k, name, better_low in [
+for key, name, better_low in [
     ("bf1", "boundary F at 1 px", False),
     ("bf2", "boundary F at 2 px", False),
     ("absd", "mean boundary error, px", True),
@@ -59,7 +59,7 @@ for k, name, better_low in [
     ("area", "area / label area", None),
     ("iou", "mean IoU", False),
 ]:
-    rows.append([name, f"{bd[k]:.3f}", f"{rf[k]:.3f}", f"{rf[k] - bd[k]:+.3f}"])
+    rows.append([name, f"{bd[key]:.3f}", f"{rf[key]:.3f}", f"{rf[key] - bd[key]:+.3f}"])
 h2 = 100 + 26 * len(rows)
 d.panel(
     y2,
