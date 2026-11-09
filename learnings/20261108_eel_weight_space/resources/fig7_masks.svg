@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="743" viewBox="0 0 1100 743">
+<defs></defs>
+<rect width="1100" height="743" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">An eel is less than two mask cells wide</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight-Space Programming  ·  mask boundaries at full frame resolution, 2319 held-out eels</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">mask grid cell = 5.0 frame px  ·  eel width ~ 9 px = 1.8 cells</text>
+<rect x="20.0" y="120.0" width="1060.0" height="215.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="146.0" r="13" fill="#111827"/>
+<text x="46.0" y="150.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="151.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Why can&#x27;t the mask place the edge to one pixel?</text>
+<text x="68.0" y="170.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">The mask is drawn on a grid at 1/4 of the input. One pixel of error on a 9 px eel costs 20% IoU.</text>
+<rect x="90.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="104.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="118.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="132.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="146.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="160.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="174.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="188.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="202.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="216.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="230.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#eff6ff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="244.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#eff6ff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="258.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#eff6ff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="272.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#eff6ff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="286.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#eff6ff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="300.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#eff6ff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="314.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#eff6ff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="328.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#eff6ff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="342.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#eff6ff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="356.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="370.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="384.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="398.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="412.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="426.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="440.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="454.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="468.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="482.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<rect x="496.0" y="220.0" width="14.0" height="24.0" rx="0" fill="#ffffff" fill-opacity="1.0" stroke="#9ca3af" stroke-width="0.8"/>
+<line x1="90.0" y1="206.0" x2="90.0" y2="258.0" stroke="#db2777" stroke-width="1.6"/>
+<line x1="160.0" y1="206.0" x2="160.0" y2="258.0" stroke="#db2777" stroke-width="1.6"/>
+<line x1="230.0" y1="206.0" x2="230.0" y2="258.0" stroke="#db2777" stroke-width="1.6"/>
+<line x1="300.0" y1="206.0" x2="300.0" y2="258.0" stroke="#db2777" stroke-width="1.6"/>
+<line x1="370.0" y1="206.0" x2="370.0" y2="258.0" stroke="#db2777" stroke-width="1.6"/>
+<line x1="440.0" y1="206.0" x2="440.0" y2="258.0" stroke="#db2777" stroke-width="1.6"/>
+<line x1="510.0" y1="206.0" x2="510.0" y2="258.0" stroke="#db2777" stroke-width="1.6"/>
+<text x="90.0" y="198.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">frame pixels (blue = eel, 9 px)  ·  red lines = mask grid cells, 5 px</text>
+<text x="90.0" y="282.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">shift 1 px: IoU 0.80    shift 2 px: IoU 0.64</text>
+<text x="600.0" y="214.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">mean boundary error</text>
+<text x="830.0" y="214.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.76 px</text>
+<text x="600.0" y="236.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">signed error</text>
+<text x="830.0" y="236.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">+0.93 px (too fat)</text>
+<text x="600.0" y="258.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">area / label area</text>
+<text x="830.0" y="258.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.14</text>
+<text x="600.0" y="280.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">missed pixels outside box</text>
+<text x="830.0" y="280.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">23%</text>
+<rect x="20.0" y="355.0" width="1060.0" height="282.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="381.0" r="13" fill="#111827"/>
+<text x="46.0" y="385.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="386.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">What does a small learned refiner change?</text>
+<text x="68.0" y="405.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">It fixes the fat bias and the edge pixels. It does not change IoU. 37,921 parameters.</text>
+<text x="70.0" y="445.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Measure</text>
+<text x="420.0" y="445.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">YOLO mask</text>
+<text x="620.0" y="445.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">refined</text>
+<text x="820.0" y="445.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">change</text>
+<line x1="70.0" y1="453.0" x2="1040.0" y2="453.0" stroke="#9ca3af" stroke-width="1"/>
+<text x="70.0" y="471.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">boundary F at 1 px</text>
+<text x="420.0" y="471.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.535</text>
+<text x="620.0" y="471.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.572</text>
+<text x="820.0" y="471.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">+0.037</text>
+<text x="70.0" y="497.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">boundary F at 2 px</text>
+<text x="420.0" y="497.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.743</text>
+<text x="620.0" y="497.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.770</text>
+<text x="820.0" y="497.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">+0.027</text>
+<text x="70.0" y="523.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">mean boundary error, px</text>
+<text x="420.0" y="523.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.760</text>
+<text x="620.0" y="523.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.570</text>
+<text x="820.0" y="523.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">-0.190</text>
+<text x="70.0" y="549.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">signed boundary error, px</text>
+<text x="420.0" y="549.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.930</text>
+<text x="620.0" y="549.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.190</text>
+<text x="820.0" y="549.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">-0.740</text>
+<text x="70.0" y="575.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">area / label area</text>
+<text x="420.0" y="575.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.140</text>
+<text x="620.0" y="575.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.990</text>
+<text x="820.0" y="575.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#059669" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">-0.150</text>
+<text x="70.0" y="601.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">mean IoU</text>
+<text x="420.0" y="601.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.733</text>
+<text x="620.0" y="601.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.733</text>
+<text x="820.0" y="601.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">+0.000</text>
+<text x="30.0" y="668.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="657.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="668.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">eel pixels</text>
+<rect x="196.9" y="657.0" width="14.0" height="14.0" rx="3" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.4"/>
+<text x="217.9" y="668.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">mask grid</text>
+<rect x="299.5" y="657.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="320.5" y="668.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">refiner gain</text>
+<text x="30.0" y="697.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Refiner inputs: the infrared crop, the upsampled YOLO logits and the box. It predicts a correction to the logits.</text>
+<text x="30.0" y="715.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Trained on 2321 eels of the first half for 12 epochs; scored on the second half. About 60 ms per eel on one CPU thread.</text>
+</svg>

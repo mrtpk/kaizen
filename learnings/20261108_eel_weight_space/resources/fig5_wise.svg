@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="674" viewBox="0 0 1100 674">
+<defs></defs>
+<rect width="1100" height="674" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">A quarter of the way to the fine-tune is the best point</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight-Space Programming  ·  theta = theta_base + alpha (theta_ft - theta_base), held-out half</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">fine-tune: 6 epochs on the first half only  ·  every row with peak suppression</text>
+<rect x="20.0" y="120.0" width="1060.0" height="262.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="146.0" r="13" fill="#111827"/>
+<text x="46.0" y="150.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="151.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Which alpha scores best on the second half?</text>
+<text x="68.0" y="170.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">alpha 0.15-0.35. The raw fine-tune raises recall but loses box accuracy.</text>
+<text x="200.0" y="203.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">alpha 0 (base)</text>
+<rect x="210.0" y="190.0" width="264.8" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="482.8" y="203.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3881   R 0.936   box mAP50-95 0.772</text>
+<text x="200.0" y="229.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">alpha 0.15</text>
+<rect x="210.0" y="216.0" width="288.4" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="506.4" y="229.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3924   R 0.943   box mAP50-95 0.773</text>
+<text x="200.0" y="255.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">alpha 0.25</text>
+<rect x="210.0" y="242.0" width="290.6" height="18.0" rx="3" fill="#059669" fill-opacity="1.0" stroke="none"/>
+<text x="508.6" y="255.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3928   R 0.946   box mAP50-95 0.773</text>
+<text x="200.0" y="281.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">alpha 0.35</text>
+<rect x="210.0" y="268.0" width="283.1" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="501.1" y="281.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3915   R 0.949   box mAP50-95 0.773</text>
+<text x="200.0" y="307.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">alpha 0.5</text>
+<rect x="210.0" y="294.0" width="263.3" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="481.3" y="307.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3879   R 0.953   box mAP50-95 0.770</text>
+<text x="200.0" y="333.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">alpha 0.75</text>
+<rect x="210.0" y="320.0" width="216.1" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="434.1" y="333.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3793   R 0.952   box mAP50-95 0.764</text>
+<text x="200.0" y="359.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">alpha 1 (fine-tuned)</text>
+<rect x="210.0" y="346.0" width="74.1" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="292.1" y="359.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3535   R 0.954   box mAP50-95 0.748</text>
+<rect x="20.0" y="402.0" width="1060.0" height="184.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="428.0" r="13" fill="#111827"/>
+<text x="46.0" y="432.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="433.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Which part of the fine-tune does the damage?</text>
+<text x="68.0" y="452.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Mostly the backbone. But a head-only fine-tune loses box accuracy too.</text>
+<text x="200.0" y="485.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">backbone only</text>
+<rect x="210.0" y="472.0" width="101.9" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="319.9" y="485.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3585   R 0.954   box mAP50-95 0.750</text>
+<text x="200.0" y="511.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">box branches only</text>
+<rect x="210.0" y="498.0" width="212.3" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="430.3" y="511.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3786   R 0.935   box mAP50-95 0.765</text>
+<text x="200.0" y="537.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">class branches only</text>
+<rect x="210.0" y="524.0" width="239.7" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="457.7" y="537.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3836   R 0.938   box mAP50-95 0.768</text>
+<text x="200.0" y="563.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">head-only fine-tune</text>
+<rect x="210.0" y="550.0" width="67.1" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="285.1" y="563.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.3522   R 0.946   box mAP50-95 0.746</text>
+<text x="30.0" y="617.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="606.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="118.3" y="617.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">best</text>
+<rect x="169.8" y="606.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="190.8" y="617.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">at or above the base</text>
+<rect x="332.9" y="606.0" width="14.0" height="14.0" rx="3" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.4"/>
+<text x="353.9" y="617.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">below the base</text>
+<text x="30.0" y="646.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Bars start at 1.34. Fitness = box and mask, 0.1 x mAP50 + 0.9 x mAP50-95. alpha was chosen on the same half it is scored on.</text>
+</svg>
