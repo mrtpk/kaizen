@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="746" viewBox="0 0 1100 746">
+<defs></defs>
+<rect width="1100" height="746" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Two ways to write one decision into the last MLP</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight-Space Programming  ·  Qwen3.5-0.8B, layer 23 MLP (hidden 1024, width 3584, SwiGLU)</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">v1 E4b: 3,670,016 values   ·   v2 v7: 6,144 values   ·   ratio 597</text>
+<rect x="20.0" y="120.0" width="1060.0" height="230.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="146.0" r="13" fill="#111827"/>
+<text x="46.0" y="150.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="151.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">v1 E4b: what does a rank-1 edit change?</text>
+<text x="68.0" y="170.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Every value of the down projection. It acts at every position, with a strength set by the read.</text>
+<rect x="60.0" y="195.0" width="420.0" height="120.0" rx="4" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="270.0" y="249.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#111827" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">down_proj  W  (1024 x 3584)</text>
+<text x="270.0" y="269.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">W&#x27; = W - k u rho^T,  k = 5</text>
+<rect x="540.0" y="195.0" width="500.0" height="120.0" rx="8" fill="#ffffff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.5"/>
+<text x="552.0" y="215.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#2563eb" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">What changes</text>
+<text x="552.0" y="233.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">all 3,670,016 values (rank 1)</text>
+<text x="552.0" y="248.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">3,533,106 differ after bf16 rounding</text>
+<text x="552.0" y="263.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">relative norm of the change 0.3068</text>
+<text x="552.0" y="278.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">fit: BFCL prompts and activations</text>
+<rect x="20.0" y="370.0" width="1060.0" height="270.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="396.0" r="13" fill="#111827"/>
+<text x="46.0" y="400.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="401.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">v2 v7: what does a programmed neuron change?</text>
+<text x="68.0" y="420.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Three vectors per neuron. The gate keeps it silent everywhere except at decision positions.</text>
+<rect x="60.0" y="450.0" width="420.0" height="150.0" rx="4" fill="#ffffff" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="74.0" y="482.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">gate_proj rows</text>
+<rect x="260.0" y="468.0" width="90.0" height="20.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="305.0" y="482.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">1488</text>
+<rect x="370.0" y="468.0" width="90.0" height="20.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="415.0" y="482.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">1152</text>
+<text x="74.0" y="526.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">up_proj rows</text>
+<rect x="260.0" y="512.0" width="90.0" height="20.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="305.0" y="526.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">1488</text>
+<rect x="370.0" y="512.0" width="90.0" height="20.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="415.0" y="526.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">1152</text>
+<text x="74.0" y="570.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">down_proj columns</text>
+<rect x="260.0" y="556.0" width="90.0" height="20.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="305.0" y="570.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">1488</text>
+<rect x="370.0" y="556.0" width="90.0" height="20.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="415.0" y="570.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">1152</text>
+<rect x="540.0" y="450.0" width="500.0" height="150.0" rx="8" fill="#ffffff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="552.0" y="470.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#7c3aed" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">What changes</text>
+<text x="552.0" y="488.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">neuron 1488: non-thinking decisions</text>
+<text x="552.0" y="503.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">neuron 1152: thinking decisions</text>
+<text x="552.0" y="518.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">3 x 1024 = 3,072 values per neuron, 6,144 in total</text>
+<text x="552.0" y="533.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">out = silu(g . x) (a . x) d,  a = r - theta q / c,  d = K u</text>
+<text x="552.0" y="548.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">fit: practice data only (no BFCL rows)</text>
+<text x="30.0" y="671.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="660.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="671.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">rank-1 change</text>
+<rect x="225.6" y="660.0" width="14.0" height="14.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="246.6" y="671.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">read side: gate and up rows</text>
+<rect x="428.8" y="660.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="449.8" y="671.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">write side: down column</text>
+<text x="30.0" y="700.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">u raises the &lt;tool_call&gt; logit and moves the common tokens least; rho reads the 3584 MLP activations, r reads the MLP input.</text>
+<text x="30.0" y="718.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Layer 23 is the last layer: no later layer reads the MLP output. Only the final norm sits before the output layer.</text>
+</svg>

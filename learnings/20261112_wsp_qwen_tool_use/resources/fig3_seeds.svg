@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="718" viewBox="0 0 1100 718">
+<defs></defs>
+<rect width="1100" height="718" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Only v7 clears every base seed in thinking mode</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight-Space Programming  ·  BFCL-V4 overall, one dot per seed, web search not run</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">rule: every edit seed above every base seed  ·  2 vs 2 passes by chance 1 in 6, 3 vs 3 1 in 20</text>
+<rect x="20.0" y="120.0" width="1060.0" height="245.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="146.0" r="13" fill="#111827"/>
+<text x="46.0" y="150.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="151.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Thinking mode: which edit passes the rule?</text>
+<text x="68.0" y="170.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">v7, with 3 seeds against 3. E4b ties the highest base seed; v4 is below it.</text>
+<text x="206.0" y="215.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">base</text>
+<line x1="220.0" y1="210.0" x2="980.0" y2="210.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="230.1" cy="210.0" r="7" fill="#9ca3af"/>
+<circle cx="442.9" cy="210.0" r="7" fill="#9ca3af"/>
+<circle cx="622.8" cy="210.0" r="7" fill="#9ca3af"/>
+<text x="996.0" y="215.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">20.84  </text>
+<text x="206.0" y="249.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">E4b (v1)</text>
+<line x1="220.0" y1="244.0" x2="980.0" y2="244.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="574.7" cy="244.0" r="7" fill="#2563eb"/>
+<circle cx="622.8" cy="244.0" r="7" fill="#2563eb"/>
+<text x="996.0" y="249.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">21.49  fail</text>
+<text x="206.0" y="283.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">v4 (v2)</text>
+<line x1="220.0" y1="278.0" x2="980.0" y2="278.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="455.6" cy="278.0" r="7" fill="#7c3aed"/>
+<circle cx="498.7" cy="278.0" r="7" fill="#7c3aed"/>
+<text x="996.0" y="283.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">21.02  fail</text>
+<text x="206.0" y="317.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">v7 (v2)</text>
+<line x1="220.0" y1="312.0" x2="980.0" y2="312.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="891.3" cy="312.0" r="7" fill="#059669"/>
+<circle cx="833.1" cy="312.0" r="7" fill="#059669"/>
+<circle cx="868.5" cy="312.0" r="7" fill="#059669"/>
+<text x="996.0" y="317.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">22.54  pass</text>
+<line x1="622.8" y1="194.0" x2="622.8" y2="326.0" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="628.8" y="340.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">highest base seed 21.59</text>
+<text x="220.0" y="362.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">20</text>
+<text x="473.3" y="362.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">21</text>
+<text x="726.7" y="362.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">22</text>
+<text x="980.0" y="362.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">23</text>
+<rect x="20.0" y="385.0" width="1060.0" height="245.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="411.0" r="13" fill="#111827"/>
+<text x="46.0" y="415.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="416.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Non-thinking mode: which edit passes the rule?</text>
+<text x="68.0" y="435.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">All three, with 2 seeds against 2 (provisional). E4b is highest.</text>
+<text x="206.0" y="480.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">base</text>
+<line x1="220.0" y1="475.0" x2="980.0" y2="475.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="339.7" cy="475.0" r="7" fill="#9ca3af"/>
+<circle cx="360.6" cy="475.0" r="7" fill="#9ca3af"/>
+<text x="996.0" y="480.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">17.68  </text>
+<text x="206.0" y="514.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">E4b (v1)</text>
+<line x1="220.0" y1="509.0" x2="980.0" y2="509.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="793.8" cy="509.0" r="7" fill="#2563eb"/>
+<circle cx="896.4" cy="509.0" r="7" fill="#2563eb"/>
+<text x="996.0" y="514.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">20.29  pass</text>
+<text x="206.0" y="548.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">v4 (v2)</text>
+<line x1="220.0" y1="543.0" x2="980.0" y2="543.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="660.8" cy="543.0" r="7" fill="#7c3aed"/>
+<circle cx="848.9" cy="543.0" r="7" fill="#7c3aed"/>
+<text x="996.0" y="548.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">19.81  pass</text>
+<text x="206.0" y="582.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">v7 (v2)</text>
+<line x1="220.0" y1="577.0" x2="980.0" y2="577.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="725.4" cy="577.0" r="7" fill="#059669"/>
+<circle cx="681.7" cy="577.0" r="7" fill="#059669"/>
+<text x="996.0" y="582.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">19.55  pass</text>
+<line x1="360.6" y1="459.0" x2="360.6" y2="591.0" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="366.6" y="605.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">highest base seed 17.74</text>
+<text x="220.0" y="627.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">17</text>
+<text x="410.0" y="627.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">18</text>
+<text x="600.0" y="627.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">19</text>
+<text x="790.0" y="627.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">20</text>
+<text x="980.0" y="627.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">21</text>
+<text x="30.0" y="661.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="650.0" width="14.0" height="14.0" rx="3" fill="#e5e7eb" fill-opacity="1.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="118.3" y="661.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">base</text>
+<rect x="169.8" y="650.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="190.8" y="661.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">v1 rank-1 edit</text>
+<rect x="300.2" y="650.0" width="14.0" height="14.0" rx="3" fill="#f5f3ff" fill-opacity="1.0" stroke="#7c3aed" stroke-width="1.4"/>
+<text x="321.2" y="661.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">v2 one neuron</text>
+<rect x="425.7" y="650.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="446.7" y="661.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">v2 two neurons</text>
+<text x="30.0" y="690.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Numbers after each row: the mean of the seeds and the result of the rule. Dashed line: the highest base seed.</text>
+</svg>

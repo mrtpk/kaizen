@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="640" viewBox="0 0 1100 640">
+<defs></defs>
+<rect width="1100" height="640" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">A perfect call decision cannot reach 60</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight-Space Programming  ·  Qwen3.5-0.8B on BFCL-V4, thinking mode, base model, mean of 3 seeds</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">overall = 0.1 non-live + 0.1 live + 0.1 irrelevance + 0.3 multi-turn + 0.4 agentic (memory, web search)</text>
+<rect x="20.0" y="120.0" width="1060.0" height="236.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="146.0" r="13" fill="#111827"/>
+<text x="46.0" y="150.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="151.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Where do the base model&#x27;s points come from?</text>
+<text x="68.0" y="170.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">16.40 of 20.84 points come from the three single-turn parts.</text>
+<text x="310.0" y="203.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">non-live AST  (max 10)</text>
+<rect x="320.0" y="190.0" width="95.8" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="423.8" y="203.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">5.75</text>
+<text x="310.0" y="229.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">live  (max 10)</text>
+<rect x="320.0" y="216.0" width="91.6" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="419.6" y="229.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">5.50</text>
+<text x="310.0" y="255.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">irrelevance  (max 10)</text>
+<rect x="320.0" y="242.0" width="85.9" height="18.0" rx="3" fill="#2563eb" fill-opacity="1.0" stroke="none"/>
+<text x="413.9" y="255.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">5.15</text>
+<text x="310.0" y="281.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">multi-turn  (max 30)</text>
+<rect x="320.0" y="268.0" width="27.7" height="18.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="355.7" y="281.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">1.66</text>
+<text x="310.0" y="307.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">memory  (max 20)</text>
+<rect x="320.0" y="294.0" width="46.3" height="18.0" rx="3" fill="#d97706" fill-opacity="1.0" stroke="none"/>
+<text x="374.3" y="307.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">2.78</text>
+<text x="310.0" y="333.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">web search  (max 20, not run)</text>
+<rect x="320.0" y="320.0" width="2.0" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="330.0" y="333.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0</text>
+<line x1="486.7" y1="190.0" x2="486.7" y2="208.0" stroke="#d1d5db" stroke-width="2"/>
+<line x1="486.7" y1="216.0" x2="486.7" y2="234.0" stroke="#d1d5db" stroke-width="2"/>
+<line x1="486.7" y1="242.0" x2="486.7" y2="260.0" stroke="#d1d5db" stroke-width="2"/>
+<line x1="820.0" y1="268.0" x2="820.0" y2="286.0" stroke="#d1d5db" stroke-width="2"/>
+<line x1="653.3" y1="294.0" x2="653.3" y2="312.0" stroke="#d1d5db" stroke-width="2"/>
+<line x1="653.3" y1="320.0" x2="653.3" y2="338.0" stroke="#d1d5db" stroke-width="2"/>
+<rect x="20.0" y="376.0" width="1060.0" height="158.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="402.0" r="13" fill="#111827"/>
+<text x="46.0" y="406.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="407.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">What does a perfect single-turn edit give?</text>
+<text x="68.0" y="426.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Non-live, live and irrelevance at 100: 34.44. The goal needs +39.16; single-turn gives +13.60.</text>
+<text x="310.0" y="459.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">base</text>
+<rect x="320.0" y="446.0" width="208.4" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="536.4" y="459.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">20.84</text>
+<text x="310.0" y="485.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">perfect single-turn</text>
+<rect x="320.0" y="472.0" width="344.4" height="18.0" rx="3" fill="#059669" fill-opacity="1.0" stroke="none"/>
+<text x="672.4" y="485.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">34.44</text>
+<text x="310.0" y="511.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">goal</text>
+<rect x="320.0" y="498.0" width="600.0" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="928.0" y="511.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">60</text>
+<text x="30.0" y="565.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="554.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="565.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">single-turn parts</text>
+<rect x="244.2" y="554.0" width="14.0" height="14.0" rx="3" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.4"/>
+<text x="265.2" y="565.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">multi-step parts</text>
+<rect x="388.5" y="554.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="409.5" y="565.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">ceiling</text>
+<rect x="471.7" y="554.0" width="14.0" height="14.0" rx="3" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.4"/>
+<text x="492.7" y="565.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">goal</text>
+<text x="30.0" y="594.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Gray tick = the most that a part can give. Agentic = mean of memory and web search; web search was not run and counts as 0.</text>
+<text x="30.0" y="612.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">The ceiling assumes that a decision edit could make every single-turn entry right. No real edit came close.</text>
+</svg>

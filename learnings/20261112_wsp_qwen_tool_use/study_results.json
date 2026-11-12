@@ -1,0 +1,491 @@
+{
+ "models": {
+  "base": {
+   "think": [
+    {
+     "overall": 20.04,
+     "non_live_ast": 57.42,
+     "live": 55.37,
+     "multi_turn": 5.38,
+     "memory": 10.32,
+     "relevance": 75.0,
+     "irrelevance": 50.88
+    },
+    {
+     "overall": 20.88,
+     "non_live_ast": 56.31,
+     "live": 55.59,
+     "multi_turn": 5.5,
+     "memory": 14.62,
+     "relevance": 75.0,
+     "irrelevance": 51.2
+    },
+    {
+     "overall": 21.59,
+     "non_live_ast": 58.77,
+     "live": 53.89,
+     "multi_turn": 5.75,
+     "memory": 16.77,
+     "relevance": 81.25,
+     "irrelevance": 52.49
+    }
+   ],
+   "nothink": [
+    {
+     "overall": 17.63,
+     "non_live_ast": 32.65,
+     "live": 44.19,
+     "multi_turn": 3.25,
+     "memory": 5.81,
+     "relevance": 75.0,
+     "irrelevance": 78.11
+    },
+    {
+     "overall": 17.74,
+     "non_live_ast": 35.31,
+     "live": 43.6,
+     "multi_turn": 3.62,
+     "memory": 5.16,
+     "relevance": 68.75,
+     "irrelevance": 77.33
+    }
+   ]
+  },
+  "rikiyat": {
+   "think": [
+    {
+     "overall": 19.04,
+     "non_live_ast": 42.67,
+     "live": 47.67,
+     "multi_turn": 5.38,
+     "memory": 12.04,
+     "relevance": 68.75,
+     "irrelevance": 59.83
+    }
+   ],
+   "nothink": [
+    {
+     "overall": 15.66,
+     "non_live_ast": 24.31,
+     "live": 36.34,
+     "multi_turn": 1.88,
+     "memory": 4.73,
+     "relevance": 50.0,
+     "irrelevance": 80.9
+    }
+   ]
+  },
+  "e1b": {
+   "think": [
+    {
+     "overall": 22.91,
+     "non_live_ast": 57.35,
+     "live": 51.74,
+     "multi_turn": 6.75,
+     "memory": 14.41,
+     "relevance": 75.0,
+     "irrelevance": 70.98
+    },
+    {
+     "overall": 22.7,
+     "non_live_ast": 57.08,
+     "live": 51.74,
+     "multi_turn": 7.62,
+     "memory": 11.18,
+     "relevance": 87.5,
+     "irrelevance": 72.91
+    }
+   ],
+   "nothink": [
+    {
+     "overall": 16.73,
+     "non_live_ast": 27.65,
+     "live": 29.76,
+     "multi_turn": 2.12,
+     "memory": 5.16,
+     "relevance": 43.75,
+     "irrelevance": 93.18
+    }
+   ]
+  },
+  "e4b": {
+   "think": [
+    {
+     "overall": 21.4,
+     "non_live_ast": 59.23,
+     "live": 52.85,
+     "multi_turn": 5.63,
+     "memory": 8.6,
+     "relevance": 87.5,
+     "irrelevance": 67.84
+    },
+    {
+     "overall": 21.59,
+     "non_live_ast": 58.13,
+     "live": 53.22,
+     "multi_turn": 5.12,
+     "memory": 8.82,
+     "relevance": 68.75,
+     "irrelevance": 71.55
+    }
+   ],
+   "nothink": [
+    {
+     "overall": 20.02,
+     "non_live_ast": 48.58,
+     "live": 45.82,
+     "multi_turn": 3.25,
+     "memory": 4.73,
+     "relevance": 56.25,
+     "irrelevance": 86.59
+    },
+    {
+     "overall": 20.56,
+     "non_live_ast": 50.52,
+     "live": 47.08,
+     "multi_turn": 3.38,
+     "memory": 5.59,
+     "relevance": 50.0,
+     "irrelevance": 86.72
+    }
+   ]
+  },
+  "e5c": {
+   "think": [
+    {
+     "overall": 21.14,
+     "non_live_ast": 54.73,
+     "live": 52.11,
+     "multi_turn": 5.12,
+     "memory": 8.17,
+     "relevance": 68.75,
+     "irrelevance": 72.8
+    }
+   ],
+   "nothink": [
+    {
+     "overall": 19.72,
+     "non_live_ast": 45.15,
+     "live": 46.71,
+     "multi_turn": 2.63,
+     "memory": 5.38,
+     "relevance": 62.5,
+     "irrelevance": 86.7
+    }
+   ]
+  },
+  "run1": {
+   "think": [
+    {
+     "overall": 21.63,
+     "non_live_ast": 50.48,
+     "live": 48.56,
+     "multi_turn": 7.0,
+     "memory": 9.68,
+     "relevance": 75.0,
+     "irrelevance": 76.87
+    },
+    {
+     "overall": 21.01,
+     "non_live_ast": 48.5,
+     "live": 49.37,
+     "multi_turn": 4.88,
+     "memory": 11.18,
+     "relevance": 87.5,
+     "irrelevance": 75.22
+    }
+   ],
+   "nothink": [
+    {
+     "overall": 17.78,
+     "non_live_ast": 28.46,
+     "live": 32.79,
+     "multi_turn": 4.0,
+     "memory": 7.96,
+     "relevance": 62.5,
+     "irrelevance": 88.59
+    },
+    {
+     "overall": 17.7,
+     "non_live_ast": 25.27,
+     "live": 35.68,
+     "multi_turn": 3.0,
+     "memory": 9.46,
+     "relevance": 68.75,
+     "irrelevance": 88.13
+    }
+   ]
+  },
+  "v4": {
+   "think": [
+    {
+     "overall": 20.93,
+     "non_live_ast": 55.17,
+     "live": 53.89,
+     "multi_turn": 6.12,
+     "memory": 14.84,
+     "relevance": 81.25,
+     "irrelevance": 52.16
+    },
+    {
+     "overall": 21.1,
+     "non_live_ast": 54.81,
+     "live": 53.81,
+     "multi_turn": 6.75,
+     "memory": 15.48,
+     "relevance": 87.5,
+     "irrelevance": 51.18
+    }
+   ],
+   "nothink": [
+    {
+     "overall": 19.32,
+     "non_live_ast": 38.15,
+     "live": 44.04,
+     "multi_turn": 3.88,
+     "memory": 6.02,
+     "relevance": 56.25,
+     "irrelevance": 87.33
+    },
+    {
+     "overall": 20.31,
+     "non_live_ast": 40.02,
+     "live": 44.86,
+     "multi_turn": 4.88,
+     "memory": 8.82,
+     "relevance": 50.0,
+     "irrelevance": 85.99
+    }
+   ]
+  },
+  "v6": {
+   "think": [
+    {
+     "overall": 21.88,
+     "non_live_ast": 52.67,
+     "live": 53.66,
+     "multi_turn": 6.38,
+     "memory": 10.32,
+     "relevance": 75.0,
+     "irrelevance": 72.72
+    },
+    {
+     "overall": 22.21,
+     "non_live_ast": 53.54,
+     "live": 54.03,
+     "multi_turn": 6.0,
+     "memory": 12.47,
+     "relevance": 87.5,
+     "irrelevance": 71.53
+    }
+   ],
+   "nothink": [
+    {
+     "overall": 19.5,
+     "non_live_ast": 40.58,
+     "live": 44.78,
+     "multi_turn": 4.5,
+     "memory": 4.52,
+     "relevance": 43.75,
+     "irrelevance": 87.07
+    },
+    {
+     "overall": 19.65,
+     "non_live_ast": 38.75,
+     "live": 43.89,
+     "multi_turn": 4.5,
+     "memory": 6.45,
+     "relevance": 43.75,
+     "irrelevance": 87.41
+    }
+   ]
+  },
+  "v7": {
+   "think": [
+    {
+     "overall": 22.65,
+     "non_live_ast": 54.56,
+     "live": 54.63,
+     "multi_turn": 9.0,
+     "memory": 11.4,
+     "relevance": 75.0,
+     "irrelevance": 67.47
+    },
+    {
+     "overall": 22.42,
+     "non_live_ast": 57.0,
+     "live": 53.74,
+     "multi_turn": 6.75,
+     "memory": 13.12,
+     "relevance": 81.25,
+     "irrelevance": 66.98
+    },
+    {
+     "overall": 22.56,
+     "non_live_ast": 54.06,
+     "live": 54.11,
+     "multi_turn": 6.38,
+     "memory": 16.34,
+     "relevance": 81.25,
+     "irrelevance": 65.65
+    }
+   ],
+   "nothink": [
+    {
+     "overall": 19.66,
+     "non_live_ast": 40.38,
+     "live": 43.6,
+     "multi_turn": 4.38,
+     "memory": 6.45,
+     "relevance": 50.0,
+     "irrelevance": 86.59
+    },
+    {
+     "overall": 19.43,
+     "non_live_ast": 37.83,
+     "live": 44.86,
+     "multi_turn": 4.25,
+     "memory": 5.59,
+     "relevance": 37.5,
+     "irrelevance": 87.63
+    }
+   ]
+  },
+  "v8": {
+   "nothink": [
+    {
+     "overall": 19.6,
+     "non_live_ast": 46.9,
+     "live": 48.41,
+     "multi_turn": 2.88,
+     "memory": 6.24,
+     "relevance": 68.75,
+     "irrelevance": 79.62
+    },
+    {
+     "overall": 19.91,
+     "non_live_ast": 47.17,
+     "live": 47.59,
+     "multi_turn": 4.25,
+     "memory": 6.67,
+     "relevance": 68.75,
+     "irrelevance": 78.24
+    }
+   ]
+  },
+  "v9": {
+   "think": [
+    {
+     "overall": 20.95,
+     "non_live_ast": 59.52,
+     "live": 55.37,
+     "multi_turn": 6.0,
+     "memory": 12.69,
+     "relevance": 93.75,
+     "irrelevance": 51.19
+    },
+    {
+     "overall": 20.97,
+     "non_live_ast": 59.4,
+     "live": 55.81,
+     "multi_turn": 5.62,
+     "memory": 14.84,
+     "relevance": 87.5,
+     "irrelevance": 47.97
+    }
+   ]
+  },
+  "v10": {
+   "think": [
+    {
+     "overall": 22.26,
+     "non_live_ast": 52.25,
+     "live": 52.92,
+     "multi_turn": 5.5,
+     "memory": 13.98,
+     "relevance": 75.0,
+     "irrelevance": 72.93
+    },
+    {
+     "overall": 21.72,
+     "non_live_ast": 51.5,
+     "live": 52.92,
+     "multi_turn": 6.75,
+     "memory": 8.82,
+     "relevance": 81.25,
+     "irrelevance": 74.86
+    }
+   ]
+  }
+ },
+ "edits": {
+  "e1a": {
+   "model.language_model.layers.23.mlp.down_proj.weight": {
+    "shape": [
+     1024,
+     3584
+    ],
+    "changed_values": 3332547,
+    "relative_norm": 0.1218
+   }
+  },
+  "e1b": {
+   "model.language_model.layers.23.mlp.down_proj.weight": {
+    "shape": [
+     1024,
+     3584
+    ],
+    "changed_values": 3498451,
+    "relative_norm": 0.3045
+   }
+  },
+  "e3k5": {
+   "model.language_model.layers.23.mlp.down_proj.weight": {
+    "shape": [
+     1024,
+     3584
+    ],
+    "changed_values": 3611544,
+    "relative_norm": 0.7311
+   }
+  },
+  "e4b": {
+   "model.language_model.layers.23.mlp.down_proj.weight": {
+    "shape": [
+     1024,
+     3584
+    ],
+    "changed_values": 3533106,
+    "relative_norm": 0.3068
+   }
+  },
+  "e5c": {
+   "model.language_model.layers.23.mlp.down_proj.weight": {
+    "shape": [
+     1024,
+     3584
+    ],
+    "changed_values": 3535383,
+    "relative_norm": 0.3123
+   }
+  },
+  "wsp-rikiyat": {
+   "model.language_model.layers.15.mlp.down_proj.weight": {
+    "shape": [
+     1024,
+     3584
+    ],
+    "changed_values": 65260,
+    "relative_norm": 0.1064
+   },
+   "model.language_model.layers.19.mlp.down_proj.weight": {
+    "shape": [
+     1024,
+     3584
+    ],
+    "changed_values": 64928,
+    "relative_norm": 0.0811
+   }
+  }
+ }
+}
