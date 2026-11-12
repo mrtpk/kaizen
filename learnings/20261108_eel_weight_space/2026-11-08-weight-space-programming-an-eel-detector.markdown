@@ -12,7 +12,9 @@ The short answer: the weights explained the model well, but they could not fix i
 
 I ran this study with Claude Code as the agent that wrote and ran the experiments. I set the goals, asked the questions and checked the results. It ran on a CPU for about two days, mostly unattended.
 
-The model and the footage are not public, so the study code is not in this repo. The script next to this note runs each method on small synthetic arrays, and it prints the study's results from an export of the experiment logs. Every number in this note comes from that script.
+The model and the footage are not public. The study code, the logs and the report are in the [wsp-yolo-eel][repo] repository, without the checkpoint, the frames and the labels, so the study does not run from it as it is. The script next to this note runs each method on small synthetic arrays, and it prints the study's results from an export of the experiment logs. Every number in this note comes from that script.
+
+This note is the first experiment of a series. The [index][index] lists all of them and the lessons across them.
 
 ![Two panels. 1: part 1 read the class biases (worked: 21 of 22 classes dead, stride 32 dead), did exact surgery (worked: 22 classes to 1, every metric identical), and edited the stride-8 row to fix recall (did not work: 11 to 29 false positives per eel won). 2: part 2 used peak suppression (worked: duplicates 329 to 1), merged the two heads and interpolated weights (worked), and refined mask boundaries (partly: area 1.14x to 0.99x, IoU unchanged at 0.733).](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261108_eel_weight_space/resources/fig0_overview.png)
 *Figure: the map of this note. Green worked, orange worked partly, pink did not work.*
@@ -337,7 +339,7 @@ The limit is the one from part 1. The weights gave fast, correct guesses, but mo
 
 The second point is how the study was done. The MIT work used an LLM to edit an LLM. Here an LLM agent (Claude Code) did weight-space programming on a CNN almost fully autonomously: it read the weights, wrote and ran the edits and evaluations, and wrote the logs that this note uses. I set the goals, asked the questions and checked the results.
 
-More experiments to follow.
+More experiments follow. The [index][index] lists them.
 
 ## So, in short
 Reading the weights of this eel detector gave fast, correct guesses: 21 dead classes, a dead scale, and a misses problem that sits in the features, not in one row. Exact surgery on the weights was safe, and editing them to fix recall was not. What helped were three closed-form moves: a local-maximum rule that removes duplicate boxes, a widened head that averages the two heads' outputs exactly, and interpolation back from a fine-tune. Together they took held-out fitness from 1.3346 to 1.4004. The mask boundaries are limited by a grid that is too coarse for a 9 px eel, and the fix for that is retraining, not editing.
@@ -352,8 +354,11 @@ The full script is available [here][script].
 + [Objects as Points, CenterNet (Zhou et al.)][centernet]
 + [Ultralytics documentation][ultralytics]
 + [Claude Code][claude-code]
++ [The study code and logs: wsp-yolo-eel][repo]
 
 [script]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_eel_weight_space
+[repo]: https://github.com/mrtpk/wsp-yolo-eel
+[index]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_index
 [mit]: https://rikiyat.github.io/blog/weight-space-programming
 [task-arith]: https://arxiv.org/abs/2212.04089v2
 [tangent]: https://arxiv.org/abs/2305.12827v3
