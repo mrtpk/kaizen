@@ -16,6 +16,6 @@ Each gained +0.66 to +2.61 points. Each won in one mode only: the two neurons in
 
 The most useful failure: the first neuron learned which dataset a row came from, not whether it needed a call. Every "no call" row came from one dataset, every "call" row from another. A cross-table of label against source would have caught it before the fit.
 
-Code, edits, ledgers and score tables: wsp-qwen-tools. The index of the series lists both experiments and the lessons across them.
+Code, edits, ledgers and score tables: wsp-qwen-tools. The v7 model is on Hugging Face: mrtpk/Qwen3.5-0.8B-wsp-tool-use. The index of the series lists both experiments and the lessons across them.
 
 First comment: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_qwen_tool_use

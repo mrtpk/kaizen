@@ -10,7 +10,7 @@ Lately, I have been trying weight-space programming on real models, and this not
 
 The short answer: the goal was out of reach, and a ten-line calculation shows that before the first edit. The edits did work on one thing, the decision "call a tool or answer in text". Two very different edits each moved the overall score by +0.66 to +2.61 points, and neither one is better in both modes of the model.
 
-Two agents did the work. In v1, Cursor fitted a rank-1 edit. In v2, Claude programmed single neurons under a strict protocol. I set the goal and the rules, raised a budget once, stopped one side test, and read the results. The code, the edits, the ledgers and the score tables are in the [wsp-qwen-tools][repo] repository. The [index][index] of this series lists all the experiments and the lessons.
+Two agents did the work. In v1, Cursor fitted a rank-1 edit. In v2, Claude programmed single neurons under a strict protocol. I set the goal and the rules, raised a budget once, stopped one side test, and read the results. The code, the edits, the ledgers and the score tables are in the [wsp-qwen-tools][repo] repository, and the v7 model is on [Hugging Face][hf]. The [index][index] of this series lists all the experiments and the lessons.
 
 ## Before diving in, what is weight-space programming?
 Weight-space programming means changing a network by reading and writing its weights directly, from an understanding of what each part computes. The term comes from [Sparks of Weight-Space Programming][mit] by Takehi, Teoh, Zhang and Khattab at MIT CSAIL. Their headline result is on the same model as this note: an edit of 131,072 weights of Qwen3.5-0.8B removed a looping bug, and MATH-500 rose from 7.9 % to 48.1 %.
@@ -223,7 +223,7 @@ v10 added rows where the model should ask for a missing value, as "no call". On 
 *Figure: every seed of the main edits against the base seeds. The rule needs the whole edit cloud to the right of the base cloud.*
 
 ## v7 against E4b
-v7 changes 6,144 values: rows 1488 and 1152 of the gate and up projections, and the same two columns of the down projection. Neuron 1488 acts at non-thinking decisions and neuron 1152 at thinking decisions.
+v7 writes 6,144 values (6,141 of them differ from the base in bfloat16): rows 1488 and 1152 of the gate and up projections, and the same two columns of the down projection. Neuron 1488 acts at non-thinking decisions and neuron 1152 at thinking decisions.
 
 | | E4b (v1) | v7 (v2) |
 | --- | --- | --- |
@@ -242,6 +242,8 @@ Against the base in thinking mode, v7 gains +15.2 on irrelevance and +1.8 on mul
 *Figure: thinking mode. Every edit trades false calls against correct calls; none of them moves up and to the right of the base.*
 
 v7 is also not a clean result. No BFCL row went into a fit, but the BFCL scores chose v7 from four candidates. The third seed came after the choice. It tests the sampling noise, not the choice.
+
+The v7 model is on Hugging Face as [mrtpk/Qwen3.5-0.8B-wsp-tool-use][hf] (branch `v7`). Only the three edited tensors differ from the base. The chat template starts in non-thinking mode, so set `enable_thinking=True` to get the mode where v7 helps. I did not upload E4b; its changed tensor and the script that applies it are in the repository.
 
 ## What no edit touched
 Argument values, multi-turn state and memory stayed where they were. One side test makes the point. In a coding agent (Codex CLI, 16 small tasks), no model passed more than 15 % of the tasks. The main fault was tool use: calls to a terminal session that did not exist, and calls to tools that did not exist. E4b cut the rejected tool calls by about four times, and it did not pass more tasks. I stopped that test there.
@@ -266,11 +268,13 @@ The full script is available [here][script].
 + [Qwen3.5-0.8B][qwen]
 + [When2Call][when2call], [ToolACE][toolace], [APIGen-MT-5k][apigen]
 + [The code, the edits and the score tables: wsp-qwen-tools][repo]
++ [The v7 model on Hugging Face: mrtpk/Qwen3.5-0.8B-wsp-tool-use][hf]
 + [Weight-Space Programming - Editing an eel detector without new data][eel]
 + [Cursor][cursor], [Claude][claude]
 
 [script]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_qwen_tool_use
 [repo]: https://github.com/mrtpk/wsp-qwen-tools
+[hf]: https://huggingface.co/mrtpk/Qwen3.5-0.8B-wsp-tool-use
 [index]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_index
 [eel]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_eel_weight_space
 [mit]: https://rikiyat.github.io/blog/weight-space-programming

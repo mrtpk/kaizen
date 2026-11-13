@@ -20,7 +20,7 @@ In every experiment, a coding agent wrote and ran the code. I set the goal and t
 | # | Post | Model and task | Agent | Hardware | Result | Code |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | [Editing an eel detector without new data][eel] | YOLO26n-seg, 3.06M parameters, eels in infrared video | Claude Code | CPU only | held-out fitness 1.3346 to 1.4004, recall 0.894 to 0.944; most of the gain from a rule that changes no weight | [wsp-yolo-eel][repo-eel] (no checkpoint, frames or labels; crop figures only) |
-| 2 | [Teaching Qwen3.5-0.8B when to call a tool][qwen] | Qwen3.5-0.8B on BFCL-V4 tool use | Cursor (v1), Claude (v2) | one RTX 5090 | +0.66 to +2.61 overall; two edits, each better in one mode only | [wsp-qwen-tools][repo-qwen] |
+| 2 | [Teaching Qwen3.5-0.8B when to call a tool][qwen] | Qwen3.5-0.8B on BFCL-V4 tool use | Cursor (v1), Claude (v2) | one RTX 5090 | +0.66 to +2.61 overall; two edits, each better in one mode only | [wsp-qwen-tools][repo-qwen]; v7 model on [Hugging Face][hf-qwen] |
 
 Both repositories hold the code, the logs and the reports. The eel checkpoint, frames and labels are not public, so the first study does not run from its repository as it is. The second one runs from the public base model up to a full BFCL run (levels 1 to 4 of its README); the edit cells need new forward passes on a GPU.
 
@@ -92,3 +92,4 @@ So, in short: weights are a good place to read a model and a safe place for exac
 [qwen]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_qwen_tool_use
 [repo-eel]: https://github.com/mrtpk/wsp-yolo-eel
 [repo-qwen]: https://github.com/mrtpk/wsp-qwen-tools
+[hf-qwen]: https://huggingface.co/mrtpk/Qwen3.5-0.8B-wsp-tool-use
