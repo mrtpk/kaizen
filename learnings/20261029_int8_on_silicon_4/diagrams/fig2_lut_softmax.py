@@ -41,5 +41,6 @@ d.box(XS[2], y + 74, BW, BH, "argmax", ["unchanged in", "more than 99 % of rows"
 
 y += 190
 d.legend(30, y, [(AMBER, "compile time"), (PINK, "truncation effect"), (VIOLET, "host"), (EMERALD, "result")])
-y = d.footnotes(30, y + 40, ["int() truncates toward zero. For the negative values of a softmax output (z = -128), it rounds up."])
+y = d.footnotes(
+    30, y + 40, ["int() truncates toward zero. For the negative values of a softmax output (z = -128), it rounds up."])
 d.save(height=y + 10)

@@ -9,7 +9,8 @@ from svglib import AMBER, BLUE, EMERALD, MUTE, VIOLET, Diagram
 d = Diagram(width=1100)
 d.header("Mapping a point from one number line to another",
          "Quantization Basics  ·  map_point(1.0, src = [-1, 3], dst = [-128, 127])",
-         params="move to 0  ->  shrink to 0..1  ->  stretch to the destination length  ->  move to the destination start")
+         params="move to 0  ->  shrink to 0..1  ->  stretch to the destination length  ->  move to the destination "
+                "start")
 
 X0, X1 = 400, 1000
 y = 116
@@ -36,6 +37,9 @@ for i, (lo, hi, ticks, v, label, col, name, step) in enumerate(rows):
         d.arrow(xm, ly + 32, xm, ly + PITCH - 30, MUTE, sw=1.2, dash="4 3")
 
 y += H + 20
-d.legend(30, y, [(BLUE, "source line"), (AMBER, "after translate"), (VIOLET, "after scale"), (EMERALD, "destination line")])
-y = d.footnotes(30, y + 40, ["The int8 line has 256 integer points, so -0.5 must be rounded to an integer. Figure 4 shows that step."])
+d.legend(30, y, [(BLUE, "source line"), (AMBER, "after translate"),
+         (VIOLET, "after scale"), (EMERALD, "destination line")])
+y = d.footnotes(
+    30, y + 40, ["The int8 line has 256 integer points, so -0.5 must be rounded to an integer. Figure 4 shows that "
+                 "step."])
 d.save(height=y + 10)

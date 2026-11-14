@@ -36,5 +36,6 @@ table(d, y + 92, rows, [80, 330, 700, 960],
 
 y += H + 20
 d.legend(30, y, [(BLUE, "MAC array"), (AMBER, "alpha"), (EMERALD, "one rounding"), (PINK, "two roundings")])
-y = d.footnotes(30, y + 40, ["The MAC array sums, the post-processing unit divides. No new hardware for any of the three."])
+y = d.footnotes(
+    30, y + 40, ["The MAC array sums, the post-processing unit divides. No new hardware for any of the three."])
 d.save(height=y + 10)

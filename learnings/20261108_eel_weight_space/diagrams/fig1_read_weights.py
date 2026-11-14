@@ -16,8 +16,8 @@ d.header(
     "The weights show a one-class model with a dead scale",
     f"{SERIES_NAME}  ·  class biases of the deployed head, and recall by eel length",
     params=f"found {dg['found']} of {dg['eels']} eels  ·  "
-           f"detections by stride: 8 -> {dg['by_stride']['8']}, 16 -> {dg['by_stride']['16']}, "
-           f"32 -> {dg['by_stride']['32']}",
+    f"detections by stride: 8 -> {dg['by_stride']['8']}, 16 -> {dg['by_stride']['16']}, "
+    f"32 -> {dg['by_stride']['32']}",
 )
 y1 = 120
 d.panel(

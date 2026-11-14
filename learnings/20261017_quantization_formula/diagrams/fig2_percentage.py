@@ -34,5 +34,7 @@ for i, (label, col) in enumerate(steps):
 
 y = 556
 d.legend(30, y, [(BLUE, "value (source line)"), (VIOLET, "normalized (0..1)"), (EMERALD, "percent (destination line)")])
-y = d.footnotes(30, y + 40, ["All three lines start at 0, so two scale operations are enough. Figure 3 handles lines that do not start at 0."])
+y = d.footnotes(
+    30, y + 40, ["All three lines start at 0, so two scale operations are enough. Figure 3 handles lines that do not "
+                 "start at 0."])
 d.save(height=y + 10)

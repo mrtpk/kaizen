@@ -6,7 +6,6 @@ Every number in the post comes from this script.
 Run:  uv run --with numpy python lessons.py
 """
 
-import math
 
 import numpy as np
 

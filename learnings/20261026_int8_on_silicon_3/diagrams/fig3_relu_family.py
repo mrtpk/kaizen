@@ -8,7 +8,8 @@ from svglib import AMBER, EMERALD, INK, NEUTRAL, PINK, Diagram
 d = Diagram(width=1100)
 d.header("One kernel for the ReLU family, and constants folded into the unit",
          "Int8 on Silicon  ·  part 3  ·  s_in = s_out = 1/16, zero points 0 (ReLU family)",
-         params="PReLU:  v = q - z_in;  v >= 0: round_shift(v * a_pos, 16);  v < 0: round_shift(slope_q * v * a_neg, 16);  + z_out, clip")
+         params="PReLU:  v = q - z_in;  v >= 0: round_shift(v * a_pos, 16);  v < 0: round_shift(slope_q * v * a_neg, "
+                "16);  + z_out, clip")
 
 
 def table(y, rows, cols, highlight):
@@ -45,12 +46,14 @@ rows = [
 ]
 H = 96 + 26 * len(rows)
 d.panel(y, H, 2, "What if one operand is a constant?",
-        "Add a constant: it goes into the bias. Multiply by a constant: it goes into alpha. One pass, no second tensor.")
+        "Add a constant: it goes into the bias. Multiply by a constant: it goes into alpha. One pass, no second "
+        "tensor.")
 table(y + 92, rows, [80, 330, 600, 820], {1: PINK, 2: EMERALD})
 
 y += H + 20
 d.legend(30, y, [(EMERALD, "exact"), (AMBER, "off by 1, truncated alpha"), (PINK, "off by 1, truncated constant")])
 y = d.footnotes(30, y + 40, [
-    "x + 0.75: s_in = 0.02, z_in = 10, s_out = 0.03, z_out = -5. 0.75 / 0.02 = 37.5 has no exact integer in input units.",
+    "x + 0.75: s_in = 0.02, z_in = 10, s_out = 0.03, z_out = -5. 0.75 / 0.02 = 37.5 has no exact integer in input "
+    "units.",
 ])
 d.save(height=y + 10)

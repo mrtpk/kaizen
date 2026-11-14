@@ -14,7 +14,8 @@ d.header("Global average pooling: one rounding too many",
 
 y = 116
 d.panel(y, 170, 1, "What does the global pool kernel do?",
-        "It rounds the mean in input units, then rescales by s_in / s_out = 2.5, so the first rounding error grows 2.5x.")
+        "It rounds the mean in input units, then rescales by s_in / s_out = 2.5, so the first rounding error grows "
+        "2.5x.")
 row(d, y + 74, [
     ("round 1: mean", ["sum * floor(2^20 / 49)", ">> 20, in input units"], AMBER),
     ("round 2: rescale", ["(mean - z_in) * alpha", ">> 20, + z_out"], AMBER),

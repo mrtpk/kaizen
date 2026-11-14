@@ -8,7 +8,8 @@ from svglib import AMBER, BLUE, EMERALD, INK, NEUTRAL, PINK, VIOLET, Diagram
 d = Diagram(width=1100)
 d.header("Which ops run where, and how we knew they were right",
          "Int8 on Silicon  ·  part 5  ·  partitioning and verification",
-         params="order: conv1 -> conv2 -> argmax -> conv3 -> add -> softmax   (argmax, softmax: not on the accelerator)")
+         params="order: conv1 -> conv2 -> argmax -> conv3 -> add -> softmax   (argmax, softmax: not on the "
+                "accelerator)")
 
 y = 116
 rows = [
@@ -46,14 +47,18 @@ BW, BH = 290, 72
 XS = [60, 410, 760]
 d.panel(y, 186, 2, "How did we know each layer was right?",
         "The reference model wrote golden files. The hardware and TFLite were each compared against it.")
-d.box(XS[0], y + 74, BW, BH, "reference model", ["inputs, weights, constants,", "outputs of every layer"], col=AMBER, mono_size=12)
+d.box(XS[0], y + 74, BW, BH, "reference model",
+      ["inputs, weights, constants,", "outputs of every layer"], col=AMBER, mono_size=12)
 d.arrow(XS[0] + BW, y + 110, XS[1] - 2, y + 110, AMBER)
-d.box(XS[1], y + 74, BW, BH, "hardware (FPGA)", ["same input, same weights", "diff against golden: must be 0"], col=BLUE, mono_size=12)
+d.box(XS[1], y + 74, BW, BH, "hardware (FPGA)", ["same input, same weights",
+      "diff against golden: must be 0"], col=BLUE, mono_size=12)
 x1c, x3c, yb = XS[0] + BW / 2, XS[2] + BW / 2, y + 74 + BH
-d.path_arrow(f"M {x1c:.1f},{yb:.1f} L {x1c:.1f},{yb + 14:.1f} L {x3c:.1f},{yb + 14:.1f} L {x3c:.1f},{yb + 2:.1f}", AMBER)
+d.path_arrow(f"M {x1c:.1f},{yb:.1f} L {x1c:.1f},{yb + 14:.1f} L {x3c:.1f},{yb + 14:.1f} L "
+             f"{x3c:.1f},{yb + 2:.1f}", AMBER)
 d.box(XS[2], y + 74, BW, BH, "TFLite", ["layer by layer, and", "accuracy on datasets"], col=NEUTRAL, mono_size=12)
 
 y += 206
-d.legend(30, y, [(BLUE, "accelerator"), (VIOLET, "host"), (NEUTRAL, "TFLite"), (AMBER, "reference model"), (EMERALD, "correct split"), (PINK, "wrong split")])
+d.legend(30, y, [(BLUE, "accelerator"), (VIOLET, "host"), (NEUTRAL, "TFLite"),
+         (AMBER, "reference model"), (EMERALD, "correct split"), (PINK, "wrong split")])
 y = d.footnotes(30, y + 40, ["Bit-exact target: the hardware. TFLite was the accuracy target, not a bit-exact one."])
 d.save(height=y + 10)

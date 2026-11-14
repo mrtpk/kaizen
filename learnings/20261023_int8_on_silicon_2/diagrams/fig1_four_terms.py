@@ -36,5 +36,6 @@ d.box(760, y + 74, BW, 72, "reference", ["-27073 + 1500", "= -25573  (equal)"], 
 y += 190
 d.legend(30, y, [(BLUE, "runtime MAC"), (AMBER, "compile-time constant"), (NEUTRAL, "zero for int8 weights"),
                  (EMERALD, "matches the reference")])
-y = d.footnotes(30, y + 40, ["Reference: the sum with (q_in - z_in) inside the loop, as in TFLite's reference convolution."])
+y = d.footnotes(
+    30, y + 40, ["Reference: the sum with (q_in - z_in) inside the loop, as in TFLite's reference convolution."])
 d.save(height=y + 10)

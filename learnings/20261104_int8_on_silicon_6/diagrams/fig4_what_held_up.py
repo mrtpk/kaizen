@@ -33,5 +33,6 @@ table(d, y + 92, rows, [80, 560, 650], lambda i, j, v: BLUE if j == 1 else (EMER
 
 y += H + 20
 d.legend(30, y, [(BLUE, "part of the series"), (EMERALD, "the evidence")])
-y = d.footnotes(30, y + 40, ["The gaps (truncated constants, one extra rounding, border rules, checks in int32) are in figure 3."])
+y = d.footnotes(
+    30, y + 40, ["The gaps (truncated constants, one extra rounding, border rules, checks in int32) are in figure 3."])
 d.save(height=y + 10)

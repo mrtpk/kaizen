@@ -17,7 +17,7 @@ d.header(
     "Average the heads' outputs, not their weights",
     f"{SERIES_NAME}  ·  YOLO26 keeps a one-to-one head (deployed) and a one-to-many head (discarded)",
     params=f"subset fitness: one-to-one {r['sub_o2o_e2e']['fitness']:.4f}, "
-           f"one-to-many + NMS {r['sub_o2m_nms']['fitness']:.4f}, "
+    f"one-to-many + NMS {r['sub_o2m_nms']['fitness']:.4f}, "
     f"class mean + NMS 0.5 {r['sub_mixmean_nms50']['fitness']:.4f}",
 )
 y1 = 120

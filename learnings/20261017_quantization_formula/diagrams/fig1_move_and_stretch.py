@@ -16,7 +16,8 @@ X0, X1 = 150, 1040
 
 # panel 1: translate
 y = 116
-d.panel(y, 190, 1, "What does translate do?", "Adding an offset moves the point along the line. The distance is the offset.")
+d.panel(y, 190, 1, "What does translate do?", "Adding an offset moves the point along the line. The distance is the "
+                                              "offset.")
 nl = NumberLine(d, X0, X1, y + 140, -6, 14, TICKS)
 x4 = nl.point(4, "4", BLUE)
 x9 = nl.point(9, "9", AMBER)
@@ -28,7 +29,8 @@ d.arrow_label((x4 + xm1) / 2, y + 100, "-5", AMBER)
 
 # panel 2: scale
 y = 326
-d.panel(y, 210, 2, "What does scale do?", "Multiplying by a factor stretches (factor > 1) or shrinks (factor < 1) the distance from 0.")
+d.panel(y, 210, 2, "What does scale do?",
+        "Multiplying by a factor stretches (factor > 1) or shrinks (factor < 1) the distance from 0.")
 nl = NumberLine(d, X0, X1, y + 160, -6, 14, TICKS)
 x4 = nl.point(4, "4", BLUE)
 x12 = nl.point(12, "12", VIOLET)

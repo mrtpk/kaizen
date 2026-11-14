@@ -14,7 +14,7 @@ d = Diagram(width=1100)
 d.header("LoDNN: encoder, dilated context module, decoder",
          "LiDAR Road Detection  ·  part 3  ·  the network of Caltagirone et al., shapes as width x height x maps",
          params=f"input {c.GRID_W} x {c.GRID_H} x 6  ·  one 2 x 2 max pooling  ·  context at {c.CTX_W} x {c.CTX_H}  ·  "
-                f"output {c.GRID_W} x {c.GRID_H} x 2")
+         f"output {c.GRID_W} x {c.GRID_H} x 2")
 
 BW, BH = 300, 108
 XS = [60, 400, 740]

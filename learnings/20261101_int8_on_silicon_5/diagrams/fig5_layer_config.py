@@ -5,7 +5,7 @@ Simplified: key names are generic, values are illustrative and taken from parts 
 """
 
 from figkit import code
-from svglib import AMBER, BLUE, INK, MUTE, VIOLET, Diagram
+from svglib import AMBER, BLUE, INK, VIOLET, Diagram
 
 d = Diagram(width=1100)
 d.header("One layer, as the hardware sees it",

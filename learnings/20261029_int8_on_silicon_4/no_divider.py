@@ -62,7 +62,9 @@ mean_q = round_shift(sums * mean_mult, 20)                                   # r
 two = np.clip(round_shift((mean_q - z_in) * a_req, 20) + z_out, -128, 127)    # rounding 2: requantize
 one = np.clip(round_shift((sums - N * z_in) * int(round(s_in / (s_out * N) * (1 << 20))), 20) + z_out, -128, 127)
 exact = np.clip(round_half_away(s_in * (sums / N - z_in) / s_out) + z_out, -128, 127)
-print(f"\nGLOBAL AVG POOL 7x7, s_in {s_in}/z {z_in} -> s_out {s_out}/z {z_out}: mean multiplier {mean_mult} = floor(2^20/49)")
+print(
+    f"\nGLOBAL AVG POOL 7x7, s_in {s_in}/z {z_in} -> s_out {s_out}/z {z_out}: mean multiplier {mean_mult} = "
+    "floor(2^20/49)")
 print(f"  two roundings (ours) != exact: {(two != exact).mean() * 100:.2f} %, max {np.abs(two - exact).max()}")
 print(f"  one rounding           != exact: {(one != exact).mean() * 100:.2f} %, max {np.abs(one - exact).max()}")
 
@@ -72,10 +74,13 @@ s_in, z_in = 0.08, 0
 s_out, z_out = 1 / 256, -128                    # TFLite's fixed output quantization for int8 sigmoid
 qi = np.arange(-128, 128)
 sig = 1 / (1 + np.exp(-s_in * (qi - z_in)))
-lut_trunc = np.clip((sig / s_out + z_out).astype(int), -128, 127)            # int(): truncation, as in the reference model
+# int(): truncation, as in the reference model
+lut_trunc = np.clip((sig / s_out + z_out).astype(int), -128, 127)
 lut_round = np.clip(round_half_away(sig / s_out) + z_out, -128, 127)
-print(f"\nSIGMOID LUT (256 entries), s_in {s_in}: truncated table != rounded table in {(lut_trunc != lut_round).sum()} of 256 entries")
-print(f"  examples q_in -> (truncated, rounded): "
+print(
+    f"\nSIGMOID LUT (256 entries), s_in {s_in}: truncated table != rounded table in {(lut_trunc != lut_round).sum()} "
+    "of 256 entries")
+print("  examples q_in -> (truncated, rounded): "
       + ", ".join(f"{a} -> ({lut_trunc[a + 128]}, {int(lut_round[a + 128])})" for a in (-20, 0, 20)))
 
 
@@ -99,7 +104,9 @@ e = np.exp(r - r.max(axis=1, keepdims=True))
 prob = e / e.sum(axis=1, keepdims=True)
 sm_trunc = np.clip((prob / s_out + z_out).astype(int), -128, 127)
 sm_round = np.clip(round_half_away(prob / s_out) + z_out, -128, 127)
-print(f"\nSOFTMAX (float on the host, 10 classes): truncated output != rounded in {(sm_trunc != sm_round).mean() * 100:.1f} % of values")
+print(
+    "\nSOFTMAX (float on the host, 10 classes): truncated output != rounded in "
+    f"{(sm_trunc != sm_round).mean() * 100:.1f} % of values")
 print("  argmax unchanged. Is pass?",
       bool((np.argmax(sm_trunc, axis=1) == np.argmax(prob, axis=1)).mean() > 0.99))
 
@@ -183,6 +190,7 @@ for y in range(13):
         wt = [int(v * 1024) for v in wf]
         if best is None or sum(wt) < best[0]:
             best = (sum(wt), y, x, dy, dx, wf, wt)
+assert best is not None
 s_, y, x, dy, dx, wf, wt = best
 print(f"point ({y}, {x}): dy = {dy:.4f}, dx = {dx:.4f}")
 print("  exact weights x 1024:", ", ".join(f"{v * 1024:.2f}" for v in wf), f"(sum {sum(wf) * 1024:.2f})")

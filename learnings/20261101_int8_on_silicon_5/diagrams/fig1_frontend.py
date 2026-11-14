@@ -8,7 +8,8 @@ from svglib import AMBER, BLUE, EMERALD, INK, NEUTRAL, VIOLET, Diagram
 d = Diagram(width=1100)
 d.header("From a TFLite file to hardware layers",
          "Int8 on Silicon  ·  part 5  ·  the compiler frontend of the reference model",
-         params="TFLite flatbuffer -> graph -> rewrite passes -> layers in execution order -> config, constants, golden files")
+         params="TFLite flatbuffer -> graph -> rewrite passes -> layers in execution order -> config, constants, "
+                "golden files")
 
 BW, BH = 290, 72
 XS = [60, 410, 760]
@@ -63,5 +64,7 @@ row(y + 74, [
 
 y += 190
 d.legend(30, y, [(BLUE, "model"), (AMBER, "rewrite"), (VIOLET, "for the hardware"), (EMERALD, "for verification")])
-y = d.footnotes(30, y + 40, ["Simplified: the pass list is the one in the reference model's optimise step; a few passes were disabled."])
+y = d.footnotes(
+    30, y + 40, ["Simplified: the pass list is the one in the reference model's optimise step; a few passes were "
+                 "disabled."])
 d.save(height=y + 10)

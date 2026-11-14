@@ -15,7 +15,7 @@ sparse = s.grid_cells(points[on_road])
 road_pts, kept = s.dense_road(points, calib, road)
 dense = s.grid_cells(np.vstack([road_pts[:, :4], kept[:, :4]]))
 
-rows = []
+rows: list[tuple[str, float, str, str]] = []
 ratios = []
 for near, far in [(6, 16), (16, 26), (26, 36), (36, 46)]:
     r0, r1 = round((s.X_MAX - far) / s.CELL), round((s.X_MAX - near) / s.CELL)

@@ -76,13 +76,16 @@ pad_zp = conv_folded(q_in, q_w, bias_folded, pad_value=z_in)
 pad_0 = conv_folded(q_in, q_w, bias_folded, pad_value=0)
 print(f"\npad with z_in = {z_in}: equal to reference. Is pass?", np.array_equal(pad_zp, ref_img))
 wrong = pad_0 != ref_img
-print(f"pad with 0: {int(wrong.sum())} of {wrong.size} outputs wrong (all on the border: {bool(wrong[1:-1, 1:-1].sum() == 0)})")
+print(
+    f"pad with 0: {int(wrong.sum())} of {wrong.size} outputs wrong (all on the border: "
+    f"{bool(wrong[1:-1, 1:-1].sum() == 0)})")
 corner = (0, 0)
 print(f"corner output: reference {ref_img[corner]}, pad 0 gives {pad_0[corner]} "
       f"(off by {pad_0[corner] - ref_img[corner]})")
 # the corner window has 5 padded points; each one adds z_in * w instead of 0
 padded_w = int(q_w[0, :].sum() + q_w[1:, 0].sum())
-print(f"  the 5 padded weights sum to {padded_w}; pad 0 drops z_in * {padded_w} = {z_in * padded_w} from the accumulator")
+print(
+    f"  the 5 padded weights sum to {padded_w}; pad 0 drops z_in * {padded_w} = {z_in * padded_w} from the accumulator")
 
 # in float, what is the corner error after requantization?
 s_out = 0.0418

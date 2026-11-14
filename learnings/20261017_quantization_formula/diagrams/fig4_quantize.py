@@ -56,11 +56,13 @@ rows = [
     ("quantize", "q = clip(round(r / scale) + zero_point, -128, 127)", "", ""),
     ("dequantize", "r = scale * (q - zero_point)", "", ""),
 ]
-for i, r in enumerate(rows):
-    for x, v in zip((68, 200, 560, 740), r):
-        d.text(x, y + 82 + i * 22, v, 13, INK, mono=True)
+for i, row in enumerate(rows):
+    for xc, v in zip((68, 200, 560, 740), row):
+        d.text(xc, y + 82 + i * 22, v, 13, INK, mono=True)
 
 y += 190
 d.legend(30, y, [(BLUE, "float value"), (EMERALD, "int8 value"), (AMBER, "zero point (float 0.0)"), (PINK, "clipped")])
-y = d.footnotes(30, y + 40, ["Rounding zero_point moves the int8 line by a quarter step, so -1.0 and 3.0 come back as -1.0039 and 2.9961."])
+y = d.footnotes(
+    30, y + 40, ["Rounding zero_point moves the int8 line by a quarter step, so -1.0 and 3.0 come back as -1.0039 and "
+                 "2.9961."])
 d.save(height=y + 10)

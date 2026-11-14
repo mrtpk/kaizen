@@ -5,7 +5,7 @@ points whose weights sum to -40; pad 0 -> corner off by -2560 (-3.94 int8 steps)
 16 of 25 outputs wrong, all on the border.
 """
 
-from svglib import AMBER, BLUE, EMERALD, INK, MUTE, NEUTRAL, PINK, Diagram, _c, _t
+from svglib import AMBER, BLUE, EMERALD, INK, MUTE, PINK, Diagram, _c, _t
 
 d = Diagram(width=1100)
 d.header("Why the padding must be the zero point",
@@ -64,5 +64,6 @@ d.text(320, y0 + 136, "so this is not a corner case in practice.", 12.5, MUTE)
 
 y += 310
 d.legend(30, y, [(BLUE, "image value"), (AMBER, "padding = z_in"), (PINK, "padding = 0 / wrong"), (EMERALD, "exact")])
-y = d.footnotes(30, y + 40, ["TFLite skips padded points, which is the same as real 0.0. Padding with z_in gives the same result."])
+y = d.footnotes(
+    30, y + 40, ["TFLite skips padded points, which is the same as real 0.0. Padding with z_in gives the same result."])
 d.save(height=y + 10)

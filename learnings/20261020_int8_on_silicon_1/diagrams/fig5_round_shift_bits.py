@@ -46,9 +46,11 @@ y += 200
 d.panel(y, 150, 3, "Why handle the sign separately?",
         "A plain >> on a negative number rounds toward minus infinity.")
 d.box(60, y + 70, 450, 56, "plain:  -28,617,520 >> 20", ["= -28   (exact -27.292)"], col=PINK, mono_size=12.5)
-d.box(590, y + 70, 450, 56, "round_shift: round |x|, then negate", ["= -27   (round half away from zero)"], col=EMERALD, mono_size=12.5)
+d.box(590, y + 70, 450, 56, "round_shift: round |x|, then negate",
+      ["= -27   (round half away from zero)"], col=EMERALD, mono_size=12.5)
 
 y += 170
 d.legend(30, y, [(BLUE, "integer part"), (AMBER, "first dropped bit"), (PINK, "plain shift"), (EMERALD, "round_shift")])
-y = d.footnotes(30, y + 40, ["In hardware: one shift, one AND with a 1-bit mask, one add, and a sign flip. No divider."])
+y = d.footnotes(
+    30, y + 40, ["In hardware: one shift, one AND with a 1-bit mask, one add, and a sign flip. No divider."])
 d.save(height=y + 10)

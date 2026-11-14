@@ -19,7 +19,7 @@ d.header(
     "An eel is less than two mask cells wide",
     f"{SERIES_NAME}  ·  mask boundaries at full frame resolution, {bd['eels']} held-out eels",
     params=f"mask grid cell = {cell:.1f} frame px  ·  "
-           f"eel width ~ {bd['eel_width']} px = {bd['eel_width'] / cell:.1f} cells",
+    f"eel width ~ {bd['eel_width']} px = {bd['eel_width'] / cell:.1f} cells",
 )
 y1 = 120
 d.panel(

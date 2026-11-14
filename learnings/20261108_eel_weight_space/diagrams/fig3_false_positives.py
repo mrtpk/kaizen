@@ -14,7 +14,7 @@ d.header(
     "Most false positives were second boxes on found eels",
     f"{SERIES_NAME}  ·  every detection at confidence 0.25 on all {lg['frames']} frames",
     params=f"true positives {c['tp']}  ·  false positives {fps}  ·  "
-           f"duplicate score ~ {c['dup_score_ratio']} x the true positive's",
+    f"duplicate score ~ {c['dup_score_ratio']} x the true positive's",
 )
 y1 = 120
 d.panel(

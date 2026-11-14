@@ -43,7 +43,8 @@ d.panel(y, H, 1, "What changes from one operation to the next?",
 table(d, y + 92, rows, [80, 300, 390, 620, 960], color)
 
 y += H + 20
-d.legend(30, y, [(BLUE, "bias (zero points, constants)"), (AMBER, "alpha (scales)"), (EMERALD, "shift 20"), (VIOLET, "shift 16")])
+d.legend(30, y, [(BLUE, "bias (zero points, constants)"),
+         (AMBER, "alpha (scales)"), (EMERALD, "shift 20"), (VIOLET, "shift 16")])
 y = d.footnotes(30, y + 40, [
     "Multiply: each input pass uses 2^10, so the product of the two lands at 2^20.",
     "Simplified: tables (sigmoid, tanh) and softmax are not on this unit; see part 4.",

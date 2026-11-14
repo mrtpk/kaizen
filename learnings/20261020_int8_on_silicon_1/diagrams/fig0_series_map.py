@@ -27,6 +27,7 @@ row(d, y + 74, [
 ], NEUTRAL[0])
 
 y += 190
-d.legend(30, y, [(BLUE, "integer math"), (AMBER, "operations without a divider"), (VIOLET, "software"), (EMERALD, "looking back")])
+d.legend(30, y, [(BLUE, "integer math"), (AMBER, "operations without a divider"),
+         (VIOLET, "software"), (EMERALD, "looking back")])
 y = d.footnotes(30, y + 40, ["Every number in the series comes from a NumPy script next to each note."])
 d.save(height=y + 10)

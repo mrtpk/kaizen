@@ -68,5 +68,7 @@ for i, (name, a, b, note, col) in enumerate(rows):
 
 y += 216
 d.legend(30, y, [(BLUE, "float value"), (EMERALD, "int8 levels"), (PINK, "error / unused"), (AMBER, "symmetric range")])
-y = d.footnotes(30, y + 40, ["Symmetric uses -127..127 so that r and -r map to q and -q. Weights are often symmetric; activations after ReLU are not."])
+y = d.footnotes(
+    30, y + 40, ["Symmetric uses -127..127 so that r and -r map to q and -q. Weights are often symmetric; activations "
+                 "after ReLU are not."])
 d.save(height=y + 10)

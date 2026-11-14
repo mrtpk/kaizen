@@ -33,7 +33,7 @@ d.header(
     "Each step adds a little, and all of it fits in one checkpoint",
     f"{SERIES_NAME}  ·  held-out half, {d0['logged']['heldout_frames']} frames",
     params=f"recall {dep['box']['R']:.3f} -> {v2['box']['R']:.3f}  ·  "
-           f"box mAP50-95 {dep['box']['mAP']:.3f} -> {v2['box']['mAP']:.3f}  ·  "
+    f"box mAP50-95 {dep['box']['mAP']:.3f} -> {v2['box']['mAP']:.3f}  ·  "
     f"mask mAP50-95 {dep['mask']['mAP']:.3f} -> {v2['mask']['mAP']:.3f}",
 )
 y1 = 120

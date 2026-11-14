@@ -20,7 +20,7 @@ d.header(
     "Six things I tried on an eel detector's weights",
     f"{SERIES_NAME}  ·  one YOLO26n-seg model  ·  {lg['frames']} infrared frames, one video",
     params=f"held-out half: fitness {dep['fitness']:.4f} -> {v2['fitness']:.4f}  ·  "
-           f"recall {dep['box']['R']:.3f} -> {v2['box']['R']:.3f}",
+    f"recall {dep['box']['R']:.3f} -> {v2['box']['R']:.3f}",
 )
 y1 = 120
 d.panel(

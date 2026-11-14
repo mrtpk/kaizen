@@ -17,7 +17,7 @@ d = Diagram(width=1100)
 d.header("The top-view grid: 40 m ahead, 20 m wide, 0.1 m cells",
          "LiDAR Road Detection  ·  part 1  ·  the grid of the LoDNN paper",
          params=f"x {g.X_MIN:g}..{g.X_MAX:g} m  ·  y {g.Y_MIN:g}..{g.Y_MAX:g} m  ·  cell {g.CELL} m  ·  {g.ROWS} rows "
-                f"x {g.COLS} cols = {g.ROWS * g.COLS} cells")
+         f"x {g.COLS} cols = {g.ROWS * g.COLS} cells")
 
 y1 = 116
 d.panel(y1, 520, 1, "Where is the grid?", "In front of the car: 6 m to 46 m ahead, 10 m to each side. Row 0 is the far "

@@ -39,18 +39,21 @@ table(y + 92, rows, [80, 300, 560, 820],
       lambda i, r: EMERALD if "ours" in r[0] else (PINK if r[0] == "28" else (AMBER if r[0] == "24" else INK)))
 
 y += H + 20
-rows = [
+rows2 = [
     ("product width", "largest shift (int8 + 4 spare bits)", "alpha bits, M = 0.0001"),
     ("32 bits (ours)", "20", "7"),
     ("40 bits", "28", "15"),
     ("48 bits", "36", "23"),
 ]
-H = 96 + 26 * len(rows)
+H = 96 + 26 * len(rows2)
 d.panel(y, H, 2, "What would a wider product buy?",
         "8 more bits of product give 8 more bits of alpha, for every M. TFLite uses a 64-bit product.")
-table(y + 92, rows, [80, 400, 820], lambda i, r: EMERALD if "ours" in r[0] else VIOLET)
+table(y + 92, rows2, [80, 400, 820], lambda i, r: EMERALD if "ours" in r[0] else VIOLET)
 
 y += H + 20
-d.legend(30, y, [(EMERALD, "our choice"), (AMBER, "no spare bits"), (PINK, "int8 range overflows"), (VIOLET, "wider product")])
-y = d.footnotes(30, y + 40, ["With 4 bits of headroom, 20 is the largest shift a 32-bit product allows. Precision for small M is limited by the product width."])
+d.legend(30, y, [(EMERALD, "our choice"), (AMBER, "no spare bits"),
+         (PINK, "int8 range overflows"), (VIOLET, "wider product")])
+y = d.footnotes(
+    30, y + 40, ["With 4 bits of headroom, 20 is the largest shift a 32-bit product allows. Precision for small M is "
+                 "limited by the product width."])
 d.save(height=y + 10)

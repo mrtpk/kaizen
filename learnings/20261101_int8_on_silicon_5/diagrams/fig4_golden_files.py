@@ -47,5 +47,6 @@ code(d, 580, y + 74, 450, [
 
 y += 250
 d.legend(30, y, [(AMBER, "the level for debugging"), (BLUE, "weights")])
-y = d.footnotes(30, y + 40, ["Illustrative values. Not compact, but a hardware engineer can grep a channel and compare by eye."])
+y = d.footnotes(
+    30, y + 40, ["Illustrative values. Not compact, but a hardware engineer can grep a channel and compare by eye."])
 d.save(height=y + 10)

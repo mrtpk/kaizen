@@ -17,8 +17,10 @@ XS = [60, 410, 760]
 y = 116
 d.panel(y, 210, 1, "How does the unit add two tensors with different scales?",
         "The bias slot removes each zero point, alpha rescales each input to the output scale, and one shift ends it.")
-d.box(XS[0], y + 80, BW, BH, "input 1", ["bias = -z1 = 10", "alpha1 = 0.05/0.07 * 2^20", "= 748982"], col=AMBER, mono_size=12)
-d.box(XS[1], y + 80, BW, BH, "input 2", ["bias = -z2 = -5", "alpha2 = 0.03/0.07 * 2^20", "= 449389"], col=AMBER, mono_size=12)
+d.box(XS[0], y + 80, BW, BH, "input 1", ["bias = -z1 = 10",
+      "alpha1 = 0.05/0.07 * 2^20", "= 748982"], col=AMBER, mono_size=12)
+d.box(XS[1], y + 80, BW, BH, "input 2", ["bias = -z2 = -5",
+      "alpha2 = 0.03/0.07 * 2^20", "= 449389"], col=AMBER, mono_size=12)
 d.box(XS[2], y + 80, BW, BH, "sum", ["x1 + x2", ">> 20 (the one rounding)", "+ z_out, clip"], col=VIOLET, mono_size=12)
 d.arrow(XS[1] + BW, y + 126, XS[2] - 2, y + 126, MUTE)
 x1c, x3c, yb = XS[0] + BW / 2, XS[2] + BW / 2, y + 80 + BH
@@ -37,10 +39,13 @@ y += 190
 d.panel(y, 170, 3, "How close is it to TFLite?",
         "Identical for these scales. alpha has about 20 bits when s_in / s_out is near 1.")
 d.box(XS[0], y + 74, BW, 72, "ours", ["one rounding", "shift 20"], col=VIOLET, mono_size=12)
-d.box(XS[1], y + 74, BW, 72, "TFLite", ["left shift 20, three", "multipliers, two roundings each"], col=NEUTRAL, mono_size=12)
+d.box(XS[1], y + 74, BW, 72, "TFLite", ["left shift 20, three",
+      "multipliers, two roundings each"], col=NEUTRAL, mono_size=12)
 d.box(XS[2], y + 74, BW, 72, "200,000 random pairs", ["0 differ"], col=EMERALD, mono_size=12.5)
 
 y += 190
-d.legend(30, y, [(AMBER, "per-input constants"), (VIOLET, "the one rounding"), (BLUE, "int32 data"), (EMERALD, "int8 output")])
-y = d.footnotes(30, y + 40, ["TFLite shifts both inputs left by 20 and uses three multipliers, each with two roundings."])
+d.legend(30, y, [(AMBER, "per-input constants"), (VIOLET, "the one rounding"),
+         (BLUE, "int32 data"), (EMERALD, "int8 output")])
+y = d.footnotes(
+    30, y + 40, ["TFLite shifts both inputs left by 20 and uses three multipliers, each with two roundings."])
 d.save(height=y + 10)

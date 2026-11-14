@@ -80,7 +80,9 @@ ref_add = exact(real_sum, so, zo)
 print("ADD  s1 = 0.05, z1 = -10, s2 = 0.03, z2 = 5, s_out = 0.07, z_out = -3")
 print(f"  alpha1 = int(s1 / s_out * 2^20) = {a1}, alpha2 = {a2}, bias1 = {-z1}, bias2 = {-z2}")
 print(f"  ours != TFLite: {(ours_add != tfl_add).mean() * 100:.3f} %, max {np.abs(ours_add - tfl_add).max()}")
-print(f"  ours != exact:  {(ours_add != ref_add).mean() * 100:.3f} %;  TFLite != exact: {(tfl_add != ref_add).mean() * 100:.3f} %")
+print(
+    f"  ours != exact:  {(ours_add != ref_add).mean() * 100:.3f} %;  TFLite != exact: "
+    f"{(tfl_add != ref_add).mean() * 100:.3f} %")
 q1e, q2e = 40, -70
 v = round_shift(np.array([(q1e - z1) * a1 + (q2e - z2) * a2]), 20)[0] + zo
 print(f"  example q1 = {q1e}, q2 = {q2e}: ({q1e - z1})*{a1} + ({q2e - z2})*{a2} = {(q1e - z1) * a1 + (q2e - z2) * a2:,}"
@@ -102,7 +104,9 @@ ref_mul = exact(real_prod, so, zo)
 print("\nMUL  s1 = 0.05, z1 = -10, s2 = 0.03, z2 = 5, s_out = 0.12, z_out = -20")
 print(f"  alpha_i = int(s_i / sqrt(s_out) * 2^10): {m1}, {m2};  product shift 20")
 print(f"  ours != TFLite: {(ours_mul != tfl_mul).mean() * 100:.3f} %, max {np.abs(ours_mul - tfl_mul).max()}")
-print(f"  ours != exact:  {(ours_mul != ref_mul).mean() * 100:.3f} %;  TFLite != exact: {(tfl_mul != ref_mul).mean() * 100:.3f} %")
+print(
+    f"  ours != exact:  {(ours_mul != ref_mul).mean() * 100:.3f} %;  TFLite != exact: "
+    f"{(tfl_mul != ref_mul).mean() * 100:.3f} %")
 op_max = 255 * max(m1, m2)
 print(f"  largest scaled operand |(q - z) * alpha| <= 255 * {max(m1, m2)} = {op_max} ({op_max.bit_length()} bits)")
 print(f"  alpha error: {m1} vs {s1 / math.sqrt(so) * 1024:.2f}, {m2} vs {s2 / math.sqrt(so) * 1024:.2f}")
@@ -134,7 +138,8 @@ def mul_uneven(s1, z1, s2, z2, so, zo, label):
     t1, t2 = int(s1 / math.sqrt(so) * 1024), int(s2 / math.sqrt(so) * 1024)
     uneven = clip8(round_shift(((q1 - z1) * u1) * ((q2 - z2) * u2), 20) + zo)
     split = clip8(round_shift(((q1 - z1) * t1) * ((q2 - z2) * t2), 20) + zo)
-    print(f"  {label}: uneven alphas {u1}, {u2}: != exact {(uneven != ref).mean() * 100:.2f} %, max {np.abs(uneven - ref).max()}"
+    print(f"  {label}: uneven alphas {u1}, {u2}: != exact {(uneven != ref).mean() * 100:.2f} %, max "
+          f"{np.abs(uneven - ref).max()}"
           f"  |  square-root split {t1}, {t2}: {(split != ref).mean() * 100:.2f} %, max {np.abs(split - ref).max()}")
 
 

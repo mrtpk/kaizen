@@ -31,6 +31,9 @@ row(d, y + 74, [
 ], NEUTRAL[0])
 
 y += 190
-d.legend(30, y, [(PINK, "extra work in the MAC loop"), (AMBER, "compile-time constants"), (EMERALD, "what the hardware does"), (BLUE, "stored weights"), (VIOLET, "cost")])
-y = d.footnotes(30, y + 40, ["Int8 weights in TFLite are symmetric (z_w = 0), so the weight offset matters only for older uint8 models."])
+d.legend(30, y, [(PINK, "extra work in the MAC loop"), (AMBER, "compile-time constants"),
+         (EMERALD, "what the hardware does"), (BLUE, "stored weights"), (VIOLET, "cost")])
+y = d.footnotes(
+    30, y + 40, ["Int8 weights in TFLite are symmetric (z_w = 0), so the weight offset matters only for older uint8 "
+                 "models."])
 d.save(height=y + 10)

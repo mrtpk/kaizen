@@ -15,7 +15,8 @@ d.header("Four weights that should add up to 1",
 # panel 1: geometry
 y = 116
 d.panel(y, 260, 1, "Where does the output point fall?",
-        "Between four input pixels, 0.4231 of a pixel to the right and down. Each weight is the area opposite to its corner.")
+        "Between four input pixels, 0.4231 of a pixel to the right and down. Each weight is the area opposite to its "
+        "corner.")
 x0, y0, S = 120, y + 80, 150
 d.rect(x0, y0, S, S, fill="#ffffff", stroke=BLUE, rx=2, sw=1.3)
 for cx, cy, lab, w in [(x0, y0, "q_tl", "340.83"), (x0, y0 + S, "q_bl", "249.94"),
@@ -61,5 +62,7 @@ table(d, y + 92, rows, [80, 330, 600, 900],
 
 y += H + 20
 d.legend(30, y, [(BLUE, "input pixels"), (AMBER, "output point"), (EMERALD, "exact"), (PINK, "truncated")])
-y = d.footnotes(30, y + 40, ["TFLite builds the weights from integer coordinates as (1024 - f) and f, so the four products sum to exactly 1024 * 1024 = 2^20."])
+y = d.footnotes(
+    30, y + 40, ["TFLite builds the weights from integer coordinates as (1024 - f) and f, so the four products sum to "
+                 "exactly 1024 * 1024 = 2^20."])
 d.save(height=y + 10)

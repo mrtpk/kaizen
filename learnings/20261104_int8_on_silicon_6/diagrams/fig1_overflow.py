@@ -50,6 +50,9 @@ row(y + 74, [
 ], EMERALD)
 
 y += 190
-d.legend(30, y, [(PINK, "flipped result"), (AMBER, "the checks we had"), (EMERALD, "the fix"), (BLUE, "the test we needed")])
-y = d.footnotes(30, y + 40, ["It needs |acc * M| > 2048, which is rare in a trained network, so the gap can stay hidden for a long time."])
+d.legend(30, y, [(PINK, "flipped result"), (AMBER, "the checks we had"),
+         (EMERALD, "the fix"), (BLUE, "the test we needed")])
+y = d.footnotes(
+    30, y + 40, ["It needs |acc * M| > 2048, which is rare in a trained network, so the gap can stay hidden for a "
+                 "long time."])
 d.save(height=y + 10)
