@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="728" viewBox="0 0 1100 728">
+<defs></defs>
+<rect width="1100" height="728" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight averages need a shared trunk, and even then they do not add accuracy</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight-Space Programming  ·  side note  ·  fold 0 held-out mask mAP50-95, one pair of runs, one trunk</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">axis starts at 0.28  ·  BN re-est.: batch-norm statistics measured again on 512 training frames</text>
+<rect x="20.0" y="120.0" width="1060.0" height="250.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="146.0" r="13" fill="#111827"/>
+<text x="46.0" y="150.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="151.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Independent runs from COCO: can I average them?</text>
+<text x="68.0" y="170.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">No. The midpoint loses 0.10; a third run makes it worse. BN re-estimation repairs only part.</text>
+<text x="320.0" y="207.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">A_f0</text>
+<rect x="330.0" y="194.0" width="511.4" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="207.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.481</text>
+<text x="320.0" y="233.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">B_f0</text>
+<rect x="330.0" y="220.0" width="500.9" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="233.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.477</text>
+<text x="320.0" y="259.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">½ A + ½ B</text>
+<rect x="330.0" y="246.0" width="257.6" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="259.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.381</text>
+<text x="320.0" y="285.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">½ A + ½ B, BN re-est.</text>
+<rect x="330.0" y="272.0" width="284.8" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="285.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.392</text>
+<text x="320.0" y="311.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">soup of A, B, C</text>
+<rect x="330.0" y="298.0" width="83.2" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="311.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.313</text>
+<text x="320.0" y="337.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">soup of A, B, C, BN re-est.</text>
+<rect x="330.0" y="324.0" width="347.7" height="18.0" rx="3" fill="#db2777" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="337.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.417</text>
+<line x1="841.4" y1="186.0" x2="841.4" y2="350.0" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="835.4" y="364.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">best single run A_f0 0.481</text>
+<rect x="20.0" y="390.0" width="1060.0" height="250.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="416.0" r="13" fill="#111827"/>
+<text x="46.0" y="420.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="421.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Children of one 50-epoch trunk: can I average them?</text>
+<text x="68.0" y="440.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Yes, with no loss. But the soup stays below the best single run.</text>
+<text x="320.0" y="477.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">child A1 (last)</text>
+<rect x="330.0" y="464.0" width="474.0" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="477.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.466</text>
+<text x="320.0" y="503.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">child A2 (last)</text>
+<rect x="330.0" y="490.0" width="476.5" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="503.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.467</text>
+<text x="320.0" y="529.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">child B1 (last)</text>
+<rect x="330.0" y="516.0" width="453.9" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="529.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.458</text>
+<text x="320.0" y="555.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">½ A2 + ½ B1</text>
+<rect x="330.0" y="542.0" width="489.5" height="18.0" rx="3" fill="#059669" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="555.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.472</text>
+<text x="320.0" y="581.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">soup of 3 children</text>
+<rect x="330.0" y="568.0" width="482.9" height="18.0" rx="3" fill="#059669" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="581.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.470</text>
+<text x="320.0" y="607.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">soup of 3, BN re-est.</text>
+<rect x="330.0" y="594.0" width="447.7" height="18.0" rx="3" fill="#059669" fill-opacity="1.0" stroke="none"/>
+<text x="960.0" y="607.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.456</text>
+<line x1="841.4" y1="456.0" x2="841.4" y2="620.0" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="835.4" y="634.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">best single run A_f0 0.481</text>
+<text x="30.0" y="671.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="660.0" width="14.0" height="14.0" rx="3" fill="#e5e7eb" fill-opacity="1.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="118.3" y="671.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">single run</text>
+<rect x="199.7" y="660.0" width="14.0" height="14.0" rx="3" fill="#fdf2f8" fill-opacity="1.0" stroke="#db2777" stroke-width="1.4"/>
+<text x="220.7" y="671.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">average, no shared trunk</text>
+<rect x="388.3" y="660.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
+<text x="409.3" y="671.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">average, shared trunk</text>
+<text x="30.0" y="700.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Seed noise on fold 0 is 0.001 to 0.005. The trunk runs used momentum 0.937, the CV runs 0.9.</text>
+</svg>

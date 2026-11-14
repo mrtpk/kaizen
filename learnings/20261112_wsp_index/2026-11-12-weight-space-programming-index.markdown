@@ -22,6 +22,10 @@ In every experiment, a coding agent wrote and ran the code. I set the goal and t
 | 1 | [Editing an eel detector without new data][eel] | YOLO26n-seg, 3.06M parameters, eels in infrared video | Claude Code | CPU only | held-out fitness 1.3346 to 1.4004, recall 0.894 to 0.944; most of the gain from a rule that changes no weight | [wsp-yolo-eel][repo-eel] (no checkpoint, frames or labels; crop figures only) |
 | 2 | [Teaching Qwen3.5-0.8B when to call a tool][qwen] | Qwen3.5-0.8B on BFCL-V4 tool use | Cursor (v1), Claude (v2) | one RTX 5090 | +0.66 to +2.61 overall; two edits, each better in one mode only | [wsp-qwen-tools][repo-qwen]; v7 model on [Hugging Face][hf-qwen] |
 
+Side notes are short notes next to the experiments. They use gradient training, so they are not weight-space programming experiments, and they have no row in the table and no repository.
+
+- [Side note: an agent drives the training of the eel detector][side-eel]: Claude Code (Opus 5.5) ran a 5-fold training study of the eel detector on one AMD MI325X GPU and read the weights of the runs. Averages of independent runs collapse; averages of children of one trunk are safe but not better. The comparison against the production model is pending.
+
 Both repositories hold the code, the logs and the reports. The eel checkpoint, frames and labels are not public, so the first study does not run from its repository as it is. The second one runs from the public base model up to a full BFCL run (levels 1 to 4 of its README); the edit cells need new forward passes on a GPU.
 
 ## What held in both experiments
@@ -67,7 +71,7 @@ This list comes from both studies. Each step can stop a project early, and an ea
 
 Techniques that worked: reading biases and output rows, exact surgery with an exact check, an output merge by widening, a parameter-free rule in the graph, interpolation after a fine-tune, a rank-1 edit of the last MLP, and programming a single neuron with a ridge gate.
 
-Techniques that failed: weight averages of networks that do not share a basis, threshold shifts on scores that the features cannot separate, "no call" targets taken from refusal rows, a push at the decision token when the reasoning already planned the action, and post-processing that the errors make useless.
+Techniques that failed: weight averages of networks that do not share a basis (the side note shows why: the activations shrink, and a shared trunk prevents it), threshold shifts on scores that the features cannot separate, "no call" targets taken from refusal rows, a push at the decision token when the reasoning already planned the action, and post-processing that the errors make useless.
 
 ## How I evaluate an edit now
 1. Count both sides of the trade-off before I accept an edit.
@@ -77,7 +81,7 @@ Techniques that failed: weight averages of networks that do not share a basis, t
 5. Write every evaluation as one line in one log, and make every table from that log.
 
 ## What comes next
-More experiments follow. Each one gets a post, a wsp- repository, and a row in the table above.
+More experiments follow. Each one gets a post, a wsp- repository, and a row in the table above. A side note gets a post and a line under the table.
 
 So, in short: weights are a good place to read a model and a safe place for exact surgery, and an edit of one decision buys a better point on a trade-off, not a new capability. The cheapest step in both studies was the one I did last: the ceiling of the goal.
 
@@ -85,6 +89,7 @@ So, in short: weights are a good place to read a model and a safe place for exac
 + [Sparks of Weight-Space Programming (Takehi, Teoh, Zhang and Khattab, MIT CSAIL)][mit]
 + [Weight-Space Programming - Editing an eel detector without new data][eel]
 + [Weight-Space Programming - Teaching Qwen3.5-0.8B when to call a tool][qwen]
++ [Weight-Space Programming - Side note: an agent drives the training of the eel detector][side-eel]
 + [wsp-yolo-eel][repo-eel], [wsp-qwen-tools][repo-qwen]
 
 [mit]: https://rikiyat.github.io/blog/weight-space-programming
@@ -92,4 +97,5 @@ So, in short: weights are a good place to read a model and a safe place for exac
 [qwen]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_qwen_tool_use
 [repo-eel]: https://github.com/mrtpk/wsp-yolo-eel
 [repo-qwen]: https://github.com/mrtpk/wsp-qwen-tools
+[side-eel]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261114_wsp_eel_agent_training
 [hf-qwen]: https://huggingface.co/mrtpk/Qwen3.5-0.8B-wsp-tool-use

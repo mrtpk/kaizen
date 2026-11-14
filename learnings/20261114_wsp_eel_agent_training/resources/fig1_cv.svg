@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="808" viewBox="0 0 1100 808">
+<defs></defs>
+<rect width="1100" height="808" fill="#ffffff"/>
+<text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Copy-paste wins on reliability, not on the main score</text>
+<text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight-Space Programming  ·  side note  ·  YOLO26n-seg, 5 folds, about 1,000 held-out frames per fold</text>
+<text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">A: batch 64 from COCO  ·  B: A + copy_paste 0.5  ·  one run per fold and recipe</text>
+<rect x="20.0" y="120.0" width="1060.0" height="290.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="146.0" r="13" fill="#111827"/>
+<text x="46.0" y="150.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">1</text>
+<text x="68.0" y="151.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Mask mAP50-95: which recipe is better?</text>
+<text x="68.0" y="170.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Neither. B leads on 2 of 5 folds; the gap is inside the fold spread.</text>
+<text x="186.0" y="205.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 0</text>
+<line x1="200.0" y1="200.0" x2="900.0" y2="200.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="432.0" cy="200.0" r="7" fill="#2563eb"/>
+<circle cx="399.0" cy="200.0" r="7" fill="#d97706"/>
+<text x="186.0" y="235.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 1</text>
+<line x1="200.0" y1="230.0" x2="900.0" y2="230.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="720.0" cy="230.0" r="7" fill="#2563eb"/>
+<circle cx="689.0" cy="230.0" r="7" fill="#d97706"/>
+<text x="186.0" y="265.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 2</text>
+<line x1="200.0" y1="260.0" x2="900.0" y2="260.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="715.0" cy="260.0" r="7" fill="#2563eb"/>
+<circle cx="690.0" cy="260.0" r="7" fill="#d97706"/>
+<text x="186.0" y="295.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 3</text>
+<line x1="200.0" y1="290.0" x2="900.0" y2="290.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="345.0" cy="290.0" r="7" fill="#2563eb"/>
+<circle cx="555.0" cy="290.0" r="7" fill="#d97706"/>
+<text x="186.0" y="325.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 4</text>
+<line x1="200.0" y1="320.0" x2="900.0" y2="320.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="656.0" cy="320.0" r="7" fill="#2563eb"/>
+<circle cx="679.0" cy="320.0" r="7" fill="#d97706"/>
+<text x="186.0" y="355.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">mean</text>
+<line x1="200.0" y1="350.0" x2="900.0" y2="350.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="573.6" cy="350.0" r="7" fill="#2563eb"/>
+<circle cx="602.4" cy="350.0" r="7" fill="#d97706"/>
+<text x="916.0" y="355.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">A 0.497  B 0.500</text>
+<text x="200.0" y="378.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">0.46</text>
+<text x="400.0" y="378.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">0.48</text>
+<text x="600.0" y="378.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">0.50</text>
+<text x="800.0" y="378.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">0.52</text>
+<rect x="20.0" y="430.0" width="1060.0" height="290.0" rx="14" fill="#fafafa" fill-opacity="1.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="46.0" cy="456.0" r="13" fill="#111827"/>
+<text x="46.0" y="460.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
+<text x="68.0" y="461.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Mask mAP50: which recipe is better?</text>
+<text x="68.0" y="480.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">B, on 4 of 5 folds, with half the spread. On fold 3, A drops to 0.920.</text>
+<text x="186.0" y="515.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 0</text>
+<line x1="200.0" y1="510.0" x2="900.0" y2="510.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="572.6" cy="510.0" r="7" fill="#2563eb"/>
+<circle cx="623.2" cy="510.0" r="7" fill="#d97706"/>
+<text x="186.0" y="545.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 1</text>
+<line x1="200.0" y1="540.0" x2="900.0" y2="540.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="643.7" cy="540.0" r="7" fill="#2563eb"/>
+<circle cx="700.8" cy="540.0" r="7" fill="#d97706"/>
+<text x="186.0" y="575.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 2</text>
+<line x1="200.0" y1="570.0" x2="900.0" y2="570.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="704.0" cy="570.0" r="7" fill="#2563eb"/>
+<circle cx="686.8" cy="570.0" r="7" fill="#d97706"/>
+<text x="186.0" y="605.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 3</text>
+<line x1="200.0" y1="600.0" x2="900.0" y2="600.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="304.5" cy="600.0" r="7" fill="#2563eb"/>
+<circle cx="732.0" cy="600.0" r="7" fill="#d97706"/>
+<text x="186.0" y="635.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 4</text>
+<line x1="200.0" y1="630.0" x2="900.0" y2="630.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="711.5" cy="630.0" r="7" fill="#2563eb"/>
+<circle cx="812.8" cy="630.0" r="7" fill="#d97706"/>
+<text x="186.0" y="665.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="bold" text-anchor="end" xml:space="preserve" style="white-space:pre">mean</text>
+<line x1="200.0" y1="660.0" x2="900.0" y2="660.0" stroke="#d1d5db" stroke-width="1"/>
+<circle cx="587.3" cy="660.0" r="7" fill="#2563eb"/>
+<circle cx="711.1" cy="660.0" r="7" fill="#d97706"/>
+<text x="916.0" y="665.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">A 0.946  B 0.957</text>
+<text x="307.7" y="688.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">0.92</text>
+<text x="523.1" y="688.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">0.94</text>
+<text x="738.5" y="688.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" xml:space="preserve" style="white-space:pre">0.96</text>
+<text x="30.0" y="751.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Legend</text>
+<rect x="97.3" y="740.0" width="14.0" height="14.0" rx="3" fill="#eff6ff" fill-opacity="1.0" stroke="#2563eb" stroke-width="1.4"/>
+<text x="118.3" y="751.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">recipe A</text>
+<rect x="191.0" y="740.0" width="14.0" height="14.0" rx="3" fill="#fffbeb" fill-opacity="1.0" stroke="#d97706" stroke-width="1.4"/>
+<text x="212.0" y="751.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">recipe B (shipped as the candidate)</text>
+<text x="30.0" y="780.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Each dot: the best checkpoint of one run, scored on its fold&#x27;s held-out frames. Masks at 1/4 resolution.</text>
+</svg>
