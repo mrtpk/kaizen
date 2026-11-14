@@ -30,7 +30,8 @@ print(f"  guard(int32 product) fires: {guard(int(p32))};  guard(int64 product) f
 shift = 20
 r32 = int(p32) >> shift
 r64 = int(p64) >> shift
-print(f"  >> 20: wrapped gives {r32}, true gives {r64} -> after clip: {max(min(r32, 127), -128)} vs {max(min(r64, 127), -128)}")
+c32, c64 = max(min(r32, 127), -128), max(min(r64, 127), -128)
+print(f"  >> 20: wrapped gives {r32}, true gives {r64} -> after clip: {c32} vs {c64}")
 # the "reference" check: int32 * int32 widened after the fact is the same wrapped value
 with np.errstate(over="ignore"):
     out_ref = np.int64(np.int32(alpha) * np.int32(acc))
@@ -55,7 +56,8 @@ s_out, z_out = 0.10, 0
 a = rng.integers(-128, 128, 1000)
 b = rng.integers(-128, 128, 1000)
 raw = np.concatenate([a, b])                                      # ours: copy the bytes
-requant = np.concatenate([np.clip(np.round(a * s1 / s_out), -128, 127), b])   # what a scale check would force: requantize input 1
+# what a scale check would force: requantize input 1
+requant = np.concatenate([np.clip(np.round(a * s1 / s_out), -128, 127), b])
 real = np.concatenate([a * s1, b * s2])
 print(f"\nCONCAT s1 = {s1}, s2 = {s2}, s_out = {s_out}:")
 print(f"  copy:        max real error {np.abs(raw * s_out - real).max():.2f}")

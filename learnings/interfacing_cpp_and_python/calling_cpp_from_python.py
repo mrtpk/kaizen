@@ -1,7 +1,7 @@
 import numpy as np
 import cpp_interface
 
-arr = np.random.randint(1,10, size=(2, 3))
+arr = np.random.randint(1, 10, size=(2, 3))
 print("shape of input array:", arr.shape)
 print("Input array:")
 print(arr)
