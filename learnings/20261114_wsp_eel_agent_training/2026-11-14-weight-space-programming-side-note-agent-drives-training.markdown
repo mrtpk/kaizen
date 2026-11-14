@@ -10,7 +10,7 @@ Lately, I have been trying weight-space programming on real models, and this not
 
 This is not a weight-space programming experiment. Gradient training made every model in this note, and no weight edit went into the result. I keep it in the series for two reasons: the agent drove a full training study by itself, and the weight reading explains why some easy tricks fail.
 
-The agent was Claude Code (CLI) with Opus 5.5 at medium thinking, on one AMD MI325X GPU, in Docker. I set the goal and the rules, approved the extra experiments, and I will score the result by hand. **The comparison against the production model is still pending.** No weights, frames or labels are public, so this note has no repository. The [index][index] lists all the notes of this series.
+The agent was Claude Code (CLI) with Opus 5.5 at medium thinking, on one AMD MI325X GPU, in Docker. I set the goal and the rules, and approved the extra experiments. **The candidate was never compared against the production model, so it is not shown to be better.** The only fair test is a manual score on real footage, and I did not do it. No weights, frames or labels are public, so this note has no repository. The [index][index] lists all the notes of this series.
 
 ## What the agent had to do
 The goal: train a nano YOLO26-seg model that can replace the production model. The rules: image size 512, all 22 classes kept, nano size, one GPU, one job at a time.
@@ -85,7 +85,7 @@ The full script is available [here][script]. If the shrink is the cause, then ne
 ## What I take from it
 - The agent did a full training study by itself: it found the leaks, designed the folds, recovered from a crash, and stopped the final run at an epoch chosen from the folds.
 - The weights explained the failures of the easy tricks: averages of independent runs mix channels that do not match.
-- Nothing from the weight reading went into the candidate. The candidate is plain recipe B, and its test against the production model is still to come.
+- Nothing from the weight reading went into the candidate. The candidate is plain recipe B, and it was never tested against the production model.
 
 So, in short: an agent can drive a careful training study end to end, and reading the weights of what it trained tells you which shortcuts not to try.
 

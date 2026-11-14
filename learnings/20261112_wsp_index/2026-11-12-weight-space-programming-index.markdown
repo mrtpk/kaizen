@@ -24,7 +24,7 @@ In every experiment, a coding agent wrote and ran the code. I set the goal and t
 
 Side notes are short notes next to the experiments. They use gradient training, so they are not weight-space programming experiments, and they have no row in the table and no repository.
 
-- [Side note: an agent drives the training of the eel detector][side-eel]: Claude Code (Opus 5.5) ran a 5-fold training study of the eel detector on one AMD MI325X GPU and read the weights of the runs. Averages of independent runs collapse; averages of children of one trunk are safe but not better. The comparison against the production model is pending.
+- [Side note: an agent drives the training of the eel detector][side-eel]: Claude Code (Opus 5.5) ran a 5-fold training study of the eel detector on one AMD MI325X GPU and read the weights of the runs. Averages of independent runs collapse; averages of children of one trunk are safe but not better. The candidate was never compared against the production model.
 
 Both repositories hold the code, the logs and the reports. The eel checkpoint, frames and labels are not public, so the first study does not run from its repository as it is. The second one runs from the public base model up to a full BFCL run (levels 1 to 4 of its README); the edit cells need new forward passes on a GPU.
 
