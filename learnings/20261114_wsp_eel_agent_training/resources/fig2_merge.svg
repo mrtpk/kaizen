@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="728" viewBox="0 0 1100 728">
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="746" viewBox="0 0 1100 746">
 <defs></defs>
-<rect width="1100" height="728" fill="#ffffff"/>
+<rect width="1100" height="746" fill="#ffffff"/>
 <text x="30.0" y="42.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight averages need a shared trunk, and even then they do not add accuracy</text>
 <text x="30.0" y="68.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Weight-Space Programming  ·  side note  ·  fold 0 held-out mask mAP50-95, one pair of runs, one trunk</text>
 <text x="30.0" y="88.0" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">axis starts at 0.28  ·  BN re-est.: batch-norm statistics measured again on 512 training frames</text>
@@ -33,7 +33,7 @@
 <circle cx="46.0" cy="416.0" r="13" fill="#111827"/>
 <text x="46.0" y="420.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
 <text x="68.0" y="421.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Children of one 50-epoch trunk: can I average them?</text>
-<text x="68.0" y="440.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Yes, with no loss. But the soup stays below the best single run.</text>
+<text x="68.0" y="440.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Blends lose nothing; the soup stays below the best single run.</text>
 <text x="320.0" y="477.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">child A1 (last)</text>
 <rect x="330.0" y="464.0" width="474.0" height="18.0" rx="3" fill="#9ca3af" fill-opacity="1.0" stroke="none"/>
 <text x="960.0" y="477.5" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">0.466</text>
@@ -62,4 +62,5 @@
 <rect x="388.3" y="660.0" width="14.0" height="14.0" rx="3" fill="#ecfdf5" fill-opacity="1.0" stroke="#059669" stroke-width="1.4"/>
 <text x="409.3" y="671.5" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">average, shared trunk</text>
 <text x="30.0" y="700.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">Seed noise on fold 0 is 0.001 to 0.005. The trunk runs used momentum 0.937, the CV runs 0.9.</text>
+<text x="30.0" y="718.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">CPU re-evaluation of fold 0: it differs from the CV table by up to 0.002.</text>
 </svg>

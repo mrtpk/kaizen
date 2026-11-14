@@ -45,7 +45,7 @@ d.panel(y1, h1, 1, "Mask mAP50-95: which recipe is better?",
 strip(d, y1 + 80, "mask50-95", 0.46, 0.53, [0.46, 0.48, 0.50, 0.52])
 y2, h2 = y1 + h1 + 20, 290
 d.panel(y2, h2, 2, "Mask mAP50: which recipe is better?",
-        "B, on 4 of 5 folds, with half the spread. On fold 3, A drops to 0.920.")
+        "B, on 4 of 5 folds, with less than half the spread. On fold 3, A drops to 0.920.")
 strip(d, y2 + 80, "mask50", 0.91, 0.975, [0.92, 0.94, 0.96])
 y = y2 + h2 + 20
 d.legend(30, y, [(BLUE, "recipe A"), (AMBER, "recipe B (shipped as the candidate)")])

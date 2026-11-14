@@ -19,7 +19,7 @@ Before diving in, let's look at the traps the agent found before any useful run.
 
 | Trap | What it means |
 | --- | --- |
-| The dataset validates on its training frames | the production model's 0.95 mask mAP50 is memorisation, so it cannot be scored on this data |
+| The dataset validates on its training frames | the production model's 0.950 mask mAP50 on it is memorisation, so it cannot be scored on this data |
 | Consecutive frames are near-duplicates | a random split leaks; frames closer than 50 frame numbers must stay in one fold |
 | A fold that starts from the production weights leaks | every fold starts from COCO weights |
 | `optimizer=auto` picks AdamW below 10k steps | a larger batch means fewer steps, so it can change the optimizer, not only the batch |
@@ -41,7 +41,7 @@ The 11 CV jobs first ran in parallel. A server crash stopped 10 of them. The age
 | A | 0.4974 ± 0.017 | 0.9460 ± 0.0156 |
 | B | 0.5002 ± 0.013 | 0.9575 ± 0.0064 |
 
-On mask mAP50-95 the two recipes tie. B is better on mask mAP50, on 4 of 5 folds, and its spread across folds is half that of A. The agent picked B for that reason.
+On mask mAP50-95 the two recipes tie. B is better on mask mAP50, on 4 of 5 folds, and its spread across folds is less than half that of A. The agent picked B for that reason.
 
 The final candidate is recipe B on all 4,986 frames. A run on all frames has no held-out data, so early stopping cannot work. The agent stopped it at epoch 150, because the 5 B folds score best on average at that epoch (0.4956 mask mAP50-95 over epochs 146 to 154). It also deleted the "best" checkpoint of that run, because that checkpoint was chosen on the training frames. The run took 2.17 hours.
 
@@ -73,12 +73,12 @@ print("Unaligned average shrinks it by more than 20 %. Is pass?", unaligned < 0.
 
 The full script is available [here][script]. If the shrink is the cause, then new batch-norm statistics must repair it. They do, in part: +0.10 on the three-run soup, but only +0.01 on the two-run blend.
 
-**A shared trunk makes averages safe, but not better.** The agent trained one 50-epoch trunk on fold 0 and forked three children from it. Every 50/50 blend of two children scores at or above its weaker endpoint, even across recipes. But the soup of the three children (0.470) stays below the best single run (0.481), and new batch-norm statistics now hurt it (0.456). On this data, a soup repairs a late decline; it does not add accuracy. This is one trunk on one fold, and the trunk runs used momentum 0.937 while the CV runs used 0.9.
+**A shared trunk makes averages safe, but not better.** The agent trained one 50-epoch trunk on fold 0 and forked three children from it. Every 50/50 blend of two children scores at or above its weaker endpoint, even across recipes. But the soup of the three children (0.470) stays below the best single run (0.481), and new batch-norm statistics now hurt it (0.456). On this data, a soup repairs a late decline; it does not add accuracy. This is one trunk on one fold, and the trunk runs used momentum 0.937 while the CV runs used 0.9. The fold 0 numbers in this section come from a CPU re-evaluation, so they differ from the CV table by up to 0.002.
 
 ![Two panels of mask mAP50-95 on fold 0. 1: independent runs A_f0 0.481 and B_f0 0.477; half A plus half B 0.381, with new batch-norm statistics 0.392; soup of A, B and C 0.313, with new statistics 0.417. 2: children of one trunk at 0.466, 0.467 and 0.458; half A2 plus half B1 0.472; soup of the three 0.470, with new statistics 0.456. A dashed line marks the best single run at 0.481.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261114_wsp_eel_agent_training/resources/fig2_merge.png)
 *Figure: weight averages on fold 0. Without a shared trunk they collapse; with one they are safe, but none beats the best single run.*
 
-**A third of the network can stay at COCO.** The deep P5 blocks (34 % of the weights) move least in training, and in a different direction in each run. Freezing them at COCO gave 0.478 against 0.481. That is one fold and one seed, and seed noise on fold 0 is 0.001 to 0.005, so it says "no measurable loss", not "better".
+**A third of the network can stay at COCO.** The deep P5 blocks (34 % of the weights) move least in training, and in a different direction in each run. Freezing them at COCO gave 0.478 against 0.481. That is one fold and one seed, the frozen run used momentum 0.937 against 0.9 for A_f0, and seed noise on fold 0 is 0.001 to 0.005, so it says "no measurable loss", not "better".
 
 **The firing pattern shows where an image shift acts.** On one model and 80 probe frames (about 80 % of them seen in training), the agent added synthetic shifts and measured how far each block's activations move. Brightness moves only the first blocks and does not hurt the output. Noise and turbid haze move the head, and the mean eel confidence falls from 0.778 to 0.640 and 0.668. It is a label-free check for new footage, tested on synthetic shifts only.
 

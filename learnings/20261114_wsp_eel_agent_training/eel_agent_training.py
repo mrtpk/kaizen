@@ -20,6 +20,7 @@ HERE = Path(__file__).resolve().parent
 
 # Numbers that exist only in the study's notes and logs, copied exactly.
 LOGGED: dict[str, Any] = {
+    "prod_trainset": (0.950, 0.488),  # prod mask mAP50 / mAP50-95 on the dataset it trained on
     "frames": 4986,
     "val_per_fold": 1000,  # about 1,000 held-out frames per fold
     "fold_gap": 50,  # frames closer than 50 frame numbers stay in one fold

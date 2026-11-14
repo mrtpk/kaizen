@@ -71,7 +71,7 @@ This list comes from both studies. Each step can stop a project early, and an ea
 
 Techniques that worked: reading biases and output rows, exact surgery with an exact check, an output merge by widening, a parameter-free rule in the graph, interpolation after a fine-tune, a rank-1 edit of the last MLP, and programming a single neuron with a ridge gate.
 
-Techniques that failed: weight averages of networks that do not share a basis (the side note shows why: the activations shrink, and a shared trunk prevents it), threshold shifts on scores that the features cannot separate, "no call" targets taken from refusal rows, a push at the decision token when the reasoning already planned the action, and post-processing that the errors make useless.
+Techniques that failed: weight averages of networks that do not share a basis (the side note shows why: the activations shrink, and on one fold a shared trunk prevents it), threshold shifts on scores that the features cannot separate, "no call" targets taken from refusal rows, a push at the decision token when the reasoning already planned the action, and post-processing that the errors make useless.
 
 ## How I evaluate an edit now
 1. Count both sides of the trade-off before I accept an edit.

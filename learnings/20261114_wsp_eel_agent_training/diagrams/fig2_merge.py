@@ -40,7 +40,7 @@ bars(d, y1 + 74, [
 ])
 y2, h2 = y1 + h1 + 20, 250
 d.panel(y2, h2, 2, "Children of one 50-epoch trunk: can I average them?",
-        "Yes, with no loss. But the soup stays below the best single run.")
+        "Blends lose nothing; the soup stays below the best single run.")
 bars(d, y2 + 74, [
     ("child A1 (last)", p.mm(t, "child_A1:last"), NEUTRAL),
     ("child A2 (last)", p.mm(t, "child_A2:last"), NEUTRAL),
@@ -53,5 +53,6 @@ y = y2 + h2 + 20
 d.legend(30, y, [(NEUTRAL, "single run"), (PINK, "average, no shared trunk"), (EMERALD, "average, shared trunk")])
 end = d.footnotes(30, y + 40, [
     "Seed noise on fold 0 is 0.001 to 0.005. The trunk runs used momentum 0.937, the CV runs 0.9.",
+    "CPU re-evaluation of fold 0: it differs from the CV table by up to 0.002.",
 ])
 d.save(height=end + 10)

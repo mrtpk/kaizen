@@ -42,7 +42,7 @@
 <circle cx="46.0" cy="456.0" r="13" fill="#111827"/>
 <text x="46.0" y="460.9" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle" xml:space="preserve" style="white-space:pre">2</text>
 <text x="68.0" y="461.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#111827" font-weight="bold" text-anchor="start" xml:space="preserve" style="white-space:pre">Mask mAP50: which recipe is better?</text>
-<text x="68.0" y="480.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">B, on 4 of 5 folds, with half the spread. On fold 3, A drops to 0.920.</text>
+<text x="68.0" y="480.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#6b7280" font-weight="normal" text-anchor="start" xml:space="preserve" style="white-space:pre">B, on 4 of 5 folds, with less than half the spread. On fold 3, A drops to 0.920.</text>
 <text x="186.0" y="515.0" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="end" xml:space="preserve" style="white-space:pre">fold 0</text>
 <line x1="200.0" y1="510.0" x2="900.0" y2="510.0" stroke="#d1d5db" stroke-width="1"/>
 <circle cx="572.6" cy="510.0" r="7" fill="#2563eb"/>
