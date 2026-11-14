@@ -40,12 +40,16 @@ d.header(
     params="A: batch 64 from COCO  ·  B: A + copy_paste 0.5  ·  one run per fold and recipe",
 )
 y1, h1 = 120, 290
-d.panel(y1, h1, 1, "Mask mAP50-95: which recipe is better?", "Neither. B leads on 2 of 5 folds; the gap is inside the fold spread.")
+d.panel(y1, h1, 1, "Mask mAP50-95: which recipe is better?",
+        "Neither. B leads on 2 of 5 folds; the gap is inside the fold spread.")
 strip(d, y1 + 80, "mask50-95", 0.46, 0.53, [0.46, 0.48, 0.50, 0.52])
 y2, h2 = y1 + h1 + 20, 290
-d.panel(y2, h2, 2, "Mask mAP50: which recipe is better?", "B, on 4 of 5 folds, with half the spread. On fold 3, A drops to 0.920.")
+d.panel(y2, h2, 2, "Mask mAP50: which recipe is better?",
+        "B, on 4 of 5 folds, with half the spread. On fold 3, A drops to 0.920.")
 strip(d, y2 + 80, "mask50", 0.91, 0.975, [0.92, 0.94, 0.96])
 y = y2 + h2 + 20
 d.legend(30, y, [(BLUE, "recipe A"), (AMBER, "recipe B (shipped as the candidate)")])
-end = d.footnotes(30, y + 40, ["Each dot: the best checkpoint of one run, scored on its fold's held-out frames. Masks at 1/4 resolution."])
+end = d.footnotes(30, y + 40, [
+    "Each dot: the best checkpoint of one run, scored on its fold's held-out frames. Masks at 1/4 resolution.",
+])
 d.save(height=end + 10)
