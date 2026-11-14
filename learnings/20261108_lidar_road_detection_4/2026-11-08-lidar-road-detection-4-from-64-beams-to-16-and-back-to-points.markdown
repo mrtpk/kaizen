@@ -6,7 +6,7 @@ categories: lidar deep-learning
 mathjax: true
 ---
 
-Lately, I have been going through my notes from a LiDAR road detection project at Infosys, and this note is about the sensor we actually had on the golf cart: a LiDAR with 16 beams instead of 64.
+KITTI uses a LiDAR with 64 beams, but the golf cart at Infosys had one with only 16. This note is about what that change does to the grid, and about the last step of the pipeline.
 
 In [part 3][prev], we saw how LoDNN looks far across the 400 x 200 grid with one pooling step and seven dilated convolutions. Everything so far used a KITTI scan, from a 64-beam sensor. On the cart, we used a Velodyne VLP-16, which has 16. This part looks at what a quarter of the beams does to the grid, and then at the last step of the pipeline: from the road map back to the points.
 
@@ -88,11 +88,11 @@ In part 5, we will run all the checks of the series again, and look at what held
 + [Why you should be interested in LiDAR technologies?][kaizen-tech]
 + [LiDAR Basics - The Coordinate System][kaizen-coords]
 
-[prev]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_3
+[prev]: https://www.thomaspaul.dev/2026/11/202611lidar-road-detection-3-seeing-far-with-dilated-convolutions.html
 [script]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_4
 [lodnn]: https://arxiv.org/abs/1703.03613v2
 [lidar-buster]: https://github.com/mrtpk/lidar-buster/tree/1bb1d59d2d470af4c08350cbd912081728cd01eb
 [infosys]: https://www.infosys.com/insights/ai-automation/Pages/autonomous-technologies.aspx
 [yt]: https://www.youtube.com/watch?v=X6wEztubV_4
-[kaizen-tech]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180827_lidar_tech
-[kaizen-coords]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180929_lidar-coordinate-basics
+[kaizen-tech]: https://www.thomaspaul.dev/2018/08/201808lidar-tech.html
+[kaizen-coords]: https://www.thomaspaul.dev/2018/08/201808lidar-coordinates.html

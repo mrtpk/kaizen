@@ -6,7 +6,7 @@ categories: lidar deep-learning
 mathjax: true
 ---
 
-Lately, I have been going through my notes from a LiDAR road detection project at Infosys, and this note is about labels: where the "road" answer for each cell of the grid comes from.
+To train a road detector on a top-view grid, every cell of the grid needs a label: road or not road. This note is about where that label comes from.
 
 In [part 1][prev], we turned one LiDAR scan into six 400 x 200 images on a top-view grid of 0.1 m cells. To train a network on those images, we need a label image on the same grid: road or not road, cell by cell. The KITTI road dataset has labels, but they are drawn on the camera image, not on the grid. This part moves them over.
 
@@ -94,11 +94,11 @@ In part 3, we will look at the network that takes the six images and gives a roa
 + [Why you should be interested in LiDAR technologies?][kaizen-tech]
 + [LiDAR Basics - The Coordinate System][kaizen-coords]
 
-[prev]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_1
+[prev]: https://www.thomaspaul.dev/2026/11/202611lidar-road-detection-1-from-points-to-a-top-view-grid.html
 [script]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_2
 [lodnn]: https://arxiv.org/abs/1703.03613v2
 [lidar-buster]: https://github.com/mrtpk/lidar-buster/tree/1bb1d59d2d470af4c08350cbd912081728cd01eb
 [infosys]: https://www.infosys.com/insights/ai-automation/Pages/autonomous-technologies.aspx
 [yt]: https://www.youtube.com/watch?v=X6wEztubV_4
-[kaizen-tech]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180827_lidar_tech
-[kaizen-coords]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180929_lidar-coordinate-basics
+[kaizen-tech]: https://www.thomaspaul.dev/2018/08/201808lidar-tech.html
+[kaizen-coords]: https://www.thomaspaul.dev/2018/08/201808lidar-coordinates.html

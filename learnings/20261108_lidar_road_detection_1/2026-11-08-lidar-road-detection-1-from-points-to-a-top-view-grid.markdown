@@ -6,7 +6,7 @@ categories: lidar deep-learning
 mathjax: true
 ---
 
-Lately, I have been going through my notes from a LiDAR project, and this note is about the first step of finding the road in a LiDAR point cloud: how an unordered cloud of points becomes a set of images, before any neural network. It starts a series.
+A LiDAR point cloud is an unordered set of points, and a convolution needs an image. This note is about the first step of finding the road in a point cloud: how the points become a set of images, before any neural network. It starts a series.
 
 In 2018, I worked on the road detection module of an autonomous golf cart at Infosys. The module found the drivable road in the point cloud of a LiDAR, and the cart used it for path planning. We used a method called LoDNN, by Caltagirone et al. It is their method, not mine, and the [paper][lodnn] is worth a read. What I did was build it, run it on the cart, and make it work with a Velodyne VLP-16, a 16-beam LiDAR. On the cart, the module reached a 94 % F1 score and 95 % average accuracy, and it ran at 83 FPS, which is 12 ms per frame. Infosys also published [a video of the driverless golf cart][yt].
 
@@ -129,6 +129,6 @@ In part 2, we will see where the labels come from: the road is drawn on the came
 [lidar-buster]: https://github.com/mrtpk/lidar-buster/tree/1bb1d59d2d470af4c08350cbd912081728cd01eb
 [infosys]: https://www.infosys.com/insights/ai-automation/Pages/autonomous-technologies.aspx
 [yt]: https://www.youtube.com/watch?v=X6wEztubV_4
-[kaizen-tech]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180827_lidar_tech
-[kaizen-coords]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180929_lidar-coordinate-basics
+[kaizen-tech]: https://www.thomaspaul.dev/2018/08/201808lidar-tech.html
+[kaizen-coords]: https://www.thomaspaul.dev/2018/08/201808lidar-coordinates.html
 [so-question]: https://stackoverflow.com/questions/51691980/numpy-grouping-binning-values-based-on-associations

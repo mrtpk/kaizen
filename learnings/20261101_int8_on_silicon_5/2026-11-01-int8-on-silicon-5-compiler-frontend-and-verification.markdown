@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "Int8 on Silicon - Part 5: The compiler frontend, and how we verified it"
-date:   2026-11-07 00:00:00 +0530
+date:   2026-11-01 00:00:00 +0530
 categories: deep-learning quantization hardware compilers
 mathjax: true
 ---
 
-Lately, I have been writing down how an int8 accelerator that I worked on ran neural networks, and this note is about the software around the math: the compiler frontend that turned a TFLite model into hardware layers, and the files and checks that told us every layer was right.
+Arithmetic alone does not run a neural network. This note is about the software around the math: the compiler frontend that turned a TFLite model into hardware layers, and the files and checks that told us every layer was right.
 
 Parts [1][part1] to [4][part4] were about arithmetic. But arithmetic alone does not run a model. Somebody has to read the model file, reshape the graph into what the hardware can run, decide what runs on the host, and write the constants. And somebody has to prove that the hardware does what the reference model says. In our team, the reference model did both.
 
@@ -21,12 +21,12 @@ Then a list of rewrite passes changed the graph so that it fits the hardware:
 + **SAME convolution becomes Pad + VALID convolution** (hardware export only). [Part 2][part2] showed why the pad value must be the input zero point. With an explicit Pad layer, that value is a visible constant, and the convolution has no border case.
 + **Reshape, Transpose, Reshape, DepthToSpace becomes one DepthToSpace** (hardware export only). This is how a PixelShuffle from PyTorch can look after conversion to TFLite. The pass recognizes the 4-layer pattern and replaces it with one DepthToSpace in the CRD order. (DepthToSpace can read the channels in two orders: TensorFlow uses DCR, depth-column-row, and PixelShuffle uses CRD, column-row-depth.)
 
-![Three panels. 1: TFLite flatbuffer, graph, rewrite passes. 2: a table of five passes; the last two run only for the hardware export. 3: outputs: layer config, constants and golden files.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_5/resources/fig1_frontend.png)
+![Three panels. 1: TFLite flatbuffer, graph, rewrite passes. 2: a table of five passes; the last two run only for the hardware export. 3: outputs: layer config, constants and golden files.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261101_int8_on_silicon_5/resources/fig1_frontend.png)
 *Figure: the frontend reads the TFLite graph, rewrites it for the hardware, and writes three kinds of files.*
 
 Every rewrite must leave the output unchanged: the new graph and the old graph must give the same int8 output. The script of this note checks each rewrite that way in NumPy. For SAME padding, the split is easy to get wrong, because TensorFlow puts the extra pixel at the bottom and right. For a 3X3 convolution with stride 2 on an 8X8 input, the padding is 0 on top and 1 at the bottom, not 1 and 0. (I wrote about that rule in [an older note][tf-padding].)
 
-![Three panels. 1: SAME convolution becomes Pad (top 0, bottom 1, value z_in) and a VALID convolution. 2: Reshape, Transpose, Reshape, DepthToSpace becomes one DepthToSpace in CRD order. 3: Split becomes 3 Slices. Each has an equality check that passes.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_5/resources/fig2_rewrites.png)
+![Three panels. 1: SAME convolution becomes Pad (top 0, bottom 1, value z_in) and a VALID convolution. 2: Reshape, Transpose, Reshape, DepthToSpace becomes one DepthToSpace in CRD order. 3: Split becomes 3 Slices. Each has an equality check that passes.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261101_int8_on_silicon_5/resources/fig2_rewrites.png)
 *Figure: three rewrites. The graph changes, the int8 output does not.*
 
 ## The layers and what they wrote
@@ -38,12 +38,12 @@ For the hardware, each layer wrote three things:
 2. **The constants**: the weights, and the post-processing constants from part 1: per-channel bias and `alpha`, the shift, the output zero point, the clip range, and the pad value.
 3. **Golden files**: the input and the output of every layer, for verification.
 
-![One panel with two cards. Left: a simplified JSON layer config for a 3x3 convolution: op, layer id 7, inputs [6], input rows and columns 56, 64 input and 128 output channels, kernel 3, stride 1, VALID padding, groups 1. Right: a constants file: pad value -64, output zero point -12, shift 20, clip -128 127, and per channel alpha 2416 and bias -24868.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_5/resources/fig5_layer_config.png)
+![One panel with two cards. Left: a simplified JSON layer config for a 3x3 convolution: op, layer id 7, inputs [6], input rows and columns 56, 64 input and 128 output channels, kernel 3, stride 1, VALID padding, groups 1. Right: a constants file: pad value -64, output zero point -12, shift 20, clip -128 127, and per channel alpha 2416 and bias -24868.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261101_int8_on_silicon_5/resources/fig5_layer_config.png)
 *Figure: one convolution layer as the hardware sees it, simplified. The config says what to run; the constants say how to finish it.*
 
 The golden files were plain text, one value per line, as `channel index : value`, and the weights also in hex. Not compact, but a hardware engineer can open it, search for a channel, and compare by eye. The amount of output was a setting: none, the constants only, constants plus all inputs and outputs, or everything for one specific layer when we were chasing a bug. For convolutions, it also had two named accumulator dumps, before and after the zero-point correction, meant to split the "is the MAC wrong or is the correction wrong" question in two ([part 2][part2]).
 
-![Two panels. 1: a table of five output levels: none, default (constants and weights), all (plus every input and output), one layer (everything for chosen layers), default plus model outputs. 2: example lines: a layer output as channel, index and value, and weights as output channel, input channel, value and hex.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_5/resources/fig4_golden_files.png)
+![Two panels. 1: a table of five output levels: none, default (constants and weights), all (plus every input and output), one layer (everything for chosen layers), default plus model outputs. 2: example lines: a layer output as channel, index and value, and weights as output channel, input channel, value and hex.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261101_int8_on_silicon_5/resources/fig4_golden_files.png)
 *Figure: golden files are plain text, one value per line, and the amount of output is a setting.*
 
 ## What runs on the host
@@ -60,7 +60,7 @@ With only the first rule, conv1, conv2, conv3 and add form one accelerator subgr
 
 With the second rule, the edge from conv2 to conv3 jumps over argmax and is cut. We get four subgraphs: {conv1, conv2} on the accelerator, {argmax} on the host, {conv3, add} on the accelerator, {softmax} on the host. The frontend wrote each subgraph with its input and output tensors to a JSON file. Figure 3 shows both versions side by side.
 
-![Two panels. 1: a table of six operations with where they run and their subgraph, with and without the span rule; without it, add lands in the wrong subgraph. 2: the reference model writes golden files; the hardware on FPGA must match them exactly; TFLite is compared layer by layer and on datasets.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_5/resources/fig3_partition_verify.png)
+![Two panels. 1: a table of six operations with where they run and their subgraph, with and without the span rule; without it, add lands in the wrong subgraph. 2: the reference model writes golden files; the hardware on FPGA must match them exactly; TFLite is compared layer by layer and on datasets.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261101_int8_on_silicon_5/resources/fig3_partition_verify.png)
 *Figure: partitioning between accelerator and host, and the verification loop around the reference model.*
 
 ## How we knew it was right
@@ -110,7 +110,7 @@ def same_pads(size, k, stride):
 print("8x8, 3x3, stride 2. Is pass?", same_pads(8, 3, 2) == (0, 1))    # True
 {% endhighlight %}
 
-The full script, with every rewrite checked in NumPy, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_5).
+The full script, with every rewrite checked in NumPy, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261101_int8_on_silicon_5).
 
 So, in short: the frontend read an int8 TFLite model, rewrote the graph for the hardware, split it between accelerator and host, and wrote a config, the constants and golden files for every layer. The hardware had to match the golden files bit for bit. TFLite had to match in accuracy.
 
@@ -123,8 +123,8 @@ In part 6, the last one, I will collect what I would do differently, including t
 + [TensorFlow's padding in convolution layer][tf-padding]
 + [Interfacing CPP and Python using Python Boost][boost-note]
 
-[part1]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_1
-[part2]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_2
-[part4]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_4
-[tf-padding]: https://github.com/mrtpk/kaizen/tree/master/learnings/tensorflow_padding
-[boost-note]: https://github.com/mrtpk/kaizen/tree/master/learnings/interfacing_cpp_and_python
+[part1]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-1-one-multiply-one-shift.html
+[part2]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-2-zero-points.html
+[part4]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-4-operations-without-a-divider.html
+[tf-padding]: https://www.thomaspaul.dev/2021/08/202108Padding-in-TensorFlow.html
+[boost-note]: https://www.thomaspaul.dev/2021/08/202108Interfacing-CPP-and-Python-using-Boost.html

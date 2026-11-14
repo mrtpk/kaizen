@@ -33,7 +33,14 @@ References: a `**Reference:**` list with link references at the bottom.
 ## 2. Voice
 
 - First person and conversational. Short paragraphs.
-- Open with "Lately, I have been ... and this note is about ...".
+- Open with the problem, a question, or a concrete fact, in one sentence. Then say what the note is about
+  ("This note is about ..."). Examples: "Arithmetic alone does not run a neural network." / "Can a weight
+  edit make a small language model better at calling tools?"
+- Do not open with "Lately" or "I have been". Do not open two posts in a row with the same words.
+- A series: open each part with its own problem, not with the series name.
+- LinkedIn companion: the first line states the result or the surprise, before the "see more" cut. One
+  idea, few numbers, every term explained. End with the series part and 2-3 hashtags. The first comment
+  links to the published post on thomaspaul.dev, not to GitHub.
 - Lead-ins: "Before diving in, let's look at ...", "Let's say ...", "Let's look at the code.", "It means that ...".
 - Define a term in one sentence, then show a small concrete example with real numbers.
 - A question as a section opener is fine ("Why column first?").

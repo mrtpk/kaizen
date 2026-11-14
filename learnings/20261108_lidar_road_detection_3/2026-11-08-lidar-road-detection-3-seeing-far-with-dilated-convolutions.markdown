@@ -6,7 +6,7 @@ categories: lidar deep-learning
 mathjax: true
 ---
 
-Lately, I have been going through my notes from a LiDAR road detection project at Infosys, and this note is about the network: how LoDNN looks far across a 40 m grid with only one pooling step.
+To label a cell 40 m ahead, a network must see a large area around it. This note is about how LoDNN does that across a 40 m grid with only one pooling step.
 
 In [part 1][prev1], we turned a scan into six 400 x 200 images, and in [part 2][prev], we made a road label on the same grid. Now the network has to map six images to one road map. The network is LoDNN, by Caltagirone et al., and this part follows their paper. Our TensorFlow port from the golf cart belongs to Infosys and I do not have it, so I cannot show its layers here.
 
@@ -116,12 +116,12 @@ In part 4, we will swap the 64-beam sensor of KITTI for 16 beams, see what that 
 + [Why you should be interested in LiDAR technologies?][kaizen-tech]
 + [LiDAR Basics - The Coordinate System][kaizen-coords]
 
-[prev1]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_1
-[prev]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_2
+[prev1]: https://www.thomaspaul.dev/2026/11/202611lidar-road-detection-1-from-points-to-a-top-view-grid.html
+[prev]: https://www.thomaspaul.dev/2026/11/202611lidar-road-detection-2-labels-for-a-top-view.html
 [script]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_3
 [lodnn]: https://arxiv.org/abs/1703.03613v2
 [lidar-buster]: https://github.com/mrtpk/lidar-buster/tree/1bb1d59d2d470af4c08350cbd912081728cd01eb
 [infosys]: https://www.infosys.com/insights/ai-automation/Pages/autonomous-technologies.aspx
 [yt]: https://www.youtube.com/watch?v=X6wEztubV_4
-[kaizen-tech]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180827_lidar_tech
-[kaizen-coords]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180929_lidar-coordinate-basics
+[kaizen-tech]: https://www.thomaspaul.dev/2018/08/201808lidar-tech.html
+[kaizen-coords]: https://www.thomaspaul.dev/2018/08/201808lidar-coordinates.html

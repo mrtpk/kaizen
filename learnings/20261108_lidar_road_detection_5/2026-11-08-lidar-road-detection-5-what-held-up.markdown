@@ -6,7 +6,7 @@ categories: lidar deep-learning
 mathjax: true
 ---
 
-Lately, I have been going through my notes from a LiDAR road detection project at Infosys, and this last note looks back at the series: what the scripts show, what held up, and what was lost.
+This last note of the LiDAR road detection series looks back: what the scripts show, what held up, and what was lost.
 
 In [part 4][prev], we cut the KITTI scan from 64 rings to 16 and took the road map back to the points. Over four parts, we rebuilt the steps of LoDNN, the method of Caltagirone et al. that we used on an autonomous golf cart in 2018: the top-view grid, the labels, the network and the sensor. This part runs all the checks again in one script.
 
@@ -62,12 +62,12 @@ The full script is available [here][script]. The series starts with [part 1][par
 + [Why you should be interested in LiDAR technologies?][kaizen-tech]
 + [LiDAR Basics - The Coordinate System][kaizen-coords]
 
-[part1]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_1
-[prev]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_4
+[part1]: https://www.thomaspaul.dev/2026/11/202611lidar-road-detection-1-from-points-to-a-top-view-grid.html
+[prev]: https://www.thomaspaul.dev/2026/11/202611lidar-road-detection-4-from-64-beams-to-16-and-back-to-points.html
 [script]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_5
 [lodnn]: https://arxiv.org/abs/1703.03613v2
 [lidar-buster]: https://github.com/mrtpk/lidar-buster/tree/1bb1d59d2d470af4c08350cbd912081728cd01eb
 [infosys]: https://www.infosys.com/insights/ai-automation/Pages/autonomous-technologies.aspx
 [yt]: https://www.youtube.com/watch?v=X6wEztubV_4
-[kaizen-tech]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180827_lidar_tech
-[kaizen-coords]: https://github.com/mrtpk/kaizen/tree/master/learnings/20180929_lidar-coordinate-basics
+[kaizen-tech]: https://www.thomaspaul.dev/2018/08/201808lidar-tech.html
+[kaizen-coords]: https://www.thomaspaul.dev/2018/08/201808lidar-coordinates.html

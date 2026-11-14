@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "Int8 on Silicon - Part 3: One unit, many operations"
-date:   2026-11-07 00:00:00 +0530
+date:   2026-10-26 00:00:00 +0530
 categories: deep-learning quantization hardware
 mathjax: true
 ---
 
-Lately, I have been writing down the integer math of an int8 accelerator that I worked on, and this note is about how one small post-processing unit ran operations that are not convolutions at all: add, multiply, operations with a constant, and the whole ReLU family.
+The accelerator had one small post-processing unit: add a bias, multiply, shift, clip. This note is about how that unit ran operations that are not convolutions at all: add, multiply, operations with a constant, and the whole ReLU family.
 
 In [part 1][part1], every layer ended in the same unit: add a bias, multiply by an integer `alpha`, shift right with rounding, add the output zero point, clip. In [part 2][part2], the bias took over the zero points. The question for this part is: if that unit is all we have, how do we run everything else?
 
@@ -33,7 +33,7 @@ $$
 
 The float answer is 0.571, which also rounds to 1.
 
-![Three panels. 1: input 1 with bias 10 and alpha1 748982, input 2 with bias -5 and alpha2 449389, and the sum with one shift by 20. 2: the example q1 = 40, q2 = -70 gives 1. 3: 0 of 200,000 pairs differ from TFLite.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_3/resources/fig1_add_three_passes.png)
+![Three panels. 1: input 1 with bias 10 and alpha1 748982, input 2 with bias -5 and alpha2 449389, and the sum with one shift by 20. 2: the example q1 = 40, q2 = -70 gives 1. 3: 0 of 200,000 pairs differ from TFLite.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261026_int8_on_silicon_3/resources/fig1_add_three_passes.png)
 *Figure: an add is three sets of constants for the same unit, and one rounding at the end.*
 
 TFLite does the add differently: it shifts both inputs left by 20 and uses three multipliers, each with its own two roundings. For these scales, our result and TFLite's are identical: 0 of 200,000 random input pairs differ. It makes sense: $s_i / s_{out}$ is near 1, so `alpha` has about 20 bits of precision, and one rounding of a precise value is as good as it gets. It is a good example of how a layer can match TFLite exactly, even though the arithmetic is different.
@@ -59,7 +59,7 @@ Why split evenly? For accuracy. An earlier version split the multiplier unevenly
 
 While writing this note, I also measured where the split still loses precision. With $2^{10}$ per side and `int()` truncation, each `alpha` has only a few bits: 147 and 88 in the example above. The squeeze-and-excitation (SE) block, where an activation is multiplied by a sigmoid output, is the hardest case. A sigmoid output in TFLite has scale 1/256, so its `alpha` comes out as 17, a 5-bit multiplier, and 75% of the outputs differ from exact rounding, by up to 7. (Interestingly, the uneven version does well here, because $\frac{1}{256} \cdot 2^{10} = 4$ is exact.)
 
-![Two panels. 1: input 1 times a1 = 147, input 2 times a2 = 88, product shifted by 20. 2: a table of error rates: split with truncated alphas 45.9 % and 75.2 % (max 7); split with rounded alphas 17-20 %; all of M on one input 3.9 % and 0.05 %; TFLite 0.23 % and 0.14 %.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_3/resources/fig2_multiply_split.png)
+![Two panels. 1: input 1 times a1 = 147, input 2 times a2 = 88, product shifted by 20. 2: a table of error rates: split with truncated alphas 45.9 % and 75.2 % (max 7); split with rounded alphas 17-20 %; all of M on one input 3.9 % and 0.05 %; TFLite 0.23 % and 0.14 %.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261026_int8_on_silicon_3/resources/fig2_multiply_split.png)
 *Figure: the square-root split balances the bits between the two inputs so that the product fits in 32 bits. Rounding the alphas, or putting all of M on one input, gets closer still to exact.*
 
 With what I know now, two refinements would close most of the remaining gap. Rounding the alphas instead of truncating them brings it to about 20% of the outputs, never more than 1. Putting all of $M$ on one input, `alpha` = $M \cdot 2^{20}$, and leaving the other input unscaled brings the SE block to 0.05%, which is closer to exact than TFLite. That product also fits in 32 bits, for the same reason as in part 1: it is the output value with 20 fraction bits. The final model accuracy was on par with TFLite, so the models we evaluated handled the multiply well. We tried a one-sided version early on and set it aside. My measurements say it deserves a second look.
@@ -87,14 +87,14 @@ $$
 
 So one PReLU kernel, with two alphas at $2^{16}$ (one for the positive side and one for the negative side), runs all five. With $s_{in} = s_{out} = 1/16$, ReLU, ReLU6, PReLU 0.25 and the minimum are exact for all 256 inputs. LeakyReLU 0.1 is off by 1 for 13 of them, because its negative `alpha` is 6553.6, truncated to 6553.
 
-![Two panels. 1: a table of ReLU, ReLU6, min(x, 2.0), LeakyReLU 0.1 and PReLU 0.25 with their slope and clip; all exact except LeakyReLU, 13 of 256 off by 1. 2: add 0.75 folds into the bias, 85 of 256 off by 1; multiply by -1.5 folds into alpha, exact.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_3/resources/fig3_relu_family.png)
+![Two panels. 1: a table of ReLU, ReLU6, min(x, 2.0), LeakyReLU 0.1 and PReLU 0.25 with their slope and clip; all exact except LeakyReLU, 13 of 256 off by 1. 2: add 0.75 folds into the bias, 85 of 256 off by 1; multiply by -1.5 folds into alpha, exact.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261026_int8_on_silicon_3/resources/fig3_relu_family.png)
 *Figure: five activations are one PReLU kernel with different constants, and constant operands fold into the bias or alpha.*
 
 You may have noticed that these operations use a shift of 16, and add and convolution use 20. That is simply what the hardware supported: each operation used a shift amount from the hardware's short list.
 
 Let's put all of it in one table. Every operation in this note, and the pooling from the next one, is the same unit with different constants:
 
-![A table of nine operations with their number of passes, bias, alpha and shift: convolution, add, multiply, add a constant, multiply by a constant, ReLU family, average pool, mean, requantize. Shifts are 20 or 16.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_3/resources/fig4_ops_as_constants.png)
+![A table of nine operations with their number of passes, bias, alpha and shift: convolution, add, multiply, add a constant, multiply by a constant, ReLU family, average pool, mean, requantize. Shifts are 20 or 16.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261026_int8_on_silicon_3/resources/fig4_ops_as_constants.png)
 *Figure: every operation is a set of constants for the same post-processing unit. Only the constants and the number of passes change.*
 
 ## Let's look at the code
@@ -131,7 +131,7 @@ print(f"Split: {(split != ref).mean() * 100:.1f} % differ, max {np.abs(split - r
 print(f"One side: {(one_side != ref).mean() * 100:.2f} % differ, max {np.abs(one_side - ref).max()}")  # 0.05 %, 1
 {% endhighlight %}
 
-The full script, with TFLite's add and multiply reimplemented for comparison, the constants and the ReLU family, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_3).
+The full script, with TFLite's add and multiply reimplemented for comparison, the constants and the ReLU family, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261026_int8_on_silicon_3).
 
 So, in short: with the bias slot for zero points and `alpha` for scales, one post-processing unit covers add (three constant sets), multiply (two scaled inputs and a product), constant operands (folded into bias or alpha), and five activations (one PReLU kernel). The add matched TFLite exactly. The multiply balanced its bits to fit a 32-bit accumulator, and now I know how much further it can go.
 
@@ -144,8 +144,8 @@ In part 4, we will look at the operations that need a division or a non-linear f
 + [TFLite reference int8 mul (v2.16.1)][tflite-mul]
 + [Squeeze-and-Excitation Networks][se-net]
 
-[part1]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_1
-[part2]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_2
+[part1]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-1-one-multiply-one-shift.html
+[part2]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-2-zero-points.html
 [tflite-add]: https://github.com/tensorflow/tensorflow/blob/v2.16.1/tensorflow/lite/kernels/add.cc
 [tflite-mul]: https://github.com/tensorflow/tensorflow/blob/v2.16.1/tensorflow/lite/kernels/internal/reference/integer_ops/mul.h
 [se-net]: https://arxiv.org/abs/1709.01507

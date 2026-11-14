@@ -4,18 +4,20 @@
 
 ---
 
-LiDAR Road Detection, part 5, the last one: one script re-runs the checks of the series on the same KITTI scan, and all four pass.
+Eight years later, I rebuilt our LiDAR road detector from public data. Here is what held up.
 
-What held up: the top view. Six statistics per cell on a fixed 400 x 200 grid, fast with a few NumPy group-by calls, and they do not care how many beams the sensor has. Labels from the camera, made dense with pseudo points (3319 road cells to 28401). And one pooling plus dilated convolutions: a receptive field larger than the grid, with under a million weights.
+→ The top view: six statistics per cell on a fixed grid. Fast, and it does not care how many beams the sensor has.
+→ Camera labels made dense with pseudo points.
+→ One pooling step plus dilated convolutions: a view larger than the grid, with under a million weights.
 
-What was lost: the data from the cart and our TensorFlow port stayed with Infosys. So I cannot re-run the results from 2018 (94 % F1, 95 % average accuracy, 83 FPS); every other number in the series comes from a script and one public scan.
+What was lost: the cart data and our code stayed with Infosys. So I cannot re-run the 2018 results (94 % F1, 83 FPS). Every other number in the series comes from a script.
 
-Two refinements showed up while writing: empty cells and cells near zero height look alike in the elevation images, and the grid road label is a little wider than the road.
+The method is LoDNN by Caltagirone et al. The series is my notes on building and running it.
 
-The method is LoDNN by Caltagirone et al.; the series is my notes on building and running it.
+Last part of LiDAR Road Detection.
 
-Notes, code and figure scripts are in my kaizen repo (link in comments).
+#LiDAR #AutonomousVehicles #DeepLearning
 
 ---
 
-**First comment:** https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_lidar_road_detection_5
+**First comment:** https://www.thomaspaul.dev/2026/11/202611lidar-road-detection-5-what-held-up.html

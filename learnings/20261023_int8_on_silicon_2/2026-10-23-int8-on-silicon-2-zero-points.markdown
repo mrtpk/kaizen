@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "Int8 on Silicon - Part 2: Making zero points disappear"
-date:   2026-11-07 00:00:00 +0530
+date:   2026-10-23 00:00:00 +0530
 categories: deep-learning quantization hardware
 mathjax: true
 ---
 
-Lately, I have been writing down the integer math of an int8 accelerator that I worked on, and this note is about zero points: how they disappear before the hardware ever sees them, and the one place where they come back to bite.
+Every int8 value carries an offset, the zero point, and a naive multiplier array would subtract it before every multiply. This note is about how the zero points disappear before the hardware ever sees them, and the one place where they come back to bite.
 
 In [part 1][part1], the post-processing unit had a per-channel bias, and I said that we would see where it comes from. This is that part.
 
@@ -30,7 +30,7 @@ where $N$ is the number of points in the window (9 for a 3X3 kernel with one inp
 + $z_{in} \sum q_{w}$ is $-64 \times -412 = 26368$. It depends only on the weights and on $z_{in}$, which are both known at compile time. So it is a constant per output channel.
 + $N z_{in} z_{w}$ is 0, because $z_{w} = 0$ again.
 
-![Two panels. 1: the four terms; sum q_in q_w = -705 is the MAC, -z_in sum q_w = -26368 is folded into the bias, and the two terms with z_w are 0. 2: folded bias 1500 - (-64)(-412) = -24868; raw MAC -705 plus folded bias is -25573, equal to the reference.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_2/resources/fig1_four_terms.png)
+![Two panels. 1: the four terms; sum q_in q_w = -705 is the MAC, -z_in sum q_w = -26368 is folded into the bias, and the two terms with z_w are 0. 2: folded bias 1500 - (-64)(-412) = -24868; raw MAC -705 plus folded bias is -25573, equal to the reference.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261023_int8_on_silicon_2/resources/fig1_four_terms.png)
 *Figure: of the four terms, only the MAC is computed at runtime. The input zero point moves into the bias.*
 
 ## Folding the zero point into the bias
@@ -46,7 +46,7 @@ It means that the hardware does not need to know that a zero point exists. The M
 
 When the weights do have a zero point (for example, in older uint8 models), the reference model subtracted it at runtime, inside the MAC loop. For the hardware files, the weights were written with the zero point already subtracted, as $q_{w} - z_{w}$, so the MAC never sees it. Then the second and fourth terms disappear too. There is a cost: $q_{w} - z_{w}$ can be anywhere in -255..255, which needs 9 bits instead of 8.
 
-![Two panels. 1: the input offset added inside the loop costs 576 additions per output for a 3x3 convolution over 64 channels; folded into the bias it costs 1. 2: weights with zero point 3 are written for the hardware as q_w - z_w in [-131, 124]; in general they need 9 bits.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_2/resources/fig3_offsets_and_debug.png)
+![Two panels. 1: the input offset added inside the loop costs 576 additions per output for a 3x3 convolution over 64 channels; folded into the bias it costs 1. 2: weights with zero point 3 are written for the hardware as q_w - z_w in [-131, 124]; in general they need 9 bits.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261023_int8_on_silicon_2/resources/fig3_offsets_and_debug.png)
 *Figure: both offsets move from the hardware to the compiler.*
 
 ## The padding trap
@@ -59,7 +59,7 @@ Let's take the top-left corner of a 5X5 image. Its window has 5 padded points, a
 + **Pad with $z_{in}$ (-64):** the MAC adds $-64 \times -40 = 2560$ for the padded points, and the folded bias removes exactly that 2560. The corner output is equal to the reference.
 + **Pad with 0:** the MAC adds nothing for the padded points, but the folded bias still removes 2560. The corner output is off by -2560. After the multiply by $M$, that is about 4 int8 steps.
 
-![Three panels. 1: a 3x3 corner window padded with -64; the MAC adds 2560 and the bias removes 2560, so the output is exact. 2: the same window padded with 0; the MAC adds 0 but the bias still removes 2560, so the output is off by 3.94 int8 steps. 3: a 5x5 output grid with the 16 border outputs wrong and the 9 inner outputs exact.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_2/resources/fig2_padding.png)
+![Three panels. 1: a 3x3 corner window padded with -64; the MAC adds 2560 and the bias removes 2560, so the output is exact. 2: the same window padded with 0; the MAC adds 0 but the bias still removes 2560, so the output is off by 3.94 int8 steps. 3: a 5x5 output grid with the 16 border outputs wrong and the 9 inner outputs exact.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261023_int8_on_silicon_2/resources/fig2_padding.png)
 *Figure: with a folded bias, the padding must hold the input zero point. Padding with 0 breaks every output that touches the border.*
 
 With padding 0, all 16 border outputs of the 5X5 image are wrong, and only the 9 inner outputs are exact. For small feature maps and stride-2 layers, the border is a large share of the image. So, in our reference model, the padding value is always the input zero point, and the hardware got the same rule: the pad value was one of the constants that the compiler wrote for every convolution.
@@ -69,7 +69,7 @@ For the hardware export, one of the compiler passes (part 5) also split a SAME c
 ## A debugging aid
 When a convolution on the hardware does not match the reference model, the first question is: is the MAC wrong, or is the correction wrong? The reference model had two named accumulator dumps for convolutions for this question: before and after the zero-point correction. In the end, both dumps held the same values, because the correction moved into the post-processing step, after the dump. The idea is still worth keeping. If "before" matches, the MAC array is fine and the difference is in the constants. If "before" does not match, it is in the MAC or in the data movement. A padding mismatch of the kind above shows up only at the border outputs.
 
-![One panel: compare the raw MAC sums first; if 'before' differs, look at the MAC array or data movement; if only 'after' differs, look at the constants: bias, alpha, pad value, zero points.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_2/resources/fig4_debug_dumps.png)
+![One panel: compare the raw MAC sums first; if 'before' differs, look at the MAC array or data movement; if only 'after' differs, look at the constants: bias, alpha, pad value, zero points.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261023_int8_on_silicon_2/resources/fig4_debug_dumps.png)
 *Figure: two accumulator dumps, before and after the correction, split a mismatch into a MAC question or a constants question.*
 
 ## Let's look at the code
@@ -107,7 +107,7 @@ print("Pad with 0. Is pass?", np.array_equal(folded(q_in, 0), ref))            #
 print("Wrong outputs with pad 0:", int((folded(q_in, 0) != ref).sum()))        # 16
 {% endhighlight %}
 
-The full script, with the four terms and the weight zero point case, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_2).
+The full script, with the four terms and the weight zero point case, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261023_int8_on_silicon_2).
 
 So, in short: the input zero point moves into the bias at compile time, the weight zero point is zero (or is subtracted from the weights offline), and the MAC array multiplies raw int8 values. The price is one rule that must never break: pad with the input zero point, not with 0.
 
@@ -118,6 +118,6 @@ In part 3, we will see how the same post-processing unit runs operations that ar
 + [TensorFlow's padding in convolution layer][tf-padding]
 + [TFLite reference int8 convolution (v2.16.1)][tflite-conv]
 
-[part1]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_1
-[tf-padding]: https://github.com/mrtpk/kaizen/tree/master/learnings/tensorflow_padding
+[part1]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-1-one-multiply-one-shift.html
+[tf-padding]: https://www.thomaspaul.dev/2021/08/202108Padding-in-TensorFlow.html
 [tflite-conv]: https://github.com/tensorflow/tensorflow/blob/v2.16.1/tensorflow/lite/kernels/internal/reference/integer_ops/conv.h

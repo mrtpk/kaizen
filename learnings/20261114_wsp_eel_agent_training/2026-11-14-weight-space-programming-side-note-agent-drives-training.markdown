@@ -6,7 +6,7 @@ categories: deep-learning
 mathjax: true
 ---
 
-Lately, I have been trying weight-space programming on real models, and this note is a short side step. In the [first note][eel], I edited an eel detector without new training. This time I let a coding agent train new versions of the same detector, a YOLO26n-seg model, and then read the weights of what it trained.
+Can a coding agent run a full training study by itself? This note is a short side step in my weight-space programming series. In the [first note][eel], I edited an eel detector without new training. This time I let a coding agent train new versions of the same detector, a YOLO26n-seg model, and then read the weights of what it trained.
 
 This is not a weight-space programming experiment. Gradient training made every model in this note, and no weight edit went into the result. I keep it in the series for two reasons: the agent drove a full training study by itself, and the weight reading explains why some easy tricks fail.
 
@@ -95,6 +95,6 @@ So, in short: an agent can drive a careful training study end to end, and readin
 - [Weight-Space Programming - Index][index]
 
 [mit]: https://rikiyat.github.io/blog/weight-space-programming
-[eel]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_eel_weight_space
-[index]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_index
+[eel]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-an-eel-detector.html
+[index]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-index.html
 [script]: https://github.com/mrtpk/kaizen/blob/master/learnings/20261114_wsp_eel_agent_training/eel_agent_training.py

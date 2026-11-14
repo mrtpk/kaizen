@@ -6,7 +6,7 @@ categories: deep-learning
 mathjax: true
 ---
 
-Lately, I have been trying weight-space programming on real models, and this page is the index of those notes. It lists every experiment, its post and its code, and the lessons that hold across them. I add a row for each new experiment.
+Each experiment in this series edits the weights of a real model, and this page ties them together. It lists every experiment, its post and its code, and the lessons that hold across them. I add a row for each new experiment.
 
 ## Before diving in, what is weight-space programming?
 Weight-space programming means changing a trained network by reading and writing its weights directly, from an understanding of what each part computes, mostly instead of training it with gradient descent. One exception in these notes: an interpolation after a fine-tune. The term comes from [Sparks of Weight-Space Programming][mit] by Takehi, Teoh, Zhang and Khattab at MIT CSAIL. In their headline result, an LLM edited 131,072 weights of Qwen3.5-0.8B to remove a looping bug, and MATH-500 rose from 7.9 % to 48.1 %.
@@ -93,9 +93,9 @@ So, in short: weights are a good place to read a model and a safe place for exac
 + [wsp-yolo-eel][repo-eel], [wsp-qwen-tools][repo-qwen]
 
 [mit]: https://rikiyat.github.io/blog/weight-space-programming
-[eel]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_eel_weight_space
-[qwen]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_qwen_tool_use
+[eel]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-an-eel-detector.html
+[qwen]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-qwen-tool-calls.html
 [repo-eel]: https://github.com/mrtpk/wsp-yolo-eel
 [repo-qwen]: https://github.com/mrtpk/wsp-qwen-tools
-[side-eel]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261114_wsp_eel_agent_training
+[side-eel]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-side-note-agent-drives-training.html
 [hf-qwen]: https://huggingface.co/mrtpk/Qwen3.5-0.8B-wsp-tool-use

@@ -6,7 +6,7 @@ categories: deep-learning llm
 mathjax: true
 ---
 
-Lately, I have been trying weight-space programming on real models, and this note is about the second one: a small language model that uses tools. In the [first note][eel], I edited an eel detector. This time the model is Qwen3.5-0.8B, and the test is BFCL-V4, a benchmark for function calling. The goal I set was a BFCL score of 60, from a base of about 20, by editing weights only.
+Can a weight edit make a small language model better at calling tools? This is my second weight-space programming experiment. In the [first note][eel], I edited an eel detector. This time the model is Qwen3.5-0.8B, and the test is BFCL-V4, a benchmark for function calling. The goal I set was a BFCL score of 60, from a base of about 20, by editing weights only.
 
 The short answer: the goal was out of reach, and a ten-line calculation shows that before the first edit. The edits did work on one thing, the decision "call a tool or answer in text". Two very different edits each moved the overall score by +0.66 to +2.61 points, and neither one is better in both modes of the model.
 
@@ -275,8 +275,8 @@ The full script is available [here][script].
 [script]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_qwen_tool_use
 [repo]: https://github.com/mrtpk/wsp-qwen-tools
 [hf]: https://huggingface.co/mrtpk/Qwen3.5-0.8B-wsp-tool-use
-[index]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_index
-[eel]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_eel_weight_space
+[index]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-index.html
+[eel]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-an-eel-detector.html
 [mit]: https://rikiyat.github.io/blog/weight-space-programming
 [openwsp]: https://github.com/openwsp/openwsp
 [bfcl]: https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard

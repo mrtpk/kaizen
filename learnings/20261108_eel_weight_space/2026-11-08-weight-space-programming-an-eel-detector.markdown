@@ -6,7 +6,7 @@ categories: deep-learning computer-vision
 mathjax: true
 ---
 
-Lately, I have been reading about weight-space programming, and this note is about trying it on a small vision model that is in use: a YOLO26n segmentation model that finds American eels in infrared video. I wanted to know two things. Can I understand the model by reading its weights? And can I fix its errors by changing its weights directly, with no new data?
+Can we understand a model by reading its weights, and fix its errors by changing them directly, with no new data? This note is about trying weight-space programming on a small vision model that is in use: a YOLO26n segmentation model that finds American eels in infrared video.
 
 The short answer: the weights explained the model well, but they could not fix its misses. Three exact changes to the model and its decoding did remove most of its false positives. On frames that no edit was fitted on, recall went from 0.894 to 0.944. The mask boundaries were the hardest part, and I only partly fixed them.
 
@@ -358,7 +358,7 @@ The full script is available [here][script].
 
 [script]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261108_eel_weight_space
 [repo]: https://github.com/mrtpk/wsp-yolo-eel
-[index]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261112_wsp_index
+[index]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-index.html
 [mit]: https://rikiyat.github.io/blog/weight-space-programming
 [task-arith]: https://arxiv.org/abs/2212.04089v2
 [tangent]: https://arxiv.org/abs/2305.12827v3

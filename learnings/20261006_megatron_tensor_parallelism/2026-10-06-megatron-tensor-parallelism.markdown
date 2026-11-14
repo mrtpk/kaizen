@@ -6,7 +6,7 @@ categories: deep-learning parallelism LLM
 mathjax: true
 ---
 
-Lately, I have been reading about how Megatron-LM splits a transformer layer across GPUs, and this note is about tensor parallelism.
+One matrix multiplication can be split across GPUs, so that each GPU holds only a part of the weight. This note is about how Megatron-LM does it for a transformer layer: tensor parallelism.
 
 Tensor parallelism means splitting a single matrix multiplication across workers (GPUs), so that each worker holds only a part of the weight. There are two ways to split a matmul: by columns and by rows. Megatron-style tensor parallelism pairs the two so that the workers talk to each other only once.
 

@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "Int8 on Silicon - Part 6: What I would do differently"
-date:   2026-11-07 00:00:00 +0530
+date:   2026-11-04 00:00:00 +0530
 categories: deep-learning quantization hardware
 mathjax: true
 ---
 
-Lately, I have been writing down the integer math of an int8 accelerator that I worked on at Roviero, and this last note looks back: what held up, and what I would refine if I built the reference model again.
+The accelerator matched TFLite accuracy on full datasets, and it still had gaps that no dataset showed. This last note of the series looks back at the reference model I wrote at Roviero: what held up, and what I would refine if I built it again.
 
 Before this series, I would have said that the reference model was correct, because the hardware matched it bit for bit and the final accuracy was on par with TFLite in our tests on full datasets. Both are true, though I no longer have the final accuracy numbers. But for every part of this series, I rewrote the math in NumPy and compared it with exact rounding and with TFLite's integer kernels, and the scripts found small gaps that on-par accuracy did not show.
 
@@ -20,7 +20,7 @@ Let's start with what I would keep.
 + **Golden files that a human can read** ([part 5][part5]). Plain text, one value per line, readable by a hardware engineer.
 + **Two targets, never mixed up**: bit-exact with the hardware, accurate like TFLite.
 
-![A table of eleven design decisions that held up, with the part that shows each one and why: one post-processing unit, a fixed shift of 20 with one rounding, zero points folded into the bias, padding with the input zero point, the ReLU family as one kernel, averages as convolutions, 256-entry tables, graph rewrites that keep the output equal, the span rule for partitioning, plain-text golden files, and two separate targets.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_6/resources/fig4_what_held_up.png)
+![A table of eleven design decisions that held up, with the part that shows each one and why: one post-processing unit, a fixed shift of 20 with one rounding, zero points folded into the bias, padding with the input zero point, the ReLU family as one kernel, averages as convolutions, 256-entry tables, graph rewrites that keep the output equal, the span rule for partitioning, plain-text golden files, and two separate targets.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261104_int8_on_silicon_6/resources/fig4_what_held_up.png)
 *Figure: the decisions I would make again, each with the part of the series that backs it.*
 
 ## What I would change
@@ -32,7 +32,7 @@ Let's start with what I would keep.
 
 **4. Check every assumption, in a wider type.** Two checks in the reference model could not fail. An overflow check ran on a product that was already computed in int32, so it only ever saw the wrapped value. And an "is this the same as the 64-bit result?" assert computed its 64-bit reference from the same int32 product. When `alpha * acc` overflows, the result does not just lose precision, it changes sign: 127 becomes -128.
 
-![Three panels. 1: 2416 times 1,000,000 wraps in int32 to -1,878,967,296, shifts to -1792 and clips to -128 instead of 127. 2: the range check and the reference check both see the wrapped value and pass. 3: an int64 product, saturation, or one test with a huge accumulator would have caught it.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_6/resources/fig1_overflow.png)
+![Three panels. 1: 2416 times 1,000,000 wraps in int32 to -1,878,967,296, shifts to -1792 and clips to -128 instead of 127. 2: the range check and the reference check both see the wrapped value and pass. 3: an int64 product, saturation, or one test with a huge accumulator would have caught it.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261104_int8_on_silicon_6/resources/fig1_overflow.png)
 *Figure: an overflow that flips the sign, and two checks that could not see it.*
 
 The same goes for concat. It copied the bytes of its inputs, which is right only when all inputs have the same scale and zero point as the output, and nothing in the reference model checked that. With input scales of 0.05 and 0.10 and an output scale of 0.10, copying gives a real error of up to 6.4. TFLite's int8 reference kernel copies too, so it relies on the same matching scales. The gap is only the missing check.
@@ -41,12 +41,12 @@ The same goes for concat. It copied the bytes of its inputs, which is right only
 
 **6. Ask for a wider product.** Truncation was a software problem. The precision of `alpha` for very small $M$ is a hardware one. With a 32-bit product and a shift of 20, $M = 0.0001$ leaves only 7 bits in `alpha`. A 40-bit product would allow a shift of 28 and 15 bits of `alpha`, for every $M$. If I could ask the hardware team for one thing, it would be 8 more bits in the post-processing multiplier.
 
-![Two panels. 1: a table of shift amounts 16, 20, 23, 24, 28 with the output limit and the bits of alpha; 20 is ours, 24 has no spare bits, 28 overflows the int8 range. 2: a table of product widths 32, 40, 48 bits with the largest shift and the bits of alpha for M = 0.0001: 7, 15, 23.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_6/resources/fig2_bit_budget.png)
+![Two panels. 1: a table of shift amounts 16, 20, 23, 24, 28 with the output limit and the bits of alpha; 20 is ours, 24 has no spare bits, 28 overflows the int8 range. 2: a table of product widths 32, 40, 48 bits with the largest shift and the bits of alpha for M = 0.0001: 7, 15, 23.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261104_int8_on_silicon_6/resources/fig2_bit_budget.png)
 *Figure: alpha and the product share the same 32 bits. A shift of 20 was the best a 32-bit product allows; more precision needs a wider product.*
 
 **7. Test the edges, not only the models.** None of the gaps above showed up in full-dataset accuracy tests. They were found by tests that a dataset never produces: a huge accumulator, all-negative inputs before a pool, mismatched scales, a non-integer resize ratio, every one of the 256 inputs of a table. A trained network rarely goes to these edges. That is exactly why they need their own tests.
 
-![A table of eleven gaps with the part, the measured effect and the fix: alpha truncated, multiply split, constant truncated, average pool border, global pool two roundings, tables, softmax cast, resize weights, max pool padding, concat, overflow guard.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261107_int8_on_silicon_6/resources/fig3_scorecard.png)
+![A table of eleven gaps with the part, the measured effect and the fix: alpha truncated, multiply split, constant truncated, average pool border, global pool two roundings, tables, softmax cast, resize weights, max pool padding, concat, overflow guard.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261104_int8_on_silicon_6/resources/fig3_scorecard.png)
 *Figure: what the scripts of this series found. Most fixes are one line.*
 
 ## Let's look at the code
@@ -81,7 +81,7 @@ requant = np.concatenate([np.clip(np.round(a * 0.05 / 0.10), -128, 127), b]) * 0
 print(f"copy: {np.abs(copy - real).max():.2f}, requantize: {np.abs(requant - real).max():.3f}")   # 6.40, 0.050
 {% endhighlight %}
 
-The full script, with the bit budget table, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_6).
+The full script, with the bit budget table, is available [here](https://github.com/mrtpk/kaizen/tree/master/learnings/20261104_int8_on_silicon_6).
 
 ## Looking back
 Roviero did not make it, for the reasons in part 1. Much of what worked in this series I learned with the guidance of my manager there, Sambhu Surya Mohan. Since then, I have worked on NPU compilers and on LLM inference, and the same questions keep coming back in new forms: a scale per channel or per group, an integer multiplier and a shift, how many bits the product has, what happens at the edges. The answers in this series are not the only ones, but they are written down now, with the numbers. That was the point.
@@ -103,11 +103,11 @@ So, in short: one unit, one shift of 20 and one rounding were the right design f
 + [Int8 on Silicon - Part 4: Operations without a divider][part4]
 + [Int8 on Silicon - Part 5: The compiler frontend, and how we verified it][part5]
 
-[quant-basics]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_quantization_formula
-[part1]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_1
-[part2]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_2
-[part3]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_3
-[part4]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_4
-[part5]: https://github.com/mrtpk/kaizen/tree/master/learnings/20261107_int8_on_silicon_5
+[quant-basics]: https://www.thomaspaul.dev/2026/10/202610quantization-formula.html
+[part1]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-1-one-multiply-one-shift.html
+[part2]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-2-zero-points.html
+[part3]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-3-one-unit-many-operations.html
+[part4]: https://www.thomaspaul.dev/2026/10/202610int8-on-silicon-4-operations-without-a-divider.html
+[part5]: https://www.thomaspaul.dev/2026/11/202611int8-on-silicon-5-compiler-frontend-and-verification.html
 [tflite-pool]: https://github.com/tensorflow/tensorflow/blob/v2.16.1/tensorflow/lite/kernels/internal/reference/integer_ops/pooling.h
 [tflite-concat]: https://github.com/tensorflow/tensorflow/blob/v2.16.1/tensorflow/lite/kernels/internal/reference/concatenation.h
