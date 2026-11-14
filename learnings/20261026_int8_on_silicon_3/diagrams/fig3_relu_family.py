@@ -24,7 +24,7 @@ def table(y, rows, cols, highlight):
             d.line(70, ry + 8, 1040, ry + 8, NEUTRAL[0])
 
 
-y = 116
+y: float = 116
 rows = [
     ("operation", "slope (int8, scale)", "clip max", "differs from exact"),
     ("ReLU", "0", "127", "0 of 256"),

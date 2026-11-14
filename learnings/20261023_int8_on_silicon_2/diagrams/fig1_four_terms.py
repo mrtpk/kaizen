@@ -10,7 +10,7 @@ d.header("Where do the zero points go?",
          "Int8 on Silicon  ·  part 2  ·  one 3x3 window  ·  z_in = -64  ·  z_w = 0",
          params="sum (q_in - z_in)(q_w - z_w) = sum q_in*q_w - z_w*sum q_in - z_in*sum q_w + N*z_in*z_w")
 
-y = 116
+y: float = 116
 d.panel(y, 290, 1, "What happens to each of the four terms?",
         "One is the MAC, one is a constant for the bias, and two are zero for int8 weights.")
 W2, H2 = 470, 76

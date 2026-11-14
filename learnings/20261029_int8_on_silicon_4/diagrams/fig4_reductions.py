@@ -12,7 +12,7 @@ d.header("Three averages, no divider",
          "Int8 on Silicon  ·  part 4  ·  average pool, mean over channels, global average pool",
          params="divide by N  ->  multiply by 1/N, and fold 1/N into alpha")
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "How is a mean over C channels a convolution?",
         "A 1x1 convolution with C input channels, one output channel, and every weight equal to 1.")
 row(d, y + 74, [

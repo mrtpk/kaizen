@@ -4,7 +4,7 @@ Values: context_module.py, sections 1 and 4: grid 200 x 400 (W x H), context inp
 feature maps 6 -> 32 -> 128 -> 32 -> 2, dilations (1,1) ... (32,64), receptive fields 3 x 3 ... 129 x 255.
 """
 
-from _lrd import script
+from _lrd3 import script
 from svglib import AMBER, BLUE, EMERALD, INK, MUTE, VIOLET, Diagram
 
 c = script("20261108_lidar_road_detection_3", "context_module")

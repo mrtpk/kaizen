@@ -8,7 +8,7 @@ d.header("Int8 on Silicon: the series",
          "Int8 on Silicon  ·  six notes on the integer math of an int8 accelerator (Roviero, 2020-2023)",
          params="prequel: Quantization Basics - the quantization formula, from number lines")
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "How does one int8 layer compute its output?",
         "The core math: one multiply and one shift, the zero points, and every operation on one unit.")
 row(d, y + 74, [

@@ -4,7 +4,7 @@ Values: context_module.py, section 4: 947458 weights and biases; the six 128 -> 
 context layers hold 885504 (93.5 %).
 """
 
-from _lrd import hbars, script
+from _lrd3 import hbars, script
 from svglib import BLUE, EMERALD, VIOLET, Diagram
 
 c = script("20261108_lidar_road_detection_3", "context_module")

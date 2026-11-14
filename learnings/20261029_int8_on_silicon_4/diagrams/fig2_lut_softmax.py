@@ -14,7 +14,7 @@ d.header("Non-linear functions: a table, or the host",
 
 BW, BH = 290, 72
 XS = [60, 410, 760]
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "How does a sigmoid run with no exp?",
         "The compiler computes the function for all 256 inputs once. The hardware does one table read.")
 d.box(XS[0], y + 74, BW, BH, "int8 input q", ["one of 256 values", "-128 .. 127"], col=BLUE, mono_size=12)

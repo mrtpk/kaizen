@@ -14,7 +14,7 @@ d.header("Add: three sets of constants, one rounding",
 BW, BH = 290, 92
 XS = [60, 410, 760]
 
-y = 116
+y: float = 116
 d.panel(y, 210, 1, "How does the unit add two tensors with different scales?",
         "The bias slot removes each zero point, alpha rescales each input to the output scale, and one shift ends it.")
 d.box(XS[0], y + 80, BW, BH, "input 1", ["bias = -z1 = 10",

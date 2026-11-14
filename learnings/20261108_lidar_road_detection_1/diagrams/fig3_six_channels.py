@@ -3,7 +3,7 @@
 Values: top_view_grid.py, top_view() on the sample scan; blocks of 4 x 4 cells (0.4 m).
 """
 
-from _lrd import heatmap, script
+from _lrd1 import heatmap, script
 from svglib import BLUE, Diagram
 
 g = script("20261108_lidar_road_detection_1", "top_view_grid")

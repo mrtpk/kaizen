@@ -4,7 +4,7 @@ Values: top_view_grid.py, section 5: 7536 of 80000 cells occupied (9.4 %);
 6-16 m 25.4 %, 16-26 m 7.2 %, 26-36 m 3.3 %, 36-46 m 1.8 %.
 """
 
-from _lrd import hbars, script
+from _lrd1 import hbars, script
 from svglib import BLUE, Diagram
 
 g = script("20261108_lidar_road_detection_1", "top_view_grid")

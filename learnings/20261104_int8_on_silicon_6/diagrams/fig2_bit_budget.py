@@ -1,6 +1,6 @@
 """Figure 2: alpha and the product share the same 32 bits.
 
-Values: lessons.py, section 4.
+Values: what_i_would_change.py, section 4.
 """
 
 from svglib import AMBER, EMERALD, INK, NEUTRAL, PINK, VIOLET, Diagram
@@ -23,7 +23,7 @@ def table(y, rows, cols, color_row):
             d.line(70, ry + 8, 1040, ry + 8, NEUTRAL[0])
 
 
-y = 116
+y: float = 116
 rows = [
     ("shift", "overflow when |output| >", "alpha bits, M = 0.0023", "alpha bits, M = 0.0001"),
     ("16", "32,768", "8", "3"),

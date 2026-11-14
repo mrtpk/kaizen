@@ -23,7 +23,7 @@ def row(y, boxes, col_arrow):
             d.arrow(XS[i] + BW, y + BH / 2, XS[i + 1] - 2, y + BH / 2, col_arrow)
 
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "SAME convolution -> Pad + VALID convolution",
         "3x3, stride 2, on 8x8: TensorFlow pads 0 on top and 1 at the bottom. The pad value is z_in.")
 row(y + 74, [

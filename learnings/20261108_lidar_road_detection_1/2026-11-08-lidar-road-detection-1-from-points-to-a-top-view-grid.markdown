@@ -19,7 +19,7 @@ The series:
 4. From 64 beams to 16, and back to points
 5. What held up
 
-![Two panels. 1: parts 1 and 2 build the input images and the labels on one top-view grid. 2: part 3 is the network, part 4 the 16-beam sensor and the way back to points, part 5 a scorecard.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261108_lidar_road_detection_1/resources/fig0_series_map.png)
+![Two panels. 1: parts 1 and 2 build the input images and the labels on one top-view grid. 2: part 3 is the network, part 4 the 16-beam sensor and the way back to points, part 5 a scorecard.](https://raw.githubusercontent.com/mrtpk/kaizen/master/learnings/20261108_lidar_road_detection_1/resources/fig0_lidar_series_map.png)
 *Figure: the map of the series. Parts 1 and 2 prepare the data, parts 3 to 5 use it.*
 
 ## Before diving in, what is in a scan?

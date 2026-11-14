@@ -13,7 +13,7 @@ d.header("Mapping a point from one number line to another",
                 "start")
 
 X0, X1 = 400, 1000
-y = 116
+y: float = 116
 PITCH = 112
 rows = [
     (-1, 3, [-1, 0, 1, 2, 3], 1.0, "1.0", BLUE, "source [-1, 3]", None),

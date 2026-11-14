@@ -12,7 +12,7 @@ d.header("One layer, as the hardware sees it",
          "Int8 on Silicon  ·  part 5  ·  a 3x3 convolution after the SAME -> Pad + VALID rewrite",
          params="the layer config says what to run; the constants say how to finish it")
 
-y = 116
+y: float = 116
 d.panel(y, 330, 1, "What goes into the layer config and the constants?",
         "Shapes and links in a JSON entry; per-channel numbers for the post-processing unit in a constants file.")
 code(d, 70, y + 74, 450, [

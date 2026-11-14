@@ -5,7 +5,7 @@ Values: top_view_grid.py, sections 2 and 4: 15515 points in the grid,
 """
 
 import numpy as np
-from _lrd import script
+from _lrd1 import script
 from svglib import AMBER, BLUE, EMERALD, MUTE, PINK, Diagram
 
 g = script("20261108_lidar_road_detection_1", "top_view_grid")

@@ -13,7 +13,7 @@ d.header("Four weights that should add up to 1",
          params="out = (w_tl * q_tl + w_bl * q_bl + w_tr * q_tr + w_br * q_br) >> 10,   weights in units of 1/1024")
 
 # panel 1: geometry
-y = 116
+y: float = 116
 d.panel(y, 260, 1, "Where does the output point fall?",
         "Between four input pixels, 0.4231 of a pixel to the right and down. Each weight is the area opposite to its "
         "corner.")

@@ -28,7 +28,7 @@ def window(x0, y0, pad_value, col_pad):
 
 
 # panel 1: pad with z_in
-y = 116
+y: float = 116
 d.panel(y, 190, 1, "What if we pad with z_in?",
         "Each padded point adds z_in * w, and the folded bias removes exactly that. The corner is exact.")
 window(80, y + 66, -64, AMBER)

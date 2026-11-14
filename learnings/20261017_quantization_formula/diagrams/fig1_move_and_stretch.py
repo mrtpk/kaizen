@@ -15,7 +15,7 @@ TICKS = range(-6, 15, 2)
 X0, X1 = 150, 1040
 
 # panel 1: translate
-y = 116
+y: float = 116
 d.panel(y, 190, 1, "What does translate do?", "Adding an offset moves the point along the line. The distance is the "
                                               "offset.")
 nl = NumberLine(d, X0, X1, y + 140, -6, 14, TICKS)

@@ -22,7 +22,7 @@ def row(y, boxes):
             d.arrow(XS[i] + BW, y + BH / 2, XS[i + 1] - 2, y + BH / 2, NEUTRAL[0])
 
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "What goes in?",
         "An int8 TFLite model. Every tensor already has its scale and zero point.")
 row(y + 74, [

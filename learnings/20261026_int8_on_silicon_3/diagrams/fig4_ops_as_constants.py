@@ -36,7 +36,7 @@ def color(i, j, v):
     return INK
 
 
-y = 116
+y: float = 116
 H = table_height(len(rows))
 d.panel(y, H, 1, "What changes from one operation to the next?",
         "Only the constants and the number of passes. Two shift amounts from the hardware's list cover every row.")

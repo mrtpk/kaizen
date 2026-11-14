@@ -13,7 +13,7 @@ d.header("Average pooling without a divider",
 
 BW, BH = 290, 72
 XS = [60, 410, 760]
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "How do we divide by 9 with no divider?",
         "We do not. The 1/9 goes into alpha, and the pool becomes a convolution with weights of 1.")
 d.box(XS[0], y + 74, BW, BH, "all-ones 3x3 weights",

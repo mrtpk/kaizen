@@ -32,7 +32,7 @@ def word(y, x, label_int, label_bit):
     d.text(X0 + 22 * cw, y - 8, "19 lower bits, dropped", 12, MUTE, "bold", "middle")
 
 
-y = 116
+y: float = 116
 d.panel(y, 180, 1, "28,617,520 >> 20: which bits matter?",
         "The 12 high bits are the integer part, 27. The first dropped bit is 0, so 27 is already the nearest integer.")
 word(y + 96, 28_617_520, "integer part = 27", "first dropped bit = 0")

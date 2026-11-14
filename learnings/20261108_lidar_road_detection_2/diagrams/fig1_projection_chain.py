@@ -5,7 +5,7 @@ pixel (609, 187), depth 58.63 m; 116044 points, 18969 inside the image, 7501 on 
 """
 
 import numpy as np
-from _lrd import script
+from _lrd2 import script
 from svglib import AMBER, BLUE, EMERALD, MUTE, VIOLET, Diagram
 
 s = script("20261108_lidar_road_detection_2", "labels_top_view")

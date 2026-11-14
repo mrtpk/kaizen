@@ -11,7 +11,7 @@ d.header("Which ops run where, and how we knew they were right",
          params="order: conv1 -> conv2 -> argmax -> conv3 -> add -> softmax   (argmax, softmax: not on the "
                 "accelerator)")
 
-y = 116
+y: float = 116
 rows = [
     ("op", "inputs", "runs on", "boundary rule only", "with the span rule"),
     ("conv1", "-", "accelerator", "subgraph A", "subgraph 1"),
@@ -31,14 +31,14 @@ for i, r in enumerate(rows):
         if i == 0:
             d.text(x, ry, v, 13, INK, "bold")
         else:
-            col = INK
+            tc: str | tuple[str, str, str] = INK
             if j == 2:
-                col = BLUE if v == "accelerator" else VIOLET
+                tc = BLUE if v == "accelerator" else VIOLET
             if j == 3 and "wrong" in v:
-                col = PINK
+                tc = PINK
             if j == 4:
-                col = EMERALD
-            d.text(x, ry, v, 12.5, col, mono=j != 2)
+                tc = EMERALD
+            d.text(x, ry, v, 12.5, tc, mono=j != 2)
     if i == 0:
         d.line(70, ry + 8, 1040, ry + 8, NEUTRAL[0])
 

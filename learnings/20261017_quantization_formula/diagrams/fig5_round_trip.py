@@ -17,7 +17,7 @@ d.header("What do we lose when we go to int8 and back?",
          params="dequantize(quantize(r)) = r + error")
 
 # panel 1: rounding error, zoomed in around 1.0
-y = 116
+y: float = 116
 d.panel(y, 200, 1, "Inside the range: how big is the error?",
         "At most half a step (scale / 2 = 0.007843). 1.0 comes back as 1.0039.")
 lo, hi = 0.975, 1.03

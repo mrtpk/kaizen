@@ -8,7 +8,7 @@ import contextlib
 import io
 
 import numpy as np
-from _lrd import script
+from _lrd4 import script
 from svglib import AMBER, BLUE, EMERALD, MUTE, VIOLET, Diagram
 
 with contextlib.redirect_stdout(io.StringIO()):

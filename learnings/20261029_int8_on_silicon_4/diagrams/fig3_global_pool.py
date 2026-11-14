@@ -12,7 +12,7 @@ d.header("Global average pooling: one rounding too many",
          "Int8 on Silicon  ·  part 4  ·  mean over 7x7 = 49 values  ·  s_in 0.05 -> s_out 0.02",
          params="100,000 random 7x7 inputs, compared with exact rounding")
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "What does the global pool kernel do?",
         "It rounds the mean in input units, then rescales by s_in / s_out = 2.5, so the first rounding error grows "
         "2.5x.")

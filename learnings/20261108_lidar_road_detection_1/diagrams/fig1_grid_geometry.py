@@ -4,7 +4,7 @@ Values: top_view_grid.py, section 2: grid x 6 to 46 m, y -10 to 10 m, cell 0.1 m
 400 x 200 cells; example point x=41.95 y=2.72 -> row 40, col 72.
 """
 
-from _lrd import script
+from _lrd1 import script
 from svglib import AMBER, BLUE, EMERALD, INK, LINE, MUTE, Diagram
 
 g = script("20261108_lidar_road_detection_1", "top_view_grid")

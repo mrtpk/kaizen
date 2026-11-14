@@ -25,7 +25,7 @@ rows = [
     ("golden files in plain text", "5", "a mismatch points to a layer and a channel"),
     ("two targets: hardware bit-exact, TFLite accuracy", "5", "never mixed up"),
 ]
-y = 116
+y: float = 116
 H = table_height(len(rows))
 d.panel(y, H, 1, "Which decisions would I make again?",
         "All of these. The gaps (figure 3) are in the details around them, not in the decisions.")

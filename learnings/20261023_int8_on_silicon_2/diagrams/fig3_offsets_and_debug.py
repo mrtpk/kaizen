@@ -12,7 +12,7 @@ d.header("Moving work from the hardware to the compiler",
          "Int8 on Silicon  ·  part 2  ·  the input offset and the weight offset",
          params="one 3x3 convolution over 64 input channels: 576 multiply-accumulates per output")
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "Where is the input offset added?",
         "Inside the loop it is one addition per multiply. Folded into the bias it is one addition per output.")
 row(d, y + 74, [

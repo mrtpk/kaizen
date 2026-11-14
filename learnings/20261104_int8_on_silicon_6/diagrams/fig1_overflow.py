@@ -1,6 +1,6 @@
 """Figure 1: an overflow that flips the sign, and a guard that cannot see it.
 
-Values: lessons.py, section 1: alpha 2416, acc 1,000,000; true product 2,416,000,000;
+Values: what_i_would_change.py, section 1: alpha 2416, acc 1,000,000; true product 2,416,000,000;
 int32 product -1,878,967,296; >> 20: -1792 vs 2304; clip: -128 vs 127.
 """
 
@@ -22,7 +22,7 @@ def row(y, boxes, col_arrow):
             d.arrow(XS[i] + BW, y + BH / 2, XS[i + 1] - 2, y + BH / 2, col_arrow)
 
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "What does the hardware compute?",
         "The int32 product wraps to a negative number, and the clip turns the largest output into the smallest.")
 row(y + 74, [

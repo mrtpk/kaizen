@@ -40,7 +40,7 @@ row(y2 + 74, [
     ("clip", ["to [-128, 127]", "-> 15 (int8)"], EMERALD),
 ])
 
-y = y2 + 190
+y: float = y2 + 190
 d.legend(30, y, [(BLUE, "int32 data"), (AMBER, "per-channel constant (compile time)"),
                  (VIOLET, "the one rounding"), (EMERALD, "int8 output")])
 y = d.footnotes(30, y + 40, [

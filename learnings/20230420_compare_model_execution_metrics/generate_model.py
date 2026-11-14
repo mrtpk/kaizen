@@ -109,9 +109,9 @@ if __name__ == '__main__':
 
     for model_name in networks:
         for input_shape in INPUT_SHAPES:
-            path_output = "{output_dir}/test_model_{model_name}/test_model_{model_name}_{h}X{w}_dummy.tflite".format(
+            path_str = "{output_dir}/test_model_{model_name}/test_model_{model_name}_{h}X{w}_dummy.tflite".format(
                 output_dir=args.output_dir_path, model_name=model_name, h=input_shape[0], w=input_shape[1])
-            path_output = Path(path_output)
+            path_output = Path(path_str)
             path_output.parent.mkdir(parents=True, exist_ok=True)
 
             if path_output.is_file():

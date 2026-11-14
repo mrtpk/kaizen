@@ -11,7 +11,7 @@ d.header("Where does M come from?",
          "Int8 on Silicon  ·  part 1  ·  one output of a convolution",
          params="r = s (q - z)   ->   r_out = sum r_in * r_w = s_in s_w sum (q_in - z_in)(q_w - z_w)")
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "What is integer, and what is not?",
         "The sum over the window is all integers. Only the scales are real numbers.")
 row(d, y + 74, [

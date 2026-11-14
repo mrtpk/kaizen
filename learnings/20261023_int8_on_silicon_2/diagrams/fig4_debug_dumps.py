@@ -13,7 +13,7 @@ d.header("Before and after the correction",
          "Int8 on Silicon  ·  part 2  ·  a debugging idea for a convolution that differs on the hardware",
          params="dump the int32 accumulator twice: the raw MAC sum, and the sum after the zero-point correction")
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "A layer differs on the hardware: where does it come from?",
         "Compare the raw MAC sums first. That one comparison separates the MAC path from the constants.")
 row(d, y + 74, [

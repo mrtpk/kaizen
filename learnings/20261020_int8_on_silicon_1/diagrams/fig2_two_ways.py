@@ -24,7 +24,7 @@ def row(y, boxes, arrow_col):
             d.arrow(XS[i] + BW, y + BH / 2, XS[i + 1] - 2, y + BH / 2, arrow_col)
 
 
-y = 116
+y: float = 116
 d.panel(y, 170, 1, "How does TFLite do it?",
         "A 31-bit mantissa and a per-channel shift. Two roundings.")
 row(y + 74, [

@@ -5,7 +5,7 @@ Values: eel_agent_training.py (cv in study_results.json).
 
 from statistics import mean
 
-from _eel import SERIES_NAME, post
+from _eel_side import SERIES_NAME, post
 from svglib import AMBER, BLUE, INK, LINE, MUTE, Diagram
 
 p = post()

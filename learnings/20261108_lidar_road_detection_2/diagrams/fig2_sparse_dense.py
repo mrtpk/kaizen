@@ -5,7 +5,7 @@ from points alone, 28401 road cells with pseudo points (x8.6).
 """
 
 import numpy as np
-from _lrd import heatmap, script
+from _lrd2 import heatmap, script
 from svglib import AMBER, BLUE, Diagram
 
 s = script("20261108_lidar_road_detection_2", "labels_top_view")

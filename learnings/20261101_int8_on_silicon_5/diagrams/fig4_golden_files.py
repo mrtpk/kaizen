@@ -21,7 +21,7 @@ rows = [
     ("one layer", "everything for chosen layers (by id or type), default for the rest"),
     ("default + outputs", "default, plus the outputs of the model"),
 ]
-y = 116
+y: float = 116
 H = table_height(len(rows))
 d.panel(y, H, 1, "How much gets written?",
         "Five levels. 'One layer' was the one for chasing a bug without drowning in files.")

@@ -12,7 +12,7 @@ d.header("Percentage is two stretches",
          params="percentage(value, max_value) = scale(scale(value, 1 / max_value), 100)")
 
 X0, X1 = 260, 1000
-y = 116
+y: float = 116
 d.panel(y, 420, 1, "How does 25 on a 0..500 line become 5 on a 0..100 line?",
         "Shrink the line to 0..1, then stretch it to 0..100. The point keeps its place: 5 % of the way.")
 

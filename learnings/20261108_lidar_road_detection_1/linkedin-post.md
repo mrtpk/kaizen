@@ -1,6 +1,6 @@
 # LinkedIn post: LiDAR Road Detection - Part 1: From points to a top-view grid
 
-**Attach:** `fig0_series_map.png`, `fig1_grid_geometry.png`, `fig3_six_channels.png`, `fig2_scatter_to_grid.png`, `fig4_sparsity.png` as a carousel (in this order, as in the post).
+**Attach:** `fig0_lidar_series_map.png`, `fig1_grid_geometry.png`, `fig3_six_channels.png`, `fig2_scatter_to_grid.png`, `fig4_sparsity.png` as a carousel (in this order, as in the post).
 
 ---
 

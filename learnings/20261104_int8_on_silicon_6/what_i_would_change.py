@@ -3,7 +3,7 @@
 Demonstrates the overflow guard that cannot fire, max pooling and concat
 semantics, and the 32-bit budget that alpha and the product share.
 Every number in the post comes from this script.
-Run:  uv run --with numpy python lessons.py
+Run:  uv run --with numpy python what_i_would_change.py
 """
 
 

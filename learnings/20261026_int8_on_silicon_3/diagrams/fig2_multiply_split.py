@@ -14,7 +14,7 @@ d.header("Multiply: splitting M into two square roots",
 
 BW, BH = 290, 92
 XS = [60, 410, 760]
-y = 116
+y: float = 116
 d.panel(y, 210, 1, "How does the split work?",
         "Each input gets half of the scale, at 2^10, so the product fits the 32-bit accumulator and lands at 2^20.")
 d.box(XS[0], y + 80, BW, BH, "input 1", ["(q1 - z1) * a1",

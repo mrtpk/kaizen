@@ -12,7 +12,7 @@ d.header("What does a fixed shift of 20 cost?",
          params="TFLite keeps 31 bits for every M; a fixed shift keeps fewer bits as M gets smaller")
 
 # panel 1: precision table
-y = 116
+y: float = 116
 rows = [
     ("0.5", "524288", "20", "+0.000 %"),
     ("0.1", "104857", "17", "-0.001 %"),

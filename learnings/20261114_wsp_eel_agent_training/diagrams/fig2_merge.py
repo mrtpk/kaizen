@@ -3,7 +3,7 @@
 Values: eel_agent_training.py (merge_f0 and trunk_f0 in study_results.json).
 """
 
-from _eel import SERIES_NAME, hbars, post
+from _eel_side import SERIES_NAME, hbars, post
 from svglib import EMERALD, MUTE, NEUTRAL, PINK, Diagram
 
 p = post()

@@ -65,7 +65,7 @@ def rgb_to_css(x: RGBTuple) -> str:
     return "rgb({},{},{})".format(*uint8tuple)
 
 
-def get_rgb_colors(x: RGBTuple) -> str:
+def get_rgb_colors(x: RGBTuple) -> tuple[int, ...]:
     uint8tuple = map(lambda y: int(y*255), x)
     return tuple(uint8tuple)
 
@@ -74,7 +74,7 @@ def css_colors() -> Iterable[str]:
     return map(rgb_to_css, rgbs())
 
 
-def rgb_colors() -> Iterable[str]:
+def rgb_colors() -> Iterable[tuple[int, ...]]:
     return map(get_rgb_colors, rgbs())
 
 

@@ -1,6 +1,6 @@
 """Figure 3: the scorecard of gaps found by the scripts of this series.
 
-Values: parts 1-6 scripts (one_multiply_one_shift.py, one_unit_many_ops.py, no_divider.py, lessons.py).
+Values: parts 1-6 scripts (one_multiply_one_shift.py, one_unit_many_ops.py, no_divider.py, what_i_would_change.py).
 """
 
 from svglib import EMERALD, INK, NEUTRAL, PINK, Diagram
@@ -24,7 +24,7 @@ rows = [
     ("6", "concat copies bytes", "real error up to 6.4", "check the scales"),
     ("6", "overflow guard in int32", "127 becomes -128", "check in int64"),
 ]
-y = 116
+y: float = 116
 H = 96 + 26 * len(rows)
 d.panel(y, H, 1, "Where could the reference model be tighter?",
         "Eleven places, each small enough that final model accuracy stayed on par with TFLite.")

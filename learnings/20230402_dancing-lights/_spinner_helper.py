@@ -9,7 +9,7 @@ class Spinner(Thread):
         super().__init__()
         self.style = spinner_style
         self.running = False
-        self.output_queue = []
+        self.output_queue: list[str] = []
 
     def start(self) -> None:
         self.running = True

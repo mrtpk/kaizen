@@ -5,7 +5,7 @@ Values: labels_top_view.py, section 5: 6-16 m 2089 / 9043 (x4.3), 16-26 m 743 / 
 """
 
 import numpy as np
-from _lrd import hbars, script
+from _lrd2 import hbars, script
 from svglib import AMBER, GRAY_MID, Diagram
 
 s = script("20261108_lidar_road_detection_2", "labels_top_view")

@@ -7,7 +7,7 @@ Values: fewer_beams.py, section 3: 9.4 % -> 2.6 %; 6-16 m 25.4 / 7.1, 16-26 m 7.
 import contextlib
 import io
 
-from _lrd import hbars, script
+from _lrd4 import hbars, script
 from svglib import BLUE, EMERALD, Diagram
 
 with contextlib.redirect_stdout(io.StringIO()):

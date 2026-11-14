@@ -22,7 +22,7 @@ def xr(r):
     return X0 + (r - R0) / (R1 - R0) * (X1 - X0)
 
 
-y = 116
+y: float = 116
 d.panel(y, 300, 1, "Where does each float land on the int8 line?",
         "Divide by scale, add zero_point, round, then clip to [-128, 127].")
 fl = NumberLine(d, X0, X1, y + 120, R0, R1, [-1, 0, 1, 2, 3], name="float")

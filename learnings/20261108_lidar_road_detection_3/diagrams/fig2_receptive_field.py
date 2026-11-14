@@ -4,7 +4,7 @@ Values: context_module.py, sections 1 to 3: receptive fields 3 x 3 ... 129 x 255
 context input 100 x 200; 1.29 and 1.27 times the input; whole network 266 x 518 cells.
 """
 
-from _lrd import script
+from _lrd3 import script
 from svglib import AMBER, INK, VIOLET, Diagram
 
 c = script("20261108_lidar_road_detection_3", "context_module")
