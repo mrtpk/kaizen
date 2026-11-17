@@ -4,7 +4,7 @@
 
 ---
 
-A coding agent spent three rounds finding a better way to store Qwen3-32B in fewer bits. A greedy search of a few lines matched its result.
+A coding agent measured Qwen3-32B and found where quantization loses accuracy. But on bit allocation, a greedy search of a few lines matched it, in these first three rounds.
 
 Quantization stores a model's weights in fewer bits, for example 3 or 4 bits instead of 16. The hard part is where the accuracy goes.
 
@@ -14,7 +14,7 @@ What worked: the agent measured the model first. With plain 3-bit rounding, one 
 
 What did not: its bit allocation. A control measured each layer alone and filled the bit budget greedily. At 3.7 bits per weight, the two allocations look nothing alike and score the same, within seed noise. So the agent's main claim was withdrawn, by a rule we fixed before the control ran.
 
-The lesson for me: a cheap control is the real test of an agent's research claim.
+The lesson for me: a cheap control is the real test of an agent's research claim. And the experiment design needs more work. I plan more rounds.
 
 Part 3 of my weight-space programming series.
 

@@ -6,7 +6,7 @@ categories: deep-learning
 mathjax: true
 ---
 
-Can a coding agent find a better way to store an LLM in fewer bits than the published methods? This note is about three rounds in which an agent tried, on Llama-3-8B and Qwen3-32B. The short answer is no, on the part I cared about most: a cheap automatic method matched the agent's bit allocation. The agent's measurements of the model were still useful.
+Can a coding agent find a better way to store an LLM in fewer bits than the published methods? This note is about three rounds in which an agent tried, on Llama-3-8B and Qwen3-32B. Not yet, in these rounds. The agent's measurements of the model found real facts, but on bit allocation a cheap automatic method matched it. I think the gap is in how I defined the experiment, and I plan more rounds.
 
 A recent essay by Dwarkesh Patel, [The avalanche that hit math is coming for AI development][patel], argues that AI will soon automate AI research. Quantization research is a small, well-scored piece of AI research, so it is a fair place to test that claim at home.
 
@@ -112,11 +112,11 @@ Two very different allocations give the same accuracy. At about 3.7 bits per wei
 - **What survives is the measurement, not the allocation.** FP8 against INT8 activations, small groups for 4-bit activations, per-channel K, the q/k rotation after RoPE, the source of the massive activation: these are format and structure findings, and the control does not touch them. No automatic control was run for them either.
 - **A cheap control is the test of an agent's claim.** Without phase A, round 2 would read as "the agent beats the baselines at 3.7 bits". The baselines were simply too weak.
 - **Proxies are not results.** B is not speed, and the agent's speed prediction was about 2.5 times too high. Perplexity is not zero-shot: below 4 bits, zero-shot moved with the calibration seed before perplexity showed it (selection data, not confirmed on test).
-- **The agent was a careful researcher.** It found the protocol defects of round 1, the bug in its own QuaRot baseline, and the bf16 noise floor in its own control, each before the result that depended on it. It did not find a better idea than a greedy fill.
+- **The agent was a careful researcher.** It found the protocol defects of round 1, the bug in its own QuaRot baseline, and the bf16 noise floor in its own control, each before the result that depended on it. In these rounds, it did not find a better allocation than a greedy fill.
 
-Does this say anything about the essay's claim? Not much on its own: one agent, one task, three rounds. But the useful work here was measurement and honest controls, and the agent did that well. The new idea did not come.
+Does this say anything about the essay's claim? Not much on its own: one agent, one task, three rounds. The agent did the measurement and the controls well. A new method did not come in these rounds, and I think the brief is the next thing to change: a clearer goal, a harder target, and a control from the start.
 
-So, in short: the agent's measurements of Qwen3-32B found real format and structure facts, but a greedy KL allocation matched its bit allocation, so its main claim was withdrawn.
+So, in short: in these rounds, the agent's measurements of Qwen3-32B found real format and structure facts, and a greedy KL allocation matched its bit allocation. The next rounds need a better experiment, not a smaller ambition.
 
 **Reference:**
 - [Sparks of Weight-Space Programming][mit], Takehi, Teoh, Zhang and Khattab, MIT CSAIL.

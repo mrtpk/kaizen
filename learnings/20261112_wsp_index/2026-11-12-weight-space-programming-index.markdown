@@ -46,8 +46,8 @@ In the eel study, most false positives were second boxes on eels that were alrea
 ### In-sample numbers were too optimistic
 Neither study has a blind test. The eel settings were chosen on the half that I score. The first Qwen edit was fitted on the benchmark itself, and the benchmark chose the second one from four candidates.
 
-### The third experiment: an honest control beats a long analysis
-In the quantization study, the agent measured Qwen3-32B and found real facts: one linear makes almost all of the 3-bit weight damage, another one creates the massive activation, and FP8 activations are almost free. But its per-layer bit allocation did not beat a greedy allocation from per-linear KL, at equal bits. The control took 4.6 GPU-hours of measurement and a few lines of code. Without it, the agent's main claim would have stood.
+### The third experiment: a cheap control is the test of a claim
+In the quantization study, the agent measured Qwen3-32B and found real facts: one linear makes almost all of the 3-bit weight damage, another one creates the massive activation, and FP8 activations are almost free. In these rounds, its per-layer bit allocation did not beat a greedy allocation from per-linear KL, at equal bits. More rounds follow, with a better experiment design. The control took 4.6 GPU-hours of measurement and a few lines of code. Without it, the agent's main claim would have stood.
 
 ## Do these before the first edit
 This list comes from both studies. Each step can stop a project early, and an early stop is cheaper than a failed edit.
