@@ -1,0 +1,55 @@
+{
+ "_source": "Transcribed 2026-11-17 by hand from the study's report and lab notes (github.com/mrtpk/wsp-llm-quant: docs/REPORT.md, round1-llama3-8b/NOTES.md, round2-qwen3-32b/NOTES.md sections P1.3c, P4 FINAL RESULT, Decode speed, PHASE A VERDICT, Secondary verdict). The result JSONs stayed on the GPU machine and are not public.",
+ "round1": {
+  "model": "Llama-3-8B",
+  "fp16": {"wt2": 6.138, "zs": 67.09},
+  "agent_range": {"wt2": [7.210, 7.230], "c4": [10.582, 10.677], "fw25": [10.448, 10.519], "zs": [64.33, 64.60]},
+  "best_baseline": {"wt2": 7.347, "c4": 10.907, "fw25": 10.788, "zs": 63.33},
+  "margin": {"wt2": 0.100, "c4": 0.100, "fw25": 0.112, "zs": 2.198},
+  "means": {"agent": {"wt2": 7.220, "zs": 64.45}, "spinquant": {"wt2": 7.370, "zs": 62.71}},
+  "zs_seed_std": {"agent": 0.11, "spinquant": 1.10},
+  "spinquant_s0_zs": 61.06
+ },
+ "round2": {
+  "model": "Qwen3-32B",
+  "bf16": {"wt2": 7.6103, "fw25": 9.8761, "zs": 70.94},
+  "bar": {"ppl_pct": 4.0, "first_ppl_pct": 1.0, "zs_guard": 68.94},
+  "p1_w3g128_rtn_c4dev": {"L63.down_proj": 28.67, "L62.gate_proj": 0.05, "all_448": 29.94, "linears_above_0.01": 14},
+  "p1_a4_per_token_c4dev": {"L6.gate_proj": 1835, "L63.gate_proj": 6.8, "all_448": 1851},
+  "p1_a_all_c4dev": {"int4_per_token": 10517, "int4_g32": 0.155, "int8_per_token": 0.144, "fp8_per_token": 0.014},
+  "p1_k_c4dev": {"k4_per_token": 3.27, "k4_per_channel": 0.018},
+  "finals": [
+   {"name": "gptq_W4g128_L63d8_asym15_Afp8", "W": 4.266, "A": 8.20, "B": 35.7, "wt2": 1.75, "fw25": 1.60, "zs": 69.94, "zs_min": 69.54, "result": "B win"},
+   {"name": "awq_gptq_W4g128_L63d8_asym15_Afp8", "W": 4.266, "A": 8.20, "B": 35.7, "wt2": 1.76, "fw25": 1.49, "zs": 70.67, "zs_min": 70.49, "result": "B win"},
+   {"name": "mix_asym_W3_late34", "W": 3.743, "A": 16, "B": 59.9, "wt2": 2.48, "fw25": 2.37, "zs": 70.23, "zs_min": 69.98, "result": "M win"},
+   {"name": "mix_asym_W3g64_late44", "W": 3.689, "A": 16, "B": 59.0, "wt2": 2.77, "fw25": 2.45, "zs": 69.94, "zs_min": 68.92, "result": "M win, fails the worst-seed guard"},
+   {"name": "ours_W4A4KV4_g32", "W": 4.266, "A": 4.90, "B": 21.9, "wt2": 4.39, "fw25": 4.22, "zs": 69.12, "zs_min": null, "result": "fail"}
+  ],
+  "baselines": [
+   {"name": "GPTQ W4g128", "W": 4.250, "A": 16, "B": 68.0, "wt2": 2.12, "fw25": 1.92, "zs": 70.10},
+   {"name": "AWQ W4g128", "W": 4.250, "A": 16, "B": 68.0, "wt2": 2.34, "fw25": 1.86, "zs": 70.15},
+   {"name": "FP8 W8A8", "W": 8.002, "A": 8.20, "B": 65.6, "wt2": 0.55, "fw25": 0.48, "zs": 70.93},
+   {"name": "SmoothQuant INT8 W8A8", "W": 8.002, "A": 8.20, "B": 65.6, "wt2": 0.96, "fw25": 1.06, "zs": 70.66},
+   {"name": "QuaRot-style W4A4KV4", "W": 4.100, "A": 4.29, "B": 18.7, "wt2": 25.65, "fw25": 21.24, "zs": 64.96},
+   {"name": "RTN W4g128", "W": 4.250, "A": 16, "B": 68.0, "wt2": 34.48, "fw25": 42.99, "zs": 68.90}
+  ],
+  "speed_b1_tok_s": {"bf16": 53.4, "fp8_w8a8": 82.8, "w4a8_own": 51.7, "w4a16_own": 56.9, "w4a8_bound": 254, "w4a8_predicted": [125, 135]},
+  "quarot_first_try_c4dev_pct": 73
+ },
+ "phase_a": {
+  "late34": {"W": 3.7432,
+   "agent": {"wt2": [2.479, 0.179], "fw25": [2.367, 0.141], "zs_mean": 70.23, "zs_worst": 69.98},
+   "control": {"wt2": [2.491, 0.075], "fw25": [2.390, 0.077], "zs_mean": 70.19, "zs_worst": 70.09}},
+  "late44": {"W": 3.6891,
+   "agent": {"wt2": [2.769, 0.099], "fw25": [2.446, 0.205], "zs_mean": 69.94, "zs_worst": 68.92},
+   "control": {"wt2": [2.693, 0.072], "fw25": [2.570, 0.053], "zs_mean": 70.21, "zs_worst": 69.99}},
+  "control_late34_counts": {"_order": "W3g128/W3g64/W4g128/INT8",
+   "q": [42, 11, 11, 0], "k": [3, 4, 42, 15], "v": [3, 2, 34, 25], "o": [34, 17, 13, 0],
+   "gate": [26, 15, 23, 0], "up": [21, 18, 25, 0], "down": [11, 12, 41, 0]},
+  "control_upgrades_layers_0_33": 70,
+  "sens_gpu_hours": 4.6,
+  "gpu_hours": 12.4,
+  "seeds": 4,
+  "bf16_kl_floor": 1e-3
+ }
+}

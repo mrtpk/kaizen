@@ -21,12 +21,13 @@ In every experiment, a coding agent wrote and ran the code. I set the goal and t
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | [Editing an eel detector without new data][eel] | YOLO26n-seg, 3.06M parameters, eels in infrared video | Claude Code | CPU only | held-out fitness 1.3346 to 1.4004, recall 0.894 to 0.944; most of the gain from a rule that changes no weight | [wsp-yolo-eel][repo-eel] (no checkpoint, frames or labels; crop figures only) |
 | 2 | [Teaching Qwen3.5-0.8B when to call a tool][qwen] | Qwen3.5-0.8B on BFCL-V4 tool use | Cursor (v1), Claude (v2) | one RTX 5090 | +0.66 to +2.61 overall; two edits, each better in one mode only | [wsp-qwen-tools][repo-qwen]; v7 model on [Hugging Face][hf-qwen] |
+| 3 | [Can an agent quantize an LLM better than a recipe?][quant] | Llama-3-8B and Qwen3-32B, quantization without gradient training | Claude Code (Opus 5.5) | AMD MI325X | Qwen3-32B passes +4 % perplexity at 3.74 bits per weight; a greedy KL allocation ties it, so the agent's allocation claim is withdrawn | [wsp-llm-quant][repo-quant] (code and lab notes; no result files) |
 
 Side notes are short notes next to the experiments. They use gradient training, so they are not weight-space programming experiments, and they have no row in the table and no repository.
 
 - [Side note: an agent drives the training of the eel detector][side-eel]: Claude Code (Opus 5.5) ran a 5-fold training study of the eel detector on one AMD MI325X GPU and read the weights of the runs. Averages of independent runs collapse; averages of children of one trunk are safe but not better. The candidate was never compared against the production model.
 
-Both repositories hold the code, the logs and the reports. The eel checkpoint, frames and labels are not public, so the first study does not run from its repository as it is. The second one runs from the public base model up to a full BFCL run (levels 1 to 4 of its README); the edit cells need new forward passes on a GPU.
+The first two repositories hold the code, the logs and the reports. The eel checkpoint, frames and labels are not public, so the first study does not run from its repository as it is. The second one runs from the public base model up to a full BFCL run (levels 1 to 4 of its README); the edit cells need new forward passes on a GPU.
 
 ## What held in both experiments
 
@@ -44,6 +45,9 @@ In the eel study, most false positives were second boxes on eels that were alrea
 
 ### In-sample numbers were too optimistic
 Neither study has a blind test. The eel settings were chosen on the half that I score. The first Qwen edit was fitted on the benchmark itself, and the benchmark chose the second one from four candidates.
+
+### The third experiment: an honest control beats a long analysis
+In the quantization study, the agent measured Qwen3-32B and found real facts: one linear makes almost all of the 3-bit weight damage, another one creates the massive activation, and FP8 activations are almost free. But its per-layer bit allocation did not beat a greedy allocation from per-linear KL, at equal bits. The control took 4.6 GPU-hours of measurement and a few lines of code. Without it, the agent's main claim would have stood.
 
 ## Do these before the first edit
 This list comes from both studies. Each step can stop a project early, and an early stop is cheaper than a failed edit.
@@ -90,7 +94,8 @@ So, in short: weights are a good place to read a model and a safe place for exac
 + [Weight-Space Programming - Editing an eel detector without new data][eel]
 + [Weight-Space Programming - Teaching Qwen3.5-0.8B when to call a tool][qwen]
 + [Weight-Space Programming - Side note: an agent drives the training of the eel detector][side-eel]
-+ [wsp-yolo-eel][repo-eel], [wsp-qwen-tools][repo-qwen]
++ [Weight-Space Programming - Can an agent quantize an LLM better than a recipe?][quant]
++ [wsp-yolo-eel][repo-eel], [wsp-qwen-tools][repo-qwen], [wsp-llm-quant][repo-quant]
 
 [mit]: https://rikiyat.github.io/blog/weight-space-programming
 [eel]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-an-eel-detector.html
@@ -99,3 +104,5 @@ So, in short: weights are a good place to read a model and a safe place for exac
 [repo-qwen]: https://github.com/mrtpk/wsp-qwen-tools
 [side-eel]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-side-note-agent-drives-training.html
 [hf-qwen]: https://huggingface.co/mrtpk/Qwen3.5-0.8B-wsp-tool-use
+[quant]: https://www.thomaspaul.dev/2026/11/202611weight-space-programming-llm-quantization.html
+[repo-quant]: https://github.com/mrtpk/wsp-llm-quant
